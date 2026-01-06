@@ -18,12 +18,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#layanan">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="produk.html">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#proses">How It Works</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#kontak">Contact</a></li>
-                    <li class="nav-item ms-3"><a href="produk.html" class="btn btn-primary">Order Now</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="index.html#layanan">Services</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="produk.html">Pricing</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="index.html#proses">How It Works</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="produk.html#footer">Contact</a></li>
+                </ul>
+                <div class="mx-4 text-center" style="font-size: 0.9rem;">
+                    <div class="text-muted"><i class="fas fa-phone me-1"></i>646-338-6883</div>
+                    <div class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>400 E 87th Street New York, NY 10128</div>
+                </div>
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item ms-3"><a href="https://maps.app.goo.gl/pMd3U9TiZJM5N4DJ8" target="_blank" class="btn btn-primary">Get Directions</a></li>
                 </ul>
             </div>
         </div>
@@ -46,253 +52,154 @@
     <!-- Services Section -->
     <section class="py-5">
         <div class="container">
-            <!-- Filter Tabs -->
-            <div class="text-center mb-5">
-                <ul class="nav nav-pills justify-content-center gap-3" id="serviceFilter">
-                    <li class="nav-item">
-                        <button class="nav-link active" data-filter="all">All Services</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-filter="pakaian">Clothing</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-filter="premium">Premium</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-filter="khusus">Special</button>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Service Cards -->
-            <div class="row g-4" id="serviceCards">
-                <!-- Dry Clean -->
-                <div class="col-md-4 service-item" data-category="pakaian">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=500" alt="Dry Clean">
-                        <div class="service-body">
-                            <span class="badge bg-success mb-2">Most Popular</span>
-                            <h3 class="service-title">Dry Clean</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 2 Days · Neatly Folded</p>
-                            <ul class="text-muted mb-3">
-                                <li>Thorough cleaning</li>
-                                <li>Premium fragrance</li>
-                                <li>Neatly folded</li>
-                                <li>Free plastic wrapping</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 5,000/kg</div>
-                                    <small class="text-muted">Min. 3kg</small>
+            <div class="row g-5">
+                <!-- DRY CLEANER -->
+                <div class="col-lg-6">
+                    <div class="price-category">
+                        <h3 class="fw-bold mb-4 border-bottom pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="40" viewBox="0 0 24 24" class="me-2" style="display: inline; vertical-align: middle; color: #3B82F6;"><path fill="currentColor" d="M9 22q-.825 0-1.412-.587T7 20v-4H5.4q-1 0-1.7-.7T3 13.6q0-.725.4-1.337t1.05-.913L11 8.45V7.8q-.9-.325-1.45-1.087T9 5q0-1.25.875-2.125T12 2q.9 0 1.65.5t1.1 1.3l.1.425q0 .425-.288.713t-.712.287q-.325 0-.562-.175t-.363-.45t-.375-.437T12 4q-.425 0-.712.288T11 5t.288.713T12 6t.713.288T13 7v1.45l6.55 2.9q.65.3 1.05.913T21 13.6q0 1-.7 1.7t-1.7.7H17v4q0 .825-.587 1.413T15 22zm-3.6-8h1.875q.275-.45.725-.725T9 13h6q.55 0 1 .275t.725.725H18.6q.175 0 .288-.125T19 13.55q0-.125-.062-.213t-.188-.137l-6.75-3l-6.75 3q-.125.05-.187.138T5 13.55q0 .2.113.325T5.4 14"/></svg>DRY CLEANING
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="price-list">
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Sweaters</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Blouses</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Pants</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Vest</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Skirts</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Shirts</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center">
+                                        <span>Scarf</span>
+                                        <span class="fw-bold">$6.50</span>
+                                    </div>
                                 </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Dry%20Clean" class="btn btn-primary rounded-pill">Order</a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="price-list">
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Suits</span>
+                                        <span class="fw-bold">$13.00</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Dresses</span>
+                                        <span class="fw-bold">$13.00</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Jackets</span>
+                                        <span class="fw-bold">$15.00</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>Coats</span>
+                                        <span class="fw-bold">$24.60</span>
+                                    </div>
+                                    <div class="price-item d-flex justify-content-between align-items-center">
+                                        <span>Down Jackets</span>
+                                        <span class="fw-bold">$40.00</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Wash & Iron -->
-                <div class="col-md-4 service-item" data-category="pakaian">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1489274495757-95c7c837b101?w=500" alt="Wash & Iron">
-                        <div class="service-body">
-                            <span class="badge bg-info mb-2">Recommended</span>
-                            <h3 class="service-title">Wash & Iron</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 3 Days · Professionally Ironed</p>
-                            <ul class="text-muted mb-3">
-                                <li>Professional wash + ironing</li>
-                                <li>Long-lasting fragrance</li>
-                                <li>Free hanger</li>
-                                <li>Ready to wear</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 7,000/kg</div>
-                                    <small class="text-muted">Min. 3kg</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Wash%20%26%20Iron" class="btn btn-primary rounded-pill">Order</a>
+                <!-- WASH & FOLD -->
+                <div class="col-lg-6">
+                    <div class="price-category">
+                        <h3 class="fw-bold mb-4 border-bottom pb-3">
+                            <i class="fas fa-basket-shopping text-info me-2"></i>WASH & FOLD
+                        </h3>
+                        <div class="price-list mb-5">
+                            <div class="price-item d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold">Per Pound</span>
+                                <span class="fw-bold fs-5 text-success">$1.00</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-info-circle me-2"></i>Minimum 10 lbs.</p>
+                        </div>
+                    </div>
+
+                    <!-- LAUNDRY SHIRTS -->
+                    <div class="price-category">
+                        <h3 class="fw-bold mb-4 border-bottom pb-3">
+                            <i class="fas fa-shirt text-primary me-2"></i>LAUNDRY SHIRTS
+                        </h3>
+                        <div class="price-list mb-3">
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Napkins</span>
+                                <span class="fw-bold">$2.00</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Pillow Cases</span>
+                                <span class="fw-bold">$3.00</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Hanger</span>
+                                <span class="fw-bold">$3.25</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Box</span>
+                                <span class="fw-bold">$3.75</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Hand Press</span>
+                                <span class="fw-bold">$6.00</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Sheets</span>
+                                <span class="fw-bold">$15.00</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center">
+                                <span>Table Cloths</span>
+                                <span class="fw-bold">$20.00</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 1-Day Express -->
-                <div class="col-md-4 service-item" data-category="pakaian premium">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=500" alt="Express">
-                        <div class="service-body">
-                            <span class="badge bg-danger mb-2">Super Fast</span>
-                            <h3 class="service-title">1-Day Express</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-danger me-2"></i>Finished in 24 Hours · Priority</p>
-                            <ul class="text-muted mb-3">
-                                <li>Priority processing</li>
-                                <li>Premium wash + ironing</li>
-                                <li>On-time delivery</li>
-                                <li>On-time completion guarantee</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 10,000/kg</div>
-                                    <small class="text-muted">Min. 2kg</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%201-Day%20Express" class="btn btn-primary rounded-pill">Order</a>
+                <!-- TAILORING -->
+                <div class="col-lg-6">
+                    <div class="price-category">
+                        <h3 class="fw-bold mb-4 border-bottom pb-3">
+                            <i class="fas fa-scissors text-danger me-2"></i>TAILORING
+                        </h3>
+                        <div class="price-list">
+                            <div class="price-item d-flex justify-content-between align-items-center mb-2">
+                                <span>Pants Hem</span>
+                                <span class="fw-bold">$15.00</span>
+                            </div>
+                            <div class="price-item d-flex justify-content-between align-items-center">
+                                <span>Pants Zipper</span>
+                                <span class="fw-bold">$20.00</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Shoe Cleaning -->
-                <div class="col-md-4 service-item" data-category="khusus premium">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=500" alt="Shoes">
-                        <div class="service-body">
-                            <span class="badge bg-warning text-dark mb-2">Premium Care</span>
-                            <h3 class="service-title">Shoe Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 3 Days · Deep Clean</p>
-                            <ul class="text-muted mb-3">
-                                <li>Deep cleaning for all types</li>
-                                <li>Repaint (optional)</li>
-                                <li>Material-specific treatment</li>
-                                <li>Waterproofing (add-on)</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 25,000/pair</div>
-                                    <small class="text-muted">Sneakers/Casual</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Shoe%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carpet Cleaning -->
-                <div class="col-md-4 service-item" data-category="khusus">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500" alt="Carpet">
-                        <div class="service-body">
-                            <h3 class="service-title">Carpet Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 4 Days · Thorough Clean</p>
-                            <ul class="text-muted mb-3">
-                                <li>Vacuum + full wash</li>
-                                <li>Removes stubborn stains</li>
-                                <li>Anti-mite & bacteria treatment</li>
-                                <li>Long-lasting fresh scent</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 15,000/m²</div>
-                                    <small class="text-muted">All carpet types</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Carpet%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Toy & Plush Cleaning -->
-                <div class="col-md-4 service-item" data-category="khusus">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=500" alt="Toys">
-                        <div class="service-body">
-                            <h3 class="service-title">Toy & Plush Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 3 Days · Gentle Care</p>
-                            <ul class="text-muted mb-3">
-                                <li>Gentle & careful washing</li>
-                                <li>Child-safe</li>
-                                <li>Shape retained</li>
-                                <li>Hypoallergenic fragrance</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 20,000/pcs</div>
-                                    <small class="text-muted">Size S-M</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Toy%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blanket Cleaning -->
-                <div class="col-md-4 service-item" data-category="khusus">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500" alt="Blanket">
-                        <div class="service-body">
-                            <h3 class="service-title">Blanket Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 3 Days · Soft & Fluffy</p>
-                            <ul class="text-muted mb-3">
-                                <li>Wash for thick/tipis blankets</li>
-                                <li>Premium softener</li>
-                                <li>Anti-bacterial & mite treatment</li>
-                                <li>Remains soft & fluffy</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 30,000/pcs</div>
-                                    <small class="text-muted">Single/Double</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Blanket%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bag Cleaning -->
-                <div class="col-md-4 service-item" data-category="premium khusus">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500" alt="Bag">
-                        <div class="service-body">
-                            <span class="badge bg-warning text-dark mb-2">Premium</span>
-                            <h3 class="service-title">Bag Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 3-4 Days · Expert Care</p>
-                            <ul class="text-muted mb-3">
-                                <li>All types of bags (backpack, tote, etc.)</li>
-                                <li>Deep cleaning + sanitize</li>
-                                <li>Material-specific treatment</li>
-                                <li>Leather conditioning (optional)</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 35,000/pcs</div>
-                                    <small class="text-muted">Backpack/Tote</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Bag%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Curtain Cleaning -->
-                <div class="col-md-4 service-item" data-category="khusus">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500" alt="Curtain">
-                        <div class="service-body">
-                            <h3 class="service-title">Curtain Cleaning</h3>
-                            <p class="text-muted mb-3"><i class="fas fa-clock text-primary me-2"></i>Finished in 4-5 Days · Fresh</p>
-                            <ul class="text-muted mb-3">
-                                <li>Wash all types of curtains</li>
-                                <li>Remove dust & stains</li>
-                                <li>Anti-mold & bacteria</li>
-                                <li>Neatly ironed & folded</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Starting from</small>
-                                    <div class="price">IDR 18,000/m²</div>
-                                    <small class="text-muted">Per square meter</small>
-                                </div>
-                                <a href="https://wa.me/6281234567890?text=Hello,%20I%20would%20like%20to%20order%20Curtain%20Cleaning" class="btn btn-primary rounded-pill">Order</a>
-                            </div>
-                        </div>
+                <!-- ORDER NOW BUTTON -->
+                <div class="col-lg-6">
+                    <div class="alert alert-light border-2 border-primary p-4 text-center">
+                        <h4 class="mb-3">Ready to Place an Order?</h4>
+                        <p class="text-muted mb-3">Contact us now via WhatsApp to get your laundry done with guaranteed quality!</p>
+                        <a href="https://wa.me/6281234567890" class="btn btn-success btn-lg rounded-pill">
+                            <i class="fab fa-whatsapp me-2"></i>Order Now
+                        </a>
                     </div>
                 </div>
             </div>
@@ -300,7 +207,7 @@
     </section>
 
     <!-- Promo Banner -->
-    <section class="py-5 bg-light">
+    <!-- <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
@@ -319,7 +226,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- FAQ Section -->
     <section class="py-5">
@@ -339,7 +246,7 @@
                             </h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    It's very easy! Just contact us via WhatsApp, choose the service you want, and set a pickup time. Our team will come to your location.
+                                    It's very easy! Just contact us via phone or text, choose the service you want, and set a pickup time. Our team will come to your location.
                                 </div>
                             </div>
                         </div>
@@ -351,7 +258,7 @@
                             </h2>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Yes, for dry clean and wash & iron the minimum order is 3kg. For express the minimum is 2kg.
+                                    Yes, for dry clean and wash & fold the minimum order is 10lbs.
                                 </div>
                             </div>
                         </div>
@@ -363,7 +270,7 @@
                             </h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    It depends on the package chosen. Dry clean 2 days, wash & iron 3 days, and express 24 hours. Special services like shoes and carpets take 3-4 days.
+                                    It depends on the content. Dry clean ~2 days, wash & fold ~2 days. Please contact us for specific dates on your laundry.
                                 </div>
                             </div>
                         </div>
@@ -390,7 +297,7 @@
         <div class="container">
             <div class="row g-4 mb-4">
                 <div class="col-lg-4">
-                    <h4 class="fw-bold mb-3"><i class="fas fa-sparkles me-2"></i>FreshClean</h4>
+                    <h4 class="fw-bold mb-3"><i class="fas fa-sparkles me-2"></i>Crystal Clean Dry Cleaners</h4>
                     <p class="text-muted">A trusted professional laundry service ready to handle your laundry needs with the best quality and affordable prices.</p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
@@ -403,12 +310,12 @@
                     <h5 class="fw-bold mb-3">Services</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="produk.html" class="footer-link">Dry Clean</a></li>
-                        <li class="mb-2"><a href="produk.html" class="footer-link">Wash & Iron</a></li>
-                        <li class="mb-2"><a href="produk.html" class="footer-link">Express</a></li>
-                        <li class="mb-2"><a href="produk.html" class="footer-link">Premium Care</a></li>
+                        <li class="mb-2"><a href="produk.html" class="footer-link">Wash & Fold</a></li>
+                        <li class="mb-2"><a href="produk.html" class="footer-link">Tailor</a></li>
+                        <li class="mb-2"><a href="produk.html" class="footer-link">Laundry Shirts</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <!-- <div class="col-lg-2 col-md-4">
                     <h5 class="fw-bold mb-3">Company</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#" class="footer-link">About Us</a></li>
@@ -416,8 +323,8 @@
                         <li class="mb-2"><a href="#" class="footer-link">Partners</a></li>
                         <li class="mb-2"><a href="#" class="footer-link">Testimonials</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-2 col-md-4">
+                </div> -->
+                <!-- <div class="col-lg-2 col-md-4">
                     <h5 class="fw-bold mb-3">Help</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#" class="footer-link">FAQ</a></li>
@@ -425,20 +332,20 @@
                         <li class="mb-2"><a href="#" class="footer-link">Terms & Conditions</a></li>
                         <li class="mb-2"><a href="#" class="footer-link">Privacy Policy</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-2 col-md-4">
+                </div> -->
+                <div class="col-lg-2 col-lg-4">
                     <h5 class="fw-bold mb-3">Contact Us</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2 text-muted"><i class="fas fa-phone me-2"></i>0812-3456-7890</li>
-                        <li class="mb-2 text-muted"><i class="fas fa-envelope me-2"></i>info@freshclean.id</li>
-                        <li class="mb-2 text-muted"><i class="fas fa-map-marker-alt me-2"></i>Bandung, Indonesia</li>
-                        <li class="mb-2 text-muted"><i class="fas fa-clock me-2"></i>24/7 Service</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-phone me-2"></i>646-338-6883</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-envelope me-2"></i>crystalcleandrycleaners87@gmail.com</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-map-marker-alt me-2"></i>400 E 87th Street New York, NY 10128</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-clock me-2"></i>Mon - Sat 7:30 AM - 7:00 PM</li>
                     </ul>
                 </div>
             </div>
             <hr style="border-color: #333;">
             <div class="text-center py-3">
-                <p class="text-muted mb-0">&copy; 2025 Doni Sw. All Rights Reserved. Made with <i class="fas fa-heart text-danger"></i> in Indonesia</p>
+                <p class="text-muted mb-0">&copy; 2026 Crystal Clean Dry Cleaners LLC. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -453,46 +360,6 @@
             } else {
                 link.classList.remove('active');
             }
-        });
-
-        // Filter functionality
-        const filterButtons = document.querySelectorAll('#serviceFilter button');
-        const serviceItems = document.querySelectorAll('.service-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                // Filter items
-                const filter = button.getAttribute('data-filter');
-                
-                serviceItems.forEach(item => {
-                    if (filter === 'all') {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        const categories = item.getAttribute('data-category').split(' ');
-                        if (categories.includes(filter)) {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(30px)';
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
-                    }
-                });
-            });
         });
 
         // Navbar scroll effect
@@ -520,12 +387,16 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card').forEach(el => {
-            el.parentElement.style.opacity = '0';
-            el.parentElement.style.transform = 'translateY(30px)';
-            el.parentElement.style.transition = 'all 0.6s ease';
-            observer.observe(el.parentElement);
+        // Add animation to price categories on scroll
+        const priceCategories = document.querySelectorAll('.price-category');
+        priceCategories.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
+
+
     </script>
 </body>
 </html>
