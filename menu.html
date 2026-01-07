@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crystal Clean — Paper Menu</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Crystal Clean — Paper Menu</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="style.css" />
+        <style>
     /* adjust this value if your navbar height differs */
     :root { --navbar-height: 86px; }
 
@@ -20,9 +23,9 @@
     .menu-img { width:100%; height:auto; display:block; }
     .menu-actions { padding:1rem; display:flex; gap:0.5rem; justify-content:space-between; align-items:center; flex-wrap:wrap; }
   </style>
-</head>
-<body>
-<!-- Navbar -->
+    </head>
+    <body>
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="index.html"><i
@@ -81,21 +84,50 @@
             </div>
         </nav>
 
-  <main class="menu-wrap">
-    <div class="menu-card container p-0">
-      <!-- flyer image (uses your existing file) -->
-      <img src="./images/flyer.webp" alt="Paper menu / flyer" class="menu-img" />
-      <div class="menu-actions">
-        <div class="text-muted small ms-2">Open flyer below — pinch/zoom on mobile</div>
-        <div class="me-2">
-          <a href="./images/flyer.webp" download="crystalclean-menu.webp" class="btn btn-outline-primary btn-sm me-1"><i class="fas fa-download me-1"></i>Download</a>
-          <a href="javascript:window.print()" class="btn btn-primary btn-sm"><i class="fas fa-print me-1"></i>Print</a>
-        </div>
-      </div>
-    </div>
-  </main>
+        <main class="menu-wrap">
+            <div class="menu-card container p-0">
+                <!-- flyer images -->
+                <div class="row g-0">
+                    <div class="col-md-6 p-2">
+                        <img src="images\\flyerfront.PNG" alt="Flyer front"
+                            class="menu-img" />
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <img src="./images/flyerback.jpg" alt="Flyer back"
+                            class="menu-img" />
+                    </div>
+                    <div class="col-12 p-2">
+                        <img src="./images/flyer.webp" alt="Paper menu / flyer"
+                            class="menu-img" />
+                    </div>
+                </div>
+                <div class="menu-actions">
+                    <!-- <div class="text-muted small ms-2">Open flyer below — pinch/zoom on mobile</div> -->
+                    <div class="me-2">
+                        <a href="./images/flyerfront.jpg"
+                            download="crystalclean-flyer-front.jpg"
+                            class="btn btn-outline-primary btn-sm me-1"><i
+                                class="fas fa-download me-1"></i>Download
+                            Front</a>
+                        <a href="./images/flyerback.png"
+                            download="crystalclean-flyer-back.png"
+                            class="btn btn-outline-primary btn-sm me-1"><i
+                                class="fas fa-download me-1"></i>Download
+                            Back</a>
+                        <a href="./images/flyer.webp"
+                            download="crystalclean-menu.webp"
+                            class="btn btn-outline-primary btn-sm me-1"><i
+                                class="fas fa-download me-1"></i>Download
+                            Full</a>
+                        <a href="javascript:window.print()"
+                            class="btn btn-primary btn-sm"><i
+                                class="fas fa-print me-1"></i>Print</a>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-<!-- Footer -->
+        <!-- Footer -->
         <footer id="footer">
             <div class="container">
                 <div class="row g-4 mb-4">
@@ -192,8 +224,9 @@
             </div>
         </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
     // activate proper nav-link (strip fragment)
     const current = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -201,5 +234,5 @@
       if (href === current) link.classList.add('active'); else link.classList.remove('active');
     });
   </script>
-</body>
+    </body>
 </html>
