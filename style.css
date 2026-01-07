@@ -84,6 +84,21 @@ body {
     }
 }
 
+/* Extra small screens like iPhone 15 (390px) */
+@media (max-width: 343.98px) {
+    .navbar .container {
+        gap: 0.25rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+    .navbar-toggler {
+        margin-right: 0.25rem;
+    }
+}
+
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
