@@ -8,8 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* adjust this value if your navbar height differs */
+    :root { --navbar-height: 86px; }
+
+    /* ensure page content sits below the fixed navbar */
+    body { padding-top: var(--navbar-height); }
+
     /* small page-specific tweaks */
-    .menu-wrap { min-height: 80vh; display:flex; align-items:center; justify-content:center; padding:4rem 1rem; }
+    .menu-wrap { min-height: calc(80vh - 1rem); display:flex; align-items:center; justify-content:center; padding:2rem 1rem; }
     .menu-card { max-width:1000px; width:100%; background:var(--card-bg, #fff); border-radius:0.75rem; box-shadow:0 10px 30px rgba(0,0,0,0.08); overflow:hidden; }
     .menu-img { width:100%; height:auto; display:block; }
     .menu-actions { padding:1rem; display:flex; gap:0.5rem; justify-content:space-between; align-items:center; flex-wrap:wrap; }
