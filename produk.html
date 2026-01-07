@@ -14,11 +14,11 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- Navbar -->
+<!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <i class="fas fa-sparkles me-2"></i>Crystal Clean Dry
+                <a class="navbar-brand" href="index.html"><i
+                        class="fas fa-sparkles me-2"></i>Crystal Clean Dry
                     Cleaners</a>
                 <button
                     class="navbar-toggler"
@@ -30,17 +30,17 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link active"
+                                href="index.html">Home</a>
                         </li>
                         <!-- <li class="nav-item"><a class="nav-link" href="index.html#layanan">Services</a></li> -->
                         <li class="nav-item">
-                            <a class="nav-link active"
-                                href="produk.html">Pricing</a>
+                            <a class="nav-link" href="produk.html">Pricing</a>
                         </li>
                         <!-- <li class="nav-item"><a class="nav-link" href="index.html#proses">How It Works</a></li> -->
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="produk.html#footer">Info</a>
+                                href="menu.html">Menu</a>
                         </li>
                     </ul>
                     <div class="mx-4 text-center" style="font-size: 0.9rem">
@@ -76,23 +76,31 @@
         <!-- Breadcrumb -->
         <section class="breadcrumb-section">
             <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html"
-                                class="text-primary text-decoration-none">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Pricing & Services
-                        </li>
-                    </ol>
-                </nav>
-                <h1 class="display-4 fw-bold mb-3">Pricing & Services</h1>
-                <p class="lead text-muted">
-                    Choose the package that fits your needs. Affordable prices
-                    with
-                    guaranteed quality!
-                </p>
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html"
+                                        class="text-primary text-decoration-none">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Pricing & Services
+                                </li>
+                            </ol>
+                        </nav>
+                        <h1 class="display-4 fw-bold mb-3">Pricing & Services</h1>
+                        <p class="lead text-muted">
+                            Choose the package that fits your needs. Affordable prices
+                            with guaranteed quality!
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <a href="menu.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-book-open me-2"></i>View Menu
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -544,7 +552,7 @@
       document.querySelectorAll(".nav-link").forEach((link) => {
         const href = link.getAttribute("href");
         if (href === "produk.html" || (href && href.includes("produk.html"))) {
-        //   link.classList.add("active");
+          link.classList.add("active");
         } else {
           link.classList.remove("active");
         }
