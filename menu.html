@@ -13,7 +13,7 @@
         <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
         <style>
     /* adjust this value if your navbar height differs */
-    :root { --navbar-height: 86px; }
+    /* :root { --navbar-height: 56px; } */
 
     /* ensure page content sits below the fixed navbar */
     body { padding-top: var(--navbar-height); }
@@ -84,6 +84,31 @@
                 </div>
             </div>
         </nav>
+
+        <section class="breadcrumb-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html"
+                                        class="text-primary text-decoration-none">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active"
+                                    aria-current="page">
+                                    Menu
+                                </li>
+                            </ol>
+                        </nav>
+                        <h1 class="display-4 fw-bold mb-3">Menu</h1>
+                        <p class="lead text-muted">
+                            Check out pricing on our menu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <main class="menu-wrap">
             <div class="menu-card container p-0">
