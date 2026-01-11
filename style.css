@@ -85,17 +85,25 @@ body {
 }
 
 /* Extra small screens like iPhone 15 (390px) */
-@media (max-width: 343.98px) {
+@media (max-width: 440.98px) {
+    /* Tidy .navbar-brand on very small screens */
+    .navbar-brand {
+        font-size: 1.0rem !important;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 70%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* ensure toggler and brand spacing remains usable */
     .navbar .container {
         gap: 0.25rem;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
-    }
-    .navbar-brand {
-        font-size: 0.95rem;
-    }
-    .navbar-toggler {
-        margin-right: 0.25rem;
+        align-items: center;
     }
 }
 
