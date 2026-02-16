@@ -183,12 +183,12 @@ body {
 /* Tighter hero top padding on mobile so no gap under fixed navbar */
 @media (max-width: 991.98px) {
     .hero-section {
-        padding-top: 100px;
+        padding-top: 88px;
     }
 }
 @media (max-width: 430px) {
     .hero-section {
-        padding-top: 80px;
+        padding-top: 68px;
     }
 }
 
