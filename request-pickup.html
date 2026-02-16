@@ -110,6 +110,10 @@
                                             <div class="invalid-feedback">Please enter your pickup address.</div>
                                         </div>
                                         <div class="col-12">
+                                            <label for="number" class="form-label">Apt / Suite number <span class="text-muted">(optional)</span></label>
+                                            <input type="text" class="form-control form-control-lg" id="number" name="number" placeholder="e.g. 4B — leave blank if not applicable">
+                                        </div>
+                                        <div class="col-12">
                                             <label for="when" class="form-label">Preferred date & time <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control form-control-lg" id="when" name="when" placeholder="e.g. Tomorrow 10am, or ASAP" required>
                                             <div class="invalid-feedback">Please tell us when you'd like pickup.</div>
@@ -179,6 +183,9 @@
                     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
 
                     var formData = new FormData(form);
+                    if (!formData.get('number') || String(formData.get('number')).trim() === '') {
+                        formData.set('number', 'N/A');
+                    }
                     fetch('https://formspree.io/f/' + FORMSPREE_FORM_ID, {
                         method: 'POST',
                         body: formData,
