@@ -180,6 +180,13 @@ body {
     overflow: hidden;
 }
 
+/* Tighter hero top padding on mobile so no gap under fixed navbar */
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding-top: 100px;
+    }
+}
+
 .hero-section::before {
     content: '';
     position: absolute;
