@@ -12,6 +12,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" href="style.css?v=2" />
         <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@placekit/autocomplete-js@2/dist/placekit-autocomplete.css" />
     </head>
     <body>
         <!-- Navbar -->
@@ -98,7 +99,7 @@
                                         <div class="col-md-6">
                                             <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
                                             <input type="tel" class="form-control form-control-lg" id="phone" name="phone" placeholder="(646) 555-1234" required>
-                                            <div class="invalid-feedback">Please enter your phone number.</div>
+                                            <div class="invalid-feedback" id="phone-feedback">Please enter a valid 10-digit phone number.</div>
                                         </div>
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email <span class="text-muted">(optional)</span></label>
@@ -106,12 +107,13 @@
                                         </div>
                                         <div class="col-12">
                                             <label for="address" class="form-label">Pickup address <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Street address, apartment/floor, New York NY" required>
+                                            <input type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Start typing your address..." required autocomplete="off">
                                             <div class="invalid-feedback">Please enter your pickup address.</div>
+                                            <div id="address-preview" class="form-text mt-1 d-none"></div>
                                         </div>
                                         <div class="col-12">
-                                            <label for="number" class="form-label">Apt / Suite number <span class="text-muted">(optional)</span></label>
-                                            <input type="text" class="form-control form-control-lg" id="number" name="number" placeholder="e.g. 4B — leave blank if not applicable">
+                                            <label for="address_line2" class="form-label">Apt / Suite / Unit <span class="text-muted">(optional)</span></label>
+                                            <input type="text" class="form-control form-control-lg" id="address_line2" name="address_line2" placeholder="e.g. Apt 4B, Suite 100">
                                         </div>
                                         <div class="col-12">
                                             <label for="when" class="form-label">Preferred date & time <span class="text-danger">*</span></label>
@@ -160,13 +162,94 @@
                 // Replace with your Formspree form ID from https://formspree.io (free signup)
                 var FORMSPREE_FORM_ID = 'mjgewqpz';
 
+                // PlaceKit API key for address autocomplete. Get one at https://placekit.io/ (10,000 free requests/month).
+                var PLACEKIT_API_KEY = 'pk_sdlMPvXU6XWunE04251aFL+vh6/+t+y2NrXP1+xE63k=';
+
+                function fullAddressFromItem(item) {
+                    if (!item) return '';
+                    var parts = [item.name, item.city, item.administrative];
+                    if (item.zipcode && item.zipcode.length) parts.push(item.zipcode[0]);
+                    if (item.country) parts.push(item.country);
+                    return parts.filter(Boolean).join(', ');
+                }
+
+                function updateAddressPreview() {
+                    var addressInput = document.getElementById('address');
+                    var line2Input = document.getElementById('address_line2');
+                    var previewEl = document.getElementById('address-preview');
+                    if (!addressInput || !previewEl) return;
+                    var main = (addressInput.value || '').trim();
+                    var line2 = (line2Input && line2Input.value) ? line2Input.value.trim() : '';
+                    if (!main) {
+                        previewEl.classList.add('d-none');
+                        previewEl.textContent = '';
+                        return;
+                    }
+                    var full = line2 ? main + ', ' + line2 : main;
+                    previewEl.textContent = 'Pickup at: ' + full;
+                    previewEl.classList.remove('d-none');
+                }
+
+                function initAddressAutocomplete() {
+                    var addressInput = document.getElementById('address');
+                    if (!addressInput || typeof placekitAutocomplete !== 'function' || !PLACEKIT_API_KEY || PLACEKIT_API_KEY === 'YOUR_PLACEKIT_API_KEY') return;
+                    var pka = placekitAutocomplete(PLACEKIT_API_KEY, {
+                        target: '#address',
+                        countries: ['us'],
+                        types: ['street'],
+                        maxResults: 8,
+                        countrySelect: false,
+                        format: {
+                            value: function (item) {
+                                return fullAddressFromItem(item);
+                            }
+                        }
+                    });
+                    pka.on('pick', function () {
+                        updateAddressPreview();
+                    });
+                }
+
+                if (PLACEKIT_API_KEY && PLACEKIT_API_KEY !== 'YOUR_PLACEKIT_API_KEY') {
+                    var placekitScript = document.createElement('script');
+                    placekitScript.src = 'https://cdn.jsdelivr.net/npm/@placekit/autocomplete-js@2/dist/placekit-autocomplete.umd.js';
+                    placekitScript.async = true;
+                    placekitScript.onload = function () {
+                        initAddressAutocomplete();
+                        updateAddressPreview();
+                    };
+                    document.head.appendChild(placekitScript);
+                }
+
+                var addressInputEl = document.getElementById('address');
+                var addressLine2El = document.getElementById('address_line2');
+                if (addressInputEl) addressInputEl.addEventListener('input', updateAddressPreview);
+                if (addressInputEl) addressInputEl.addEventListener('change', updateAddressPreview);
+                if (addressLine2El) addressLine2El.addEventListener('input', updateAddressPreview);
+
                 var form = document.getElementById('pickup-form');
+                var phoneInput = document.getElementById('phone');
                 var submitBtn = document.getElementById('submit-btn');
                 var successEl = document.getElementById('success-message');
                 var errorEl = document.getElementById('error-message');
 
+                function isValidPhone(value) {
+                    var digits = String(value).replace(/\D/g, '');
+                    return digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1');
+                }
+
+                function validatePhone() {
+                    var valid = phoneInput.value.trim() !== '' && isValidPhone(phoneInput.value);
+                    phoneInput.setCustomValidity(valid ? '' : 'Please enter a valid 10-digit phone number.');
+                    return valid;
+                }
+
+                phoneInput.addEventListener('input', validatePhone);
+                phoneInput.addEventListener('blur', validatePhone);
+
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
+                    validatePhone();
                     form.classList.add('was-validated');
                     if (!form.checkValidity()) return;
 
@@ -183,9 +266,6 @@
                     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
 
                     var formData = new FormData(form);
-                    if (!formData.get('number') || String(formData.get('number')).trim() === '') {
-                        formData.set('number', 'N/A');
-                    }
                     fetch('https://formspree.io/f/' + FORMSPREE_FORM_ID, {
                         method: 'POST',
                         body: formData,
