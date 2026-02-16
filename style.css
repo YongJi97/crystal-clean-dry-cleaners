@@ -186,6 +186,11 @@ body {
         padding-top: 100px;
     }
 }
+@media (max-width: 430px) {
+    .hero-section {
+        padding-top: 80px;
+    }
+}
 
 .hero-section::before {
     content: '';
