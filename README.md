@@ -1,210 +1,76 @@
-# 🧺 FreshClean - Modern Laundry Landing Page
+# Crystal Clean Dry Cleaners
 
-[![GitHub stars](https://img.shields.io/github/stars/donisettt/landing-page-laundry-responsive?style=social)](https://github.com/donisettt/landing-page-laundry-responsive/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/donisettt/landing-page-laundry-responsive?style=social)](https://github.com/donisettt/landing-page-laundry-responsive/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/donisettt/landing-page-laundry-responsive)](https://github.com/donisettt/landing-page-laundry-responsive/issues)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+Marketing website for **Crystal Clean Dry Cleaners**, a neighborhood dry cleaning, wash & fold, and tailoring shop on the Upper East Side of Manhattan.
 
-> A beautiful, modern, and fully responsive landing page template for laundry services. Perfect for local businesses, startups, or as a portfolio project. Built with Bootstrap 5 and vanilla JavaScript.
+- **Address:** 400 E 87th Street, New York, NY 10128
+- **Phone:** [646-338-6883](tel:6463386883)
+- **Hours:** Mon–Sat, 7:30 AM – 7:00 PM
 
-[Live Demo](https://laundryaja.netlify.app/) | [Documentation](#features) | [Report Bug](https://github.com/donisettt/landing-page-laundry-responsive/issues) | [Request Feature](https://github.com/donisettt/landing-page-laundry-responsive/issues)
+## Stack
 
-<div align="center">
-  <img src="images/demo-laundry.jpeg" alt="Landing Page" width="49%">
-  <img src="images/demo-laundry-responsive.png" alt="Landing Page" width="49%">
-</div>
+A static site — no build step required.
 
----
+- Plain HTML5 + CSS3 + vanilla JS
+- [Bootstrap 5.3.2](https://getbootstrap.com/) (via CDN)
+- [Font Awesome 6.4.0](https://fontawesome.com/) free icons (via CDN)
+- [Formspree](https://formspree.io/) for the pickup-request form
+- [PlaceKit](https://placekit.io/) for address autocomplete
+- Google Analytics (`G-HDLGS3C2DZ`)
 
-## Features
+## Pages
 
-### **Modern & Clean Design**
+| File | Path served by nginx | Purpose |
+| --- | --- | --- |
+| `index.html` | `/` | Home / hero / how it works / map |
+| `produk.html` | `/pricing` | Pricing & services + FAQ |
+| `menu.html` | `/menu` | Paper menu / flyer images |
+| `request-pickup.html` | `/request-pickup.html` | Pickup request form (Formspree) |
 
-- Contemporary UI/UX design with smooth animations
-- Eye-catching hero section with floating badges
-- Professional color scheme and typography
-- Glassmorphism effects and gradients
+URL rewrites are configured in `nginx.conf` so the `.html` extensions don't show up in the address bar.
 
-### **Fully Responsive**
+## Local development
 
-- Mobile-first approach
-- Perfect display on all devices (mobile, tablet, desktop)
-- Optimized touch interactions
-- Hamburger menu for mobile navigation
+The site is fully static — open `index.html` directly in a browser, or serve the folder with any static server:
 
-### **Performance Optimized**
+```bash
+# Python 3
+python -m http.server 8080
 
-- Lightweight and fast loading
-- Optimized images and assets
-- Minimal dependencies
-- Clean and semantic HTML5
-
-### **Key Sections**
-
-- **Hero Section** - Compelling headline with CTA buttons
-- **Partners/Clients** - Logo showcase section
-- **Features** - Service highlights with icons
-- **Process Steps** - 4-step workflow visualization
-- **About/Stats** - Company information with statistics
-- **Why Choose Us** - Competitive advantages
-- **Newsletter** - Email subscription form
-- **Footer** - Multi-column footer with links
-
-### **Built With**
-
-- **Bootstrap 5.3.2** - Responsive framework
-- **Font Awesome 6.4.0** - Icon library
-- **Vanilla JavaScript** - No jQuery needed
-- **CSS3** - Custom animations and effects
-
-### **Interactive Elements**
-
-- Smooth scroll navigation
-- Scroll-triggered animations
-- Navbar shadow on scroll
-- Intersection Observer API
-- Hover effects on cards
-
----
-
-## hat's Included
-
-```
-✅ Responsive navbar with mobile menu
-✅ Hero section with CTAs
-✅ Client/partner logos section
-✅ Feature cards with icons
-✅ Process/workflow steps
-✅ Statistics counter section
-✅ Benefits/advantages section
-✅ Newsletter signup form
-✅ Multi-column footer
-✅ Smooth scroll navigation
-✅ Scroll animations
-✅ SEO-friendly structure
-✅ Social media links
-✅ Contact information
+# Node
+npx serve .
 ```
 
----
+Then visit <http://localhost:8080>.
 
-## Use Cases
+> **Note:** when opening the files directly (`file://`) or serving without nginx, `/pricing` and `/menu` rewrites are not available. Internal links use the actual `.html` filenames so the site still works.
 
-This template is perfect for:
+## Deployment
 
-- 🧺 **Laundry Services** - The original purpose
-- 🏠 **Home Services** - Cleaning, maintenance, repair
-- 🍕 **Food Delivery** - Restaurants, catering
-- 📦 **Logistics** - Delivery, courier services
-- 💆 **Beauty & Spa** - Salons, wellness centers
-- 🎓 **Education** - Courses, training centers
-- 🏋️ **Fitness** - Gyms, personal training
-- 🛠️ **Any Local Business** - Easy to customize
+The site ships as a Docker container running nginx.
 
----
-
-## Browser Support
-
-| Browser | Support   |
-| ------- | --------- |
-| Chrome  | ✅ Latest |
-| Firefox | ✅ Latest |
-| Safari  | ✅ Latest |
-| Edge    | ✅ Latest |
-| Opera   | ✅ Latest |
-
----
-
-## Responsive Breakpoints
-
-```css
-/* Mobile First Approach */
-Mobile:  < 576px
-Tablet:  576px - 768px
-Desktop: 768px - 992px
-Large:   992px - 1200px
-XL:      > 1200px
+```bash
+docker compose up --build -d
 ```
 
----
+This builds the image from the `Dockerfile` (which copies the static files into `/usr/share/nginx/html`) and serves the site on port 80 with the rewrite rules in `nginx.conf`.
 
-## Learning Resources
+## Configuration to update before going live
 
-Perfect for learning:
+A few values in the source still use placeholder defaults — search the repo for these and replace as needed:
 
-- HTML5 semantic structure
-- Bootstrap 5 grid system
-- CSS3 animations
-- JavaScript DOM manipulation
-- Responsive design principles
-- Intersection Observer API
+- **Domain** — `https://crystalcleandrycleaners.com/` is used in `<link rel="canonical">`, Open Graph tags, the JSON-LD schema in `index.html`, `robots.txt`, and `sitemap.xml`. Update to the real domain when finalized.
+- **Social links** — the footer Facebook / Instagram / Twitter / TikTok icons in all three main pages still link to `href="#"`. Look for the `<!-- TODO: replace href="#" with real social profile URLs -->` markers.
+- **Formspree form ID** — set in `request-pickup.html` (`FORMSPREE_FORM_ID`).
+- **PlaceKit API key** — set in `request-pickup.html` (`PLACEKIT_API_KEY`). Free tier is 10,000 requests/month.
 
----
+## SEO
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
+- Per-page `<title>` and `<meta name="description">`
+- Open Graph + Twitter Card tags
+- `LocalBusiness` (`DryCleaningOrLaundry`) JSON-LD on the home page (address, phone, hours, geo)
+- `robots.txt` + `sitemap.xml`
+- Canonical URLs on every page
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Author
-
-**Doni Sw**
-
-- GitHub: [@donisettt](https://github.com/donisettt)
-- Website: [https://doni.dev](https://doni.dev)
-- Email: donisetiawanwahyono@gmail.com
-
----
-
-## Acknowledgments
-
-- [Bootstrap](https://getbootstrap.com/) - Frontend framework
-- [Font Awesome](https://fontawesome.com/) - Icon library
-- [Unsplash](https://unsplash.com/) - Free images
-- [Google Fonts](https://fonts.google.com/) - Typography
-
----
-
-## Show Your Support
-
-Give a ⭐️ if this project helped you!
-
----
-
-## SEO Optimized
-
-This template includes:
-
-- ✅ Semantic HTML5 structure
-- ✅ Meta tags for social sharing
-- ✅ Optimized headings hierarchy
-- ✅ Alt text for images
-- ✅ Fast loading speed
-- ✅ Mobile-friendly design
-- ✅ Structured data ready
-
----
-
-## Keywords
-
-`responsive landing page`, `bootstrap template`, `laundry website`, `business landing page`, `modern design`, `mobile responsive`, `html template`, `free template`, `portfolio project`, `frontend development`, `web design`, `bootstrap 5`, `landing page template`, `service website`, `small business website`
-
----
-
-<div align="center">
-  <p>Made with ❤️ by Doni Sw</p>
-  <p>© 2025 FreshClean. All Rights Reserved.</p>
-</div>
+[MIT](LICENSE)
