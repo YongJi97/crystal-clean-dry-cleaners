@@ -10,21 +10,34 @@ Marketing website for **Crystal Clean Dry Cleaners**, a neighborhood dry cleanin
 
 A static site — no build step required.
 
-- Plain HTML5 + CSS3 + vanilla JS
-- [Bootstrap 5.3.2](https://getbootstrap.com/) (via CDN)
+- Plain HTML5 + a custom CSS design system (`style.css`) + vanilla JS (`main.js`)
+- No CSS framework — components, layout, and tokens are all hand-rolled
+- [Google Fonts](https://fonts.google.com/) — Fraunces (display) + Inter (UI)
 - [Font Awesome 6.4.0](https://fontawesome.com/) free icons (via CDN)
 - [Formspree](https://formspree.io/) for the pickup-request form
 - [PlaceKit](https://placekit.io/) for address autocomplete
 - Google Analytics (`G-HDLGS3C2DZ`)
 
+### Design system
+
+`style.css` defines the whole visual language: CSS custom properties for the
+brand palette (deep navy + crystal blue, derived from the logo), typography,
+spacing, shadows, and reusable components (buttons, cards, hero, steps, pricing
+panels, accordion, forms, footer, etc.). `main.js` powers shared interactions:
+the sticky header, mobile nav drawer, scroll-reveal animations, FAQ accordion,
+and the menu image lightbox.
+
 ## Pages
 
 | File | Path served by nginx | Purpose |
 | --- | --- | --- |
-| `index.html` | `/` | Home / hero / how it works / map |
+| `index.html` | `/` | Home — hero, services, how it works, testimonials, location/map |
 | `produk.html` | `/pricing` | Pricing & services + FAQ |
-| `menu.html` | `/menu` | Paper menu / flyer images |
-| `request-pickup.html` | `/request-pickup.html` | Pickup request form (Formspree) |
+| `menu.html` | `/menu` | Printed menu / flyer images (with lightbox) |
+| `request-pickup.html` | `/request-pickup.html` | Pickup request form (Formspree + PlaceKit) |
+
+Shared assets: `style.css` (design system) and `main.js` (interactions) are used
+by every page.
 
 URL rewrites are configured in `nginx.conf` so the `.html` extensions don't show up in the address bar.
 

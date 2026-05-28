@@ -3,264 +3,286 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Request Pickup - Crystal Clean Dry Cleaners NYC</title>
-        <meta name="description" content="Request a free laundry and dry cleaning pickup from Crystal Clean Dry Cleaners on East 87th Street, NYC. Fast, friendly service." />
+        <title>Request a Free Pickup — Crystal Clean Dry Cleaners NYC</title>
+        <meta name="description" content="Request a free laundry and dry cleaning pickup from Crystal Clean Dry Cleaners on East 87th Street, NYC. Fast, friendly, door-to-door service." />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#3B82F6" />
+        <meta name="theme-color" content="#0b2138" />
         <link rel="canonical" href="https://crystalcleandrycleaners.com/request-pickup.html" />
 
-        <!-- Open Graph -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Crystal Clean Dry Cleaners" />
-        <meta property="og:title" content="Request Pickup - Crystal Clean Dry Cleaners NYC" />
+        <meta property="og:title" content="Request a Free Pickup — Crystal Clean Dry Cleaners NYC" />
         <meta property="og:description" content="Free pickup &amp; delivery on the Upper East Side. Submit a pickup request and we'll be in touch to confirm." />
         <meta property="og:url" content="https://crystalcleandrycleaners.com/request-pickup.html" />
         <meta property="og:image" content="https://crystalcleandrycleaners.com/images/storefront.png" />
         <meta name="twitter:card" content="summary_large_image" />
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-        <link rel="stylesheet" href="style.css?v=4" />
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;550;600;650;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="style.css?v=5" />
         <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@placekit/autocomplete-js@2/dist/placekit-autocomplete.css" />
-        <style>
-            /* Request pickup form: clear labels, balanced inputs */
-            #pickup-form .form-label {
-                font-weight: 600;
-                color: #374151;
-                font-size: 0.9rem;
-                margin-bottom: 0.35rem;
-            }
-            #pickup-form .form-control,
-            #pickup-form .form-control:focus {
-                border-radius: 0.5rem;
-                border-color: #e5e7eb;
-                font-size: 1rem;
-            }
-            #pickup-form .form-control:focus {
-                border-color: var(--primary, #3B82F6);
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-            }
-            #pickup-form .form-control::placeholder {
-                color: #9ca3af;
-                font-weight: 400;
-            }
-            #pickup-form textarea.form-control {
-                min-height: 88px;
-                resize: vertical;
-            }
-            .pickup-form-card .card-body {
-                background: linear-gradient(180deg, #fafbfc 0%, #fff 120px);
-            }
-        </style>
     </head>
     <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="announce">
+            <i class="fas fa-truck-fast" aria-hidden="true"></i>
+            <strong>Free pickup &amp; delivery</strong> across the Upper East Side —
+            <a href="tel:6463386883">call 646-338-6883</a> or use the form below
+        </div>
+
+        <header class="site-header">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><i
-                        class="fas fa-wand-magic-sparkles me-2" aria-hidden="true"></i>Crystal Clean Dry
-                    Cleaners</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="request-pickup.html">Request Pickup</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="produk.html">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="menu.html">Menu</a>
-                        </li>
+                <nav class="nav" aria-label="Primary">
+                    <a class="brand" href="index.html" aria-label="Crystal Clean Dry Cleaners home">
+                        <img src="images/cleaner_logo.png" alt="Crystal Clean Dry Cleaners logo" width="44" height="44" />
+                        <span>Crystal Clean<span class="brand-sub">Dry Cleaners</span></span>
+                    </a>
+                    <ul class="nav-links">
+                        <li><a href="index.html" data-nav>Home</a></li>
+                        <li><a href="produk.html" data-nav>Pricing</a></li>
+                        <li><a href="menu.html" data-nav>Menu</a></li>
+                        <li><a href="index.html#how" data-nav>How it works</a></li>
                     </ul>
-                    <div class="mx-4 text-center" style="font-size: 0.9rem">
-                        <div class="text-muted">
-                            <i class="fas fa-phone me-1"></i>646-338-6883
-                        </div>
-                        <div class="text-muted">
-                            <i class="fas fa-map-marker-alt me-1"></i>400 E 87th
-                            Street New York, NY 10128
-                        </div>
+                    <div class="nav-actions">
+                        <a href="tel:6463386883" class="btn btn-ghost btn-sm"><i class="fas fa-phone" aria-hidden="true"></i>646-338-6883</a>
+                        <a href="request-pickup.html" class="btn btn-primary btn-sm"><i class="fas fa-truck" aria-hidden="true"></i>Request pickup</a>
+                        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
                     </div>
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item ms-2">
-                            <a href="tel:6463386883"
-                                class="btn btn-primary btn-sm rounded-pill"
-                                aria-label="Call Crystal Clean Dry Cleaners at 646-338-6883">
-                                <i class="fas fa-phone me-1" aria-hidden="true"></i>Call Us
-                            </a>
-                        </li>
-                        <li class="nav-item ms-2">
-                            <a href="sms:6463386883?body=Hi%20Crystal%20Clean%21%20I%20have%20a%20question"
-                                class="btn btn-outline-primary btn-sm rounded-pill"
-                                aria-label="Send a text message to Crystal Clean Dry Cleaners">
-                                <i class="fas fa-sms me-1" aria-hidden="true"></i>Text Us
-                            </a>
-                        </li>
-                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="nav-drawer-backdrop"></div>
+        <aside class="nav-drawer" aria-label="Mobile menu">
+            <div class="nav-drawer-head">
+                <a class="brand" href="index.html"><img src="images/cleaner_logo.png" alt="" width="40" height="40" /><span style="font-size:1rem">Crystal Clean</span></a>
+                <button class="nav-drawer-close" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+            </div>
+            <a class="drawer-link" href="index.html" data-nav>Home</a>
+            <a class="drawer-link" href="produk.html" data-nav>Pricing</a>
+            <a class="drawer-link" href="menu.html" data-nav>Menu</a>
+            <a class="drawer-link" href="index.html#how">How it works</a>
+            <a class="drawer-link" href="request-pickup.html" data-nav>Request pickup</a>
+            <div class="drawer-contact">
+                <a href="tel:6463386883" class="btn btn-primary btn-block"><i class="fas fa-phone"></i>Call 646-338-6883</a>
+                <div class="meta"><i class="fas fa-map-marker-alt"></i> 400 E 87th St, New York, NY 10128</div>
+                <div class="meta"><i class="fas fa-clock"></i> Mon–Sat · 7:30 AM – 7:00 PM</div>
+            </div>
+        </aside>
+
+        <main id="main">
+            <section class="page-hero">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="sep"><i class="fas fa-chevron-right" style="font-size:.7rem"></i></li>
+                        <li>Request Pickup</li>
+                    </ol>
+                    <h1>Request a free pickup</h1>
+                    <p>Tell us a few details and we’ll collect your laundry from your door. We’ll be in touch to confirm your time — and text you when we’re on the way.</p>
                 </div>
-            </div>
-        </nav>
+            </section>
 
-        <!-- Page header -->
-        <section class="breadcrumb-section">
-            <div class="container">
-                <h1 class="fw-bold mb-2"><i class="fas fa-truck me-2"></i>Request a Pickup</h1>
-                <p class="text-muted mb-0">Enter your details below. We'll pick up your laundry and add your order—you'll get a text when we're on the way.</p>
-            </div>
-        </section>
+            <section class="section">
+                <div class="container">
+                    <div class="form-card form-card--split">
+                        <!-- Aside -->
+                        <div class="form-card-aside" id="form-aside">
+                            <h3>Door-to-door, on us</h3>
+                            <p style="color:#cfe0f0">No more lugging laundry down the block. Here’s what to expect:</p>
+                            <ul class="aside-list">
+                                <li><i class="fas fa-circle-check"></i><span>Free pickup &amp; delivery across the Upper East Side</span></li>
+                                <li><i class="fas fa-circle-check"></i><span>We confirm your details and pickup window</span></li>
+                                <li><i class="fas fa-circle-check"></i><span>A text when our driver is on the way</span></li>
+                                <li><i class="fas fa-circle-check"></i><span>Fresh, folded laundry back in ~48 hours</span></li>
+                            </ul>
+                            <div class="aside-contact">
+                                <div>Prefer to talk to us?</div>
+                                <div><i class="fas fa-phone"></i><a href="tel:6463386883">646-338-6883</a></div>
+                                <div><i class="fas fa-comment-sms"></i><a href="sms:6463386883?body=Hi%20Crystal%20Clean%21%20I%27d%20like%20to%20request%20a%20pickup">Text us</a></div>
+                                <div><i class="fas fa-clock"></i>Mon–Sat · 7:30 AM – 7:00 PM</div>
+                            </div>
+                        </div>
 
-        <!-- Form -->
-        <section class="py-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden pickup-form-card">
-                            <div class="card-body p-4 p-lg-5">
-                                <p class="text-muted small mb-4 pb-1" style="font-size: 0.85rem;">
-                                    <i class="fas fa-info-circle me-1 opacity-75"></i>
-                                    Submit the form and we'll get your details instantly. We'll be in touch to confirm.
-                                </p>
-                                <form id="pickup-form" novalidate>
-                                    <div class="row g-4">
-                                        <div class="col-md-6">
-                                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
-                                            <div class="invalid-feedback">Please enter your name.</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
-                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="(646) 555-1234" required>
-                                            <div class="invalid-feedback" id="phone-feedback">Please enter a valid 10-digit phone number.</div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="email" class="form-label">Email <span class="text-muted">(optional)</span></label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="address" class="form-label">Pickup address <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="address" name="address" placeholder="Start typing your address..." required autocomplete="off">
-                                            <div class="invalid-feedback">Please enter your pickup address.</div>
-                                            <div id="address-preview" class="form-text mt-1 d-none small text-secondary"></div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="address_line2" class="form-label">Apt / Suite / Unit <span class="text-muted">(optional)</span></label>
-                                            <input type="text" class="form-control" id="address_line2" name="address_line2" placeholder="e.g. Apt 4B, Suite 100">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="when" class="form-label">Preferred date & time <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="when" name="when" placeholder="e.g. Tomorrow 10am, or ASAP" required>
-                                            <div class="invalid-feedback">Please tell us when you'd like pickup.</div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="notes" class="form-label">Notes <span class="text-muted">(optional)</span></label>
-                                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Building code, buzzer, special instructions..."></textarea>
-                                        </div>
-                                        <div class="col-12 mt-4">
-                                            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2" id="submit-btn">
-                                                <i class="fas fa-paper-plane me-2"></i>Send pickup request
-                                            </button>
-                                        </div>
+                        <!-- Form -->
+                        <div class="form-body">
+                            <div class="form-note">
+                                <i class="fas fa-circle-info"></i>
+                                <span>Submit the form and we’ll get your details instantly. We’ll reach out to confirm your pickup.</span>
+                            </div>
+                            <form id="pickup-form" novalidate>
+                                <div class="field-row">
+                                    <div class="field">
+                                        <label for="name">Name <span class="req">*</span></label>
+                                        <input class="input" type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+                                        <div class="field-error">Please enter your name.</div>
                                     </div>
-                                </form>
-                                <div id="success-message" class="d-none text-center py-4">
-                                    <div class="text-success mb-3"><i class="fas fa-check-circle fa-4x"></i></div>
-                                    <h4 class="fw-bold mb-2">Request received!</h4>
-                                    <p class="text-muted mb-0">We've got your details and will be in touch shortly to confirm your pickup.</p>
+                                    <div class="field">
+                                        <label for="phone">Phone <span class="req">*</span></label>
+                                        <input class="input" type="tel" id="phone" name="phone" placeholder="(646) 555-1234" required autocomplete="tel" />
+                                        <div class="field-error" id="phone-error">Please enter a valid 10-digit phone number.</div>
+                                    </div>
                                 </div>
-                                <div id="error-message" class="d-none text-center py-4">
-                                    <div class="text-danger mb-3"><i class="fas fa-exclamation-circle fa-4x"></i></div>
-                                    <h4 class="fw-bold mb-2">Something went wrong</h4>
-                                    <p id="error-detail" class="text-muted mb-2 small"></p>
-                                    <p class="text-muted mb-0">You can also call or text us at <a href="tel:6463386883">646-338-6883</a> to request your pickup.</p>
+                                <div class="field">
+                                    <label for="email">Email <span class="opt">(optional)</span></label>
+                                    <input class="input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
                                 </div>
+                                <div class="field">
+                                    <label for="address">Pickup address <span class="req">*</span></label>
+                                    <input class="input" type="text" id="address" name="address" placeholder="Start typing your address…" required autocomplete="off" />
+                                    <div class="field-error">Please enter your pickup address.</div>
+                                    <span class="addr-preview" id="address-preview"></span>
+                                </div>
+                                <div class="field">
+                                    <label for="address_line2">Apt / Suite / Unit <span class="opt">(optional)</span></label>
+                                    <input class="input" type="text" id="address_line2" name="address_line2" placeholder="e.g. Apt 4B, Suite 100" />
+                                </div>
+                                <div class="field">
+                                    <label for="when">Preferred date &amp; time <span class="req">*</span></label>
+                                    <input class="input" type="text" id="when" name="when" placeholder="e.g. Tomorrow 10am, or ASAP" required />
+                                    <div class="field-error">Please tell us when you’d like pickup.</div>
+                                </div>
+                                <div class="field">
+                                    <label for="notes">Notes <span class="opt">(optional)</span></label>
+                                    <textarea class="textarea" id="notes" name="notes" rows="3" placeholder="Building code, buzzer, special instructions…"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn"><i class="fas fa-paper-plane"></i>Send pickup request</button>
+                                <p class="form-hint text-center" style="margin-top:.85rem">By submitting, you agree to be contacted about your pickup. We never share your info.</p>
+                            </form>
+
+                            <div id="success-message" class="form-result ok" style="display:none">
+                                <div class="big-ic"><i class="fas fa-circle-check"></i></div>
+                                <h3>Request received!</h3>
+                                <p class="muted">We’ve got your details and will be in touch shortly to confirm your pickup. Thank you for choosing Crystal Clean!</p>
+                                <a href="index.html" class="btn btn-ghost mt-3"><i class="fas fa-house"></i>Back to home</a>
+                            </div>
+
+                            <div id="error-message" class="form-result err" style="display:none">
+                                <div class="big-ic"><i class="fas fa-circle-exclamation"></i></div>
+                                <h3>Something went wrong</h3>
+                                <p id="error-detail" class="muted" style="font-size:.92rem"></p>
+                                <p class="muted">You can also call or text us at <a href="tel:6463386883">646-338-6883</a> to request your pickup.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
-        <!-- Footer snippet / back link -->
-        <section class="py-4 bg-light">
-            <div class="container text-center">
-                <a href="index.html" class="text-muted"><i class="fas fa-arrow-left me-2"></i>Back to home</a>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div>
+                        <div class="footer-brand">
+                            <img src="images/cleaner_logo.png" alt="Crystal Clean Dry Cleaners logo" width="48" height="48" />
+                            <span class="name">Crystal Clean<br />Dry Cleaners</span>
+                        </div>
+                        <p>A trusted, family-run dry cleaner on the Upper East Side — expert garment care with free pickup and delivery.</p>
+                        <div class="socials">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://maps.app.goo.gl/p9RsZwVLZj19kSEC9" target="_blank" rel="noopener" aria-label="Google Maps"><i class="fab fa-google"></i></a>
+                            <a href="sms:6463386883" aria-label="Text us"><i class="fas fa-comment-sms"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="produk.html">Dry cleaning</a></li>
+                            <li><a href="produk.html">Wash &amp; fold</a></li>
+                            <li><a href="produk.html">Laundered shirts</a></li>
+                            <li><a href="produk.html">Tailoring</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="index.html#how">How it works</a></li>
+                            <li><a href="produk.html">Pricing</a></li>
+                            <li><a href="menu.html">Menu</a></li>
+                            <li><a href="request-pickup.html">Request pickup</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Get in touch</h4>
+                        <ul>
+                            <li class="ic-row"><i class="fas fa-phone"></i><a href="tel:6463386883">646-338-6883</a></li>
+                            <li class="ic-row"><i class="fas fa-envelope"></i><a href="mailto:crystalcleandrycleaners87@gmail.com">crystalcleandrycleaners87@gmail.com</a></li>
+                            <li class="ic-row"><i class="fas fa-map-marker-alt"></i><span>400 E 87th Street<br />New York, NY 10128</span></li>
+                            <li class="ic-row"><i class="fas fa-clock"></i><span>Mon–Sat · 7:30 AM – 7:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; <span data-year>2026</span> Crystal Clean Dry Cleaners LLC. All rights reserved.</span>
+                    <span>Upper East Side · New York, NY</span>
+                </div>
             </div>
-        </section>
+        </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="mobile-bar">
+            <a href="tel:6463386883" class="btn btn-ghost"><i class="fas fa-phone"></i>Call</a>
+            <a href="sms:6463386883?body=Hi%20Crystal%20Clean%21%20I%27d%20like%20to%20request%20a%20pickup" class="btn btn-primary"><i class="fas fa-comment-sms"></i>Text us</a>
+        </div>
+
+        <script src="main.js?v=5" defer></script>
         <script>
             (function () {
-                // Replace with your Formspree form ID from https://formspree.io (free signup)
-                var FORMSPREE_FORM_ID = 'mjgewqpz';
+                // Formspree form ID — from https://formspree.io
+                var FORMSPREE_FORM_ID = "mjgewqpz";
 
-                // PlaceKit API key for address autocomplete. Get one at https://placekit.io/ (10,000 free requests/month).
-                var PLACEKIT_API_KEY = 'pk_sdlMPvXU6XWunE04251aFL+vh6/+t+y2NrXP1+xE63k=';
+                // PlaceKit API key for address autocomplete — https://placekit.io (10,000 free requests/month)
+                var PLACEKIT_API_KEY = "pk_sdlMPvXU6XWunE04251aFL+vh6/+t+y2NrXP1+xE63k=";
 
                 function fullAddressFromItem(item) {
-                    if (!item) return '';
+                    if (!item) return "";
                     var parts = [item.name, item.city, item.administrative];
                     if (item.zipcode && item.zipcode.length) parts.push(item.zipcode[0]);
                     if (item.country) parts.push(item.country);
-                    return parts.filter(Boolean).join(', ');
+                    return parts.filter(Boolean).join(", ");
                 }
 
                 function updateAddressPreview() {
-                    var addressInput = document.getElementById('address');
-                    var line2Input = document.getElementById('address_line2');
-                    var previewEl = document.getElementById('address-preview');
+                    var addressInput = document.getElementById("address");
+                    var line2Input = document.getElementById("address_line2");
+                    var previewEl = document.getElementById("address-preview");
                     if (!addressInput || !previewEl) return;
-                    var main = (addressInput.value || '').trim();
-                    var line2 = (line2Input && line2Input.value) ? line2Input.value.trim() : '';
+                    var main = (addressInput.value || "").trim();
+                    var line2 = line2Input && line2Input.value ? line2Input.value.trim() : "";
                     if (!main) {
-                        previewEl.classList.add('d-none');
-                        previewEl.textContent = '';
+                        previewEl.classList.remove("show");
+                        previewEl.textContent = "";
                         return;
                     }
-                    var full = line2 ? main + ', ' + line2 : main;
-                    previewEl.textContent = 'Pickup at: ' + full;
-                    previewEl.classList.remove('d-none');
+                    var full = line2 ? main + ", " + line2 : main;
+                    previewEl.textContent = "📍 Pickup at: " + full;
+                    previewEl.classList.add("show");
                 }
 
                 function initAddressAutocomplete() {
-                    var addressInput = document.getElementById('address');
-                    if (!addressInput || typeof placekitAutocomplete !== 'function' || !PLACEKIT_API_KEY || PLACEKIT_API_KEY === 'YOUR_PLACEKIT_API_KEY') return;
+                    var addressInput = document.getElementById("address");
+                    if (!addressInput || typeof placekitAutocomplete !== "function" || !PLACEKIT_API_KEY || PLACEKIT_API_KEY === "YOUR_PLACEKIT_API_KEY") return;
                     var pka = placekitAutocomplete(PLACEKIT_API_KEY, {
-                        target: '#address',
-                        countries: ['us'],
-                        types: ['street'],
+                        target: "#address",
+                        countries: ["us"],
+                        types: ["street"],
                         maxResults: 8,
                         countrySelect: false,
                         format: {
-                            value: function (item) {
-                                return fullAddressFromItem(item);
-                            }
+                            value: function (item) { return fullAddressFromItem(item); }
                         }
                     });
-                    pka.on('pick', function () {
-                        updateAddressPreview();
-                    });
+                    pka.on("pick", function () { updateAddressPreview(); });
                 }
 
-                if (PLACEKIT_API_KEY && PLACEKIT_API_KEY !== 'YOUR_PLACEKIT_API_KEY') {
-                    var placekitScript = document.createElement('script');
-                    placekitScript.src = 'https://cdn.jsdelivr.net/npm/@placekit/autocomplete-js@2/dist/placekit-autocomplete.umd.js';
+                if (PLACEKIT_API_KEY && PLACEKIT_API_KEY !== "YOUR_PLACEKIT_API_KEY") {
+                    var placekitScript = document.createElement("script");
+                    placekitScript.src = "https://cdn.jsdelivr.net/npm/@placekit/autocomplete-js@2/dist/placekit-autocomplete.umd.js";
                     placekitScript.async = true;
                     placekitScript.onload = function () {
                         initAddressAutocomplete();
@@ -269,93 +291,116 @@
                     document.head.appendChild(placekitScript);
                 }
 
-                var addressInputEl = document.getElementById('address');
-                var addressLine2El = document.getElementById('address_line2');
-                if (addressInputEl) addressInputEl.addEventListener('input', updateAddressPreview);
-                if (addressInputEl) addressInputEl.addEventListener('change', updateAddressPreview);
-                if (addressLine2El) addressLine2El.addEventListener('input', updateAddressPreview);
+                var addressInputEl = document.getElementById("address");
+                var addressLine2El = document.getElementById("address_line2");
+                if (addressInputEl) addressInputEl.addEventListener("input", updateAddressPreview);
+                if (addressInputEl) addressInputEl.addEventListener("change", updateAddressPreview);
+                if (addressLine2El) addressLine2El.addEventListener("input", updateAddressPreview);
 
-                var form = document.getElementById('pickup-form');
-                var phoneInput = document.getElementById('phone');
-                var submitBtn = document.getElementById('submit-btn');
-                var successEl = document.getElementById('success-message');
-                var errorEl = document.getElementById('error-message');
+                var form = document.getElementById("pickup-form");
+                var phoneInput = document.getElementById("phone");
+                var submitBtn = document.getElementById("submit-btn");
+                var successEl = document.getElementById("success-message");
+                var errorEl = document.getElementById("error-message");
+
+                function fieldOf(input) { return input.closest(".field"); }
 
                 function isValidPhone(value) {
-                    var digits = String(value).replace(/\D/g, '');
-                    return digits.length === 10 || (digits.length === 11 && digits.charAt(0) === '1');
+                    var digits = String(value).replace(/\D/g, "");
+                    return digits.length === 10 || (digits.length === 11 && digits.charAt(0) === "1");
+                }
+
+                function setInvalid(input, invalid) {
+                    var f = fieldOf(input);
+                    if (f) f.classList.toggle("invalid", !!invalid);
                 }
 
                 function validatePhone() {
-                    var valid = phoneInput.value.trim() !== '' && isValidPhone(phoneInput.value);
-                    phoneInput.setCustomValidity(valid ? '' : 'Please enter a valid 10-digit phone number.');
+                    var valid = phoneInput.value.trim() !== "" && isValidPhone(phoneInput.value);
+                    setInvalid(phoneInput, !valid);
                     return valid;
                 }
 
-                phoneInput.addEventListener('input', validatePhone);
-                phoneInput.addEventListener('blur', validatePhone);
+                phoneInput.addEventListener("input", function () {
+                    if (fieldOf(phoneInput).classList.contains("invalid")) validatePhone();
+                });
+                phoneInput.addEventListener("blur", validatePhone);
 
-                form.addEventListener('submit', function (e) {
+                // clear required-field errors as the user types
+                form.querySelectorAll("input[required], textarea[required]").forEach(function (el) {
+                    el.addEventListener("input", function () {
+                        if (el === phoneInput) return;
+                        if (el.value.trim() !== "") setInvalid(el, false);
+                    });
+                });
+
+                function validateForm() {
+                    var ok = true;
+                    form.querySelectorAll("input[required], textarea[required]").forEach(function (el) {
+                        if (el === phoneInput) return;
+                        var valid = el.value.trim() !== "";
+                        setInvalid(el, !valid);
+                        if (!valid) ok = false;
+                    });
+                    if (!validatePhone()) ok = false;
+                    return ok;
+                }
+
+                form.addEventListener("submit", function (e) {
                     e.preventDefault();
-                    validatePhone();
-                    form.classList.add('was-validated');
-                    if (!form.checkValidity()) return;
+                    if (!validateForm()) {
+                        var firstInvalid = form.querySelector(".field.invalid .input, .field.invalid .textarea");
+                        if (firstInvalid) firstInvalid.focus();
+                        return;
+                    }
 
-                    if (FORMSPREE_FORM_ID === 'YOUR_FORMSPREE_FORM_ID') {
-                        form.classList.add('d-none');
-                        errorEl.classList.remove('d-none');
-                        document.getElementById('error-detail').textContent = 'Form not configured: replace YOUR_FORMSPREE_FORM_ID in the page script with your Formspree form ID.';
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send pickup request';
+                    if (FORMSPREE_FORM_ID === "YOUR_FORMSPREE_FORM_ID") {
+                        form.style.display = "none";
+                        errorEl.style.display = "block";
+                        document.getElementById("error-detail").textContent = "Form not configured: replace YOUR_FORMSPREE_FORM_ID in the page script with your Formspree form ID.";
                         return;
                     }
 
                     submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+                    submitBtn.innerHTML = '<span class="spinner"></span> Sending…';
 
                     var formData = new FormData(form);
-                    fetch('https://formspree.io/f/' + FORMSPREE_FORM_ID, {
-                        method: 'POST',
+                    fetch("https://formspree.io/f/" + FORMSPREE_FORM_ID, {
+                        method: "POST",
                         body: formData,
-                        headers: { 'Accept': 'application/json' }
+                        headers: { Accept: "application/json" }
                     })
-                    .then(function (r) { return r.json(); })
-                    .then(function (data) {
-                        form.classList.add('d-none');
-                        if (data.ok) {
-                            successEl.classList.remove('d-none');
-                        } else {
-                            var msg = (data.error || (data.errors && data.errors.map(function(e) { return e.message || e; }).join(', ')) || 'Formspree returned an error.');
-                            console.error('Formspree error:', data);
-                            document.getElementById('error-detail').textContent = msg;
-                            errorEl.classList.remove('d-none');
-                        }
-                    })
-                    .catch(function (err) {
-                        form.classList.add('d-none');
-                        console.error('Request failed:', err);
-                        document.getElementById('error-detail').textContent = 'Network or request failed. Check the browser console (F12 → Console) for details.';
-                        errorEl.classList.remove('d-none');
-                    })
-                    .finally(function () {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send pickup request';
-                    });
+                        .then(function (r) { return r.json(); })
+                        .then(function (data) {
+                            form.style.display = "none";
+                            if (data.ok) {
+                                successEl.style.display = "block";
+                            } else {
+                                var msg = data.error || (data.errors && data.errors.map(function (er) { return er.message || er; }).join(", ")) || "Formspree returned an error.";
+                                console.error("Formspree error:", data);
+                                document.getElementById("error-detail").textContent = msg;
+                                errorEl.style.display = "block";
+                            }
+                        })
+                        .catch(function (err) {
+                            form.style.display = "none";
+                            console.error("Request failed:", err);
+                            document.getElementById("error-detail").textContent = "Network or request failed. Check the browser console (F12 → Console) for details.";
+                            errorEl.style.display = "block";
+                        })
+                        .finally(function () {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>Send pickup request';
+                        });
                 });
             })();
         </script>
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-HDLGS3C2DZ"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDLGS3C2DZ"></script>
         <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-HDLGS3C2DZ");
-    </script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag("js", new Date());
+            gtag("config", "G-HDLGS3C2DZ");
+        </script>
     </body>
 </html>
