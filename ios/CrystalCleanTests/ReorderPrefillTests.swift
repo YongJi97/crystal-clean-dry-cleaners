@@ -115,7 +115,25 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertEqual(seeded.history.first?.id, "test-demo")
         XCTAssertEqual(seeded.profile.name, "[TEST] Demo")
         XCTAssertEqual(seeded.profile.email, "demo@example.com")
+        XCTAssertEqual(seeded.profile.addressLine2, "Apt 2B")
+        XCTAssertEqual(seeded.history.first?.addressLine2, "Apt 2B")
+        XCTAssertEqual(seeded.history.first?.when, "Tomorrow 10am")
+        XCTAssertEqual(seeded.pickupDraft.when, "Tomorrow 10am")
+        XCTAssertEqual(seeded.pickupDraft.addressLine2, "Apt 2B")
         XCTAssertTrue(PhoneValidation.isValid(seeded.profile.phone))
+        if let created = seeded.history.first?.createdAt {
+            let age = Date().timeIntervalSince(created)
+            XCTAssertGreaterThan(age, 20 * 60 * 60)
+            XCTAssertLessThan(age, 28 * 60 * 60)
+        } else {
+            XCTFail("seeded request missing")
+        }
+
+        let confirmation = makeModel(launchArguments: ["-showConfirmation"])
+        XCTAssertTrue(confirmation.showConfirmation)
+        XCTAssertEqual(confirmation.selectedTab, .pickup)
+        XCTAssertEqual(confirmation.lastReferenceID, "test-demo")
+        XCTAssertEqual(confirmation.pickupDraft.when, DebugLaunch.demoWhen)
 
         let plain = makeModel(launchArguments: [])
         XCTAssertTrue(plain.history.isEmpty)

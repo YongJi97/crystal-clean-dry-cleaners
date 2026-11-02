@@ -26,8 +26,7 @@ struct RequestPickupView: View {
                 Section("Pickup") {
                     TextField("Pickup address", text: $model.pickupDraft.address)
                         .textContentType(.fullStreetAddress)
-                    TextField("Apt / Suite / Unit (optional)", text: $model.pickupDraft.addressLine2)
-                        .textContentType(.streetAddressLine2)
+                    AddressLine2Field(text: $model.pickupDraft.addressLine2)
                     TextField("Preferred date & time", text: $model.pickupDraft.when)
                     TextField("Notes (optional)", text: $model.pickupDraft.notes, axis: .vertical)
                         .lineLimit(3...6)
@@ -54,11 +53,15 @@ struct RequestPickupView: View {
                     .disabled(model.isSubmitting)
                 }
             }
+            .clearsFloatingTabBar()
             .navigationTitle("Request Pickup")
             .navigationDestination(isPresented: $model.showConfirmation) {
                 ConfirmationView(referenceID: model.lastReferenceID)
             }
-            .onAppear { model.preparePickupForm() }
+            .onAppear {
+                model.preparePickupForm()
+                model.replayConfirmationIfNeeded()
+            }
             .onChange(of: model.draftRevision) { _, _ in
                 didAttemptSubmit = false
             }
@@ -67,6 +70,21 @@ struct RequestPickupView: View {
 
     private var showPhoneError: Bool {
         didAttemptSubmit && !PhoneValidation.isValid(model.pickupDraft.phone)
+    }
+}
+
+struct AddressLine2Field: View {
+    @Binding var text: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Apt, suite, floor")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            TextField("Apt, suite, floor", text: $text)
+                .textContentType(.streetAddressLine2)
+        }
+        .accessibilityElement(children: .combine)
     }
 }
 

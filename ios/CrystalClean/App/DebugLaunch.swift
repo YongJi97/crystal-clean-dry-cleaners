@@ -2,28 +2,41 @@ import Foundation
 
 /// Debug-only launch arguments for screenshots. Release builds do not call this.
 enum DebugLaunch {
+    static let demoWhen = "Tomorrow 10am"
+
     static let demoProfile = Profile(
         name: "[TEST] Demo",
         phone: "(646) 555-0100",
         email: "demo@example.com",
         address: "123 Example Street, New York, NY 10001",
-        addressLine2: "Demo"
+        addressLine2: "Apt 2B"
     )
 
-    static let demoRequest = StoredRequest(
-        draft: PickupDraft(
+    static var demoCreatedAt: Date {
+        Calendar.current.date(byAdding: .day, value: -1, to: Date())
+            ?? Date().addingTimeInterval(-24 * 60 * 60)
+    }
+
+    static var demoRequest: StoredRequest {
+        StoredRequest(
+            draft: demoDraft,
+            referenceID: "test-demo",
+            isTest: true,
+            createdAt: demoCreatedAt
+        )
+    }
+
+    static var demoDraft: PickupDraft {
+        PickupDraft(
             name: "[TEST] Demo",
             phone: "(646) 555-0100",
             email: "demo@example.com",
             address: "123 Example Street, New York, NY 10001",
-            addressLine2: "Demo",
-            when: "Tomorrow 10am",
+            addressLine2: "Apt 2B",
+            when: demoWhen,
             notes: "Fake request for screenshots"
-        ),
-        referenceID: "test-demo",
-        isTest: true,
-        createdAt: Date(timeIntervalSince1970: 1_730_000_000)
-    )
+        )
+    }
 
     static func startTab(from arguments: [String]) -> AppTab? {
         guard let raw = value(for: "-startTab", in: arguments)?.lowercased() else { return nil }
@@ -40,14 +53,28 @@ enum DebugLaunch {
         arguments.contains("-seedDemo")
     }
 
+    static func showsConfirmation(_ arguments: [String]) -> Bool {
+        arguments.contains("-showConfirmation")
+    }
+
     @MainActor
     static func apply(_ model: AppModel, arguments: [String]) {
+        let request = demoRequest
         if seedsDemo(arguments) {
             model.profile = demoProfile
-            model.history = [demoRequest]
+            model.history = [request]
+            model.pickupDraft = request.draft
         }
         if let tab = startTab(from: arguments) {
             model.selectedTab = tab
+        }
+        if showsConfirmation(arguments) {
+            model.lastReferenceID = request.id
+            model.showConfirmation = true
+            model.selectedTab = .pickup
+            if model.pickupDraft.isBlank {
+                model.pickupDraft = request.draft
+            }
         }
     }
 

@@ -81,6 +81,7 @@ schemes:
         "-useLocalBridge": false
         "-testMode": false
         "-seedDemo": false
+        "-showConfirmation": false
         "-startTab requests": false
     test:
       config: Debug

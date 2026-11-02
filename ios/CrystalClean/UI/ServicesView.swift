@@ -52,6 +52,7 @@ struct ServicesView: View {
                             }
                         }
                     }
+                    .clearsFloatingTabBar()
                 }
             }
             .navigationTitle("Services & Prices")

@@ -17,7 +17,7 @@ A portrait iPhone tab bar:
 
 The live client posts JSON to `/webhooks/formspree-pickup` with `X-App-Key` when `APP_API_KEY` is set in the gitignored xcconfig, and posts the same fields as form data to Formspree with `Accept: application/json`. The request counts as a success if either call succeeds, matching the website. The key is not committed.
 
-Debug runs the mock. `-useLocalBridge` points the live client at `http://localhost:3015` and marks the request as a test. `-testMode` uses the production host and also marks the request as a test. Debug also accepts `-startTab services|pickup|requests|profile` and `-seedDemo` (one fake `[TEST] Demo` request and profile, for screenshots). Test requests send `is_test: true`, `X-Test: 1`, a name prefixed with `[TEST] `, and Formspree `_subject` `[TEST] Pickup request — please ignore`. Release sends a normal customer request.
+Debug runs the mock. `-useLocalBridge` points the live client at `http://localhost:3015` and marks the request as a test. `-testMode` uses the production host and also marks the request as a test. Debug also accepts `-startTab services|pickup|requests|profile`, `-seedDemo` (one fake `[TEST] Demo` request dated yesterday, plus a profile, for screenshots), and `-showConfirmation` (opens the confirmation screen on that demo reference). Test requests send `is_test: true`, `X-Test: 1`, a name prefixed with `[TEST] `, and Formspree `_subject` `[TEST] Pickup request — please ignore`. Release sends a normal customer request.
 
 The public price file and the bridge test flag come from the services-and-bridge change. Until that is deployed, prices still load from the bundled file, and a test post to production will not be recognized as a test.
 

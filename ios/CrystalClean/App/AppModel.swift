@@ -59,6 +59,18 @@ final class AppModel {
         catalog = await catalogProvider.load()
     }
 
+    /// NavigationStack ignores a confirmation that is already presented at launch.
+    /// Toggle it once the pickup screen appears so `-showConfirmation` can push.
+    func replayConfirmationIfNeeded() {
+        guard showConfirmation else { return }
+        let reference = lastReferenceID
+        showConfirmation = false
+        Task { @MainActor in
+            lastReferenceID = reference
+            showConfirmation = true
+        }
+    }
+
     func preparePickupForm() {
         // Fill from the profile only while the form is still empty, so a later
         // profile edit shows up, and a reorder or in-progress draft is kept.

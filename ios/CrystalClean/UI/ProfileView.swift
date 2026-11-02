@@ -18,8 +18,7 @@ struct ProfileView: View {
                         .textInputAutocapitalization(.never)
                     TextField("Address", text: $model.profile.address)
                         .textContentType(.fullStreetAddress)
-                    TextField("Address line 2", text: $model.profile.addressLine2)
-                        .textContentType(.streetAddressLine2)
+                    AddressLine2Field(text: $model.profile.addressLine2)
                 }
                 Section {
                     Button("Save profile") {
@@ -31,6 +30,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            .clearsFloatingTabBar()
             .navigationTitle("Profile")
             .onChange(of: model.profile) { _, _ in
                 model.profileSaved = false
