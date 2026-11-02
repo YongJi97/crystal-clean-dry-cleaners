@@ -7,9 +7,11 @@ struct MyRequestsView: View {
         NavigationStack {
             Group {
                 if model.history.isEmpty {
-                    ContentUnavailableView("No pickups yet", systemImage: "tray") {
-                        Text("Requests you send are kept on this phone. Reorder copies them into the form.")
-                    }
+                    ContentUnavailableView(
+                        "No pickups yet",
+                        systemImage: "tray",
+                        description: Text("Requests you send are kept on this phone. Reorder copies them into the form.")
+                    )
                 } else {
                     List(model.history) { request in
                         VStack(alignment: .leading, spacing: 6) {

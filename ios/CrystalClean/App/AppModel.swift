@@ -36,7 +36,8 @@ final class AppModel {
         catalogProvider: CatalogProviding? = nil,
         profileStore: ProfileStoring = UserDefaultsProfileStore(),
         historyStore: RequestHistoryStoring = FileRequestHistoryStore(),
-        notifier: PickupNotifying = SystemPickupNotifier()
+        notifier: PickupNotifying = SystemPickupNotifier(),
+        launchArguments: [String] = CommandLine.arguments
     ) {
         self.config = config
         self.requests = requests ?? (config.useMock ? MockRequestService() : LiveRequestService())
@@ -47,6 +48,11 @@ final class AppModel {
         profile = profileStore.load()
         history = historyStore.load()
         catalog = self.catalogProvider.bundledCatalog()
+        #if DEBUG
+        DebugLaunch.apply(self, arguments: launchArguments)
+        #else
+        _ = launchArguments
+        #endif
     }
 
     func loadCatalog() async {

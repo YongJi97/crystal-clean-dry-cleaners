@@ -32,6 +32,8 @@ Debug uses the mock service and does not touch the network.
 | *(none)* | Debug: mock submit. Release: live production bridge and Formspree. |
 | `-useLocalBridge` | Debug only. Posts to `http://localhost:3015` with `is_test: true` and `X-Test: 1`. |
 | `-testMode` | Live client against `https://www.crystalcleandrycleaner.com`, still marked as a test. |
+| `-startTab services` \| `pickup` \| `requests` \| `profile` | Debug only. Opens that tab. Ignored in Release. |
+| `-seedDemo` | Debug only. Shows one fake past request named `[TEST] Demo` and a fake profile for this launch. Nothing is written to disk. |
 
 Both `-useLocalBridge` and `-testMode` send `is_test: true`, prefix the name with `[TEST] `, and set the Formspree `_subject` to `[TEST] Pickup request — please ignore` so the email and Discord alert are labeled. They still post to Formspree. A test bridge call does not create a Square order once the server build that understands `is_test` is deployed.
 

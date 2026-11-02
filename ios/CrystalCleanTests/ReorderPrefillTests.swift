@@ -101,11 +101,34 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertNotNil(model.submitError)
     }
 
+    func testDebugLaunchArgsSeedADemoAndSelectATab() {
+        XCTAssertEqual(DebugLaunch.startTab(from: ["-startTab", "requests"]), .requests)
+        XCTAssertEqual(DebugLaunch.startTab(from: ["-startTab", "profile"]), .profile)
+        XCTAssertEqual(DebugLaunch.startTab(from: ["-startTab services"]), .services)
+        XCTAssertEqual(DebugLaunch.startTab(from: ["-startTab=pickup"]), .pickup)
+        XCTAssertNil(DebugLaunch.startTab(from: ["-startTab", "nope"]))
+        XCTAssertFalse(DebugLaunch.seedsDemo([]))
+
+        let seeded = makeModel(launchArguments: ["-seedDemo", "-startTab", "requests"])
+        XCTAssertEqual(seeded.selectedTab, .requests)
+        XCTAssertEqual(seeded.history.map(\.name), ["[TEST] Demo"])
+        XCTAssertEqual(seeded.history.first?.id, "test-demo")
+        XCTAssertEqual(seeded.profile.name, "[TEST] Demo")
+        XCTAssertEqual(seeded.profile.email, "demo@example.com")
+        XCTAssertTrue(PhoneValidation.isValid(seeded.profile.phone))
+
+        let plain = makeModel(launchArguments: [])
+        XCTAssertTrue(plain.history.isEmpty)
+        XCTAssertEqual(plain.selectedTab, .services)
+        XCTAssertEqual(plain.profile.name, "")
+    }
+
     private func makeModel(
         requests: RequestService = MockRequestService(),
         profileStore: ProfileStoring = MemoryProfileStore(),
         historyStore: RequestHistoryStoring = MemoryHistoryStore(),
-        notifier: PickupNotifying = NoopNotifier()
+        notifier: PickupNotifying = NoopNotifier(),
+        launchArguments: [String] = []
     ) -> AppModel {
         AppModel(
             config: .mock,
@@ -113,7 +136,8 @@ final class ReorderPrefillTests: XCTestCase {
             catalogProvider: EmptyCatalogService(),
             profileStore: profileStore,
             historyStore: historyStore,
-            notifier: notifier
+            notifier: notifier,
+            launchArguments: launchArguments
         )
     }
 

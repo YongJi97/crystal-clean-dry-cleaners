@@ -80,6 +80,8 @@ schemes:
       commandLineArguments:
         "-useLocalBridge": false
         "-testMode": false
+        "-seedDemo": false
+        "-startTab requests": false
     test:
       config: Debug
       targets:

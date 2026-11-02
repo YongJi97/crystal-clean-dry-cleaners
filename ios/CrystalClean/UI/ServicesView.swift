@@ -7,9 +7,11 @@ struct ServicesView: View {
         NavigationStack {
             Group {
                 if model.catalog.categories.isEmpty {
-                    ContentUnavailableView("Prices unavailable", systemImage: "tag") {
-                        Text("Connect once to download the price list. A saved copy is used offline.")
-                    }
+                    ContentUnavailableView(
+                        "Prices unavailable",
+                        systemImage: "tag",
+                        description: Text("Connect once to download the price list. A saved copy is used offline.")
+                    )
                 } else {
                     List {
                         ForEach(model.catalog.categories) { category in
