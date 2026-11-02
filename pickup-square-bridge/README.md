@@ -4,8 +4,8 @@ Small Flask service that turns Formspree pickup submissions into **$0 paid Squar
 
 ## Flow
 
-1. Customer submits [`request-pickup.html`](../request-pickup.html) → Formspree
-2. Formspree Webhook plugin POSTs JSON here
+1. Customer submits [`request-pickup.html`](../request-pickup.html)
+2. The page posts the form to Formspree (email + Discord) and the same fields as JSON to this bridge
 3. Bridge creates a Square order (`Pickup Request`, $0) with ASAP pickup fulfillment
 4. Bridge calls `PayOrder` (required — unpaid orders never reach POS/printers)
 5. Square prints the ticket if printer profiles allow online order tickets
@@ -36,14 +36,53 @@ No paid Webhook plugin needed. The site dual-submits:
 
 If you later enable Formspree’s Webhook plugin anyway, point it at the same URL; the bridge accepts both browser and Formspree payloads.
 
+## Test requests (no Square order)
+
+Send `is_test: true` in the JSON body, or the header `X-Test: 1` (also accepts `true` / `yes`). The bridge does **not** call Square and does **not** store the request. Response:
+
+```json
+{"ok": true, "test": true, "reference_id": "test-…"}
+```
+
+The public form does not send this flag. Real customers still create a normal order.
+
+Test clients that also post to Formspree should set `_subject` to a string **starting with `[TEST]`** so the email and the Discord alert (Formspree’s Discord plugin) are labeled. The iOS app uses `_subject` `[TEST] Pickup request — please ignore` and prefixes the name with `[TEST] `.
+
+```bash
+curl -s http://127.0.0.1:3015/webhooks/formspree-pickup \
+  -H 'Content-Type: application/json' \
+  -H 'X-Test: 1' \
+  -H "X-App-Key: $APP_API_KEY" \
+  -d '{"is_test":true,"name":"Test Customer","phone":"6465551234","email":"test@example.com","address":"400 E 87th Street, New York, NY 10128","address_line2":"","when":"Tomorrow 10am","notes":"ignore"}'
+```
+
+`test_local.py` sends a test request unless `BRIDGE_LIVE=1`.
+
+## Abuse protection
+
+`APP_API_KEY` is optional.
+
+- Unset: anyone can post, same as before.
+- Set: a request whose `Origin` is `https://crystalcleandrycleaner.com` or `https://www.crystalcleandrycleaner.com` still works **without** the key (the website). Any other request, including one with **no** `Origin` (the iOS app, curl, a Formspree webhook), must send `X-App-Key` equal to `APP_API_KEY`.
+
+Nginx rate-limits `POST /webhooks/formspree-pickup` to **10 requests/minute per IP**, with a burst of 5 (so the browser preflight plus a retry still go through). Extra requests get `429`. The preflight echoes `Access-Control-Allow-Origin` only for those two hosts.
+
 ## Local sandbox test
 
 ```bash
 docker compose up -d --build pickup-bridge
-python3 pickup-square-bridge/test_local.py
+python3 pickup-square-bridge/test_local.py          # is_test, no Square order
+BRIDGE_LIVE=1 python3 pickup-square-bridge/test_local.py   # real Square order
 ```
 
-Sandbox creates real API orders but will **not** print on the physical store printer. Production needs `SQUARE_ENV=production`, a production access token, and the real store `SQUARE_LOCATION_ID`.
+Unit tests mock Square and do not touch the network:
+
+```bash
+pip install -r pickup-square-bridge/requirements-dev.txt
+pytest pickup-square-bridge/tests tests
+```
+
+A live sandbox order will **not** print on the physical store printer. Production needs `SQUARE_ENV=production`, a production access token, and the real store `SQUARE_LOCATION_ID`.
 
 ## Square POS printer checklist (production)
 

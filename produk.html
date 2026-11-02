@@ -108,7 +108,7 @@
                 <div class="container">
                     <div class="cards-grid cards-2">
                         <!-- Dry cleaning -->
-                        <article class="price-panel reveal">
+                        <article class="price-panel reveal" data-service="dry-cleaning">
                             <div class="price-panel-head">
                                 <span class="ic"><i class="fas fa-wand-magic-sparkles"></i></span>
                                 <div><h3>Dry Cleaning</h3><span class="sub">Cleaned, pressed &amp; ready to wear</span></div>
@@ -130,7 +130,7 @@
                         </article>
 
                         <!-- Wash & fold highlight -->
-                        <article class="price-panel price-highlight reveal" data-delay="1">
+                        <article class="price-panel price-highlight reveal" data-delay="1" data-service="wash-fold">
                             <div class="price-panel-head">
                                 <span class="ic" style="background:rgba(255,255,255,.14)"><i class="fas fa-shirt"></i></span>
                                 <div><h3>Wash &amp; Fold</h3><span class="sub" style="color:#bcd6ee">Everyday laundry, by the pound</span></div>
@@ -142,7 +142,7 @@
                         </article>
 
                         <!-- Laundered shirts / linens -->
-                        <article class="price-panel reveal">
+                        <article class="price-panel reveal" data-service="laundered-shirts">
                             <div class="price-panel-head">
                                 <span class="ic"><i class="fas fa-vest"></i></span>
                                 <div><h3>Laundered Shirts &amp; Linens</h3><span class="sub">Crisp shirts &amp; household linens</span></div>
@@ -159,7 +159,7 @@
                         </article>
 
                         <!-- Tailoring -->
-                        <article class="price-panel reveal" data-delay="1">
+                        <article class="price-panel reveal" data-delay="1" data-service="tailoring">
                             <div class="price-panel-head">
                                 <span class="ic"><i class="fas fa-scissors"></i></span>
                                 <div><h3>Tailoring &amp; Alterations</h3><span class="sub">On-site repairs &amp; adjustments</span></div>
@@ -281,6 +281,7 @@
         </div>
 
         <script src="main.js?v=5" defer></script>
+        <script src="services.js?v=1" defer></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDLGS3C2DZ"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
