@@ -38,7 +38,7 @@ If you later enable Formspree’s Webhook plugin anyway, point it at the same UR
 
 ## Test requests (no Square order)
 
-Send `is_test: true` in the JSON body, or the header `X-Test: 1` (also accepts `true` / `yes`). The bridge does **not** call Square and does **not** store the request. Response:
+Send `is_test: true` in the JSON body, or the header `X-Test: 1` (also accepts `true` / `yes`). The bridge does **not** call Square. It still saves the request for the owners page and labels it as a test. Response:
 
 ```json
 {"ok": true, "test": true, "reference_id": "test-…"}
@@ -66,6 +66,16 @@ curl -s http://127.0.0.1:3015/webhooks/formspree-pickup \
 - Set: a request whose `Origin` is `https://crystalcleandrycleaner.com` or `https://www.crystalcleandrycleaner.com` still works **without** the key (the website). Any other request, including one with **no** `Origin` (the iOS app, curl, a Formspree webhook), must send `X-App-Key` equal to `APP_API_KEY`.
 
 Nginx rate-limits `POST /webhooks/formspree-pickup` to **10 requests/minute per IP**, with a burst of 5 (so the browser preflight plus a retry still go through). Extra requests get `429`. The preflight echoes `Access-Control-Allow-Origin` only for those two hosts.
+
+## Owners list
+
+Open `https://YOUR_DOMAIN/owners` on a phone. Set `OWNERS_PASSWORD` and `OWNERS_SESSION_SECRET` in `.env` and restart the bridge. Until both are set, the page stays closed.
+
+The list updates itself. Website requests are labeled Website; requests that arrive with `X-App-Key` and no site Origin (the iOS app) are labeled App. Newest first, grouped into **Today**, **Upcoming** (still open from earlier days), and **Done**, in US Eastern time. Phone numbers call, addresses open a map. Test requests are badged and hidden until you tap **Show test requests**. **Mark done** is optional and only changes this list. The login cookie lasts 30 days.
+
+Nginx allows 5 login attempts per minute per IP (burst 3). The page sends `noindex` and `Cache-Control: no-store`.
+
+Requests are stored in SQLite at `SQLITE_PATH` (Compose uses a volume at `/data/pickups.db`).
 
 ## Local sandbox test
 

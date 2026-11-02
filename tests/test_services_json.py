@@ -90,3 +90,9 @@ def test_nginx_limits_the_webhook_and_echoes_only_site_origins():
     assert "$http_origin always" not in nginx
     assert "proxy_set_header X-App-Key $http_x_app_key;" in nginx
     assert "proxy_set_header X-Test $http_x_test;" in nginx
+    assert "limit_req_zone $binary_remote_addr zone=owners_login:10m rate=5r/m;" in nginx
+    assert "location = /owners/login" in nginx
+    assert "limit_req zone=owners_login burst=3 nodelay;" in nginx
+    assert "location /owners" in nginx
+    assert 'X-Robots-Tag "noindex, nofollow"' in nginx
+    assert 'Cache-Control "no-store"' in nginx

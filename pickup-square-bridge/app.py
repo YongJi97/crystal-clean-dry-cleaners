@@ -4,7 +4,8 @@ Receives Formspree webhooks and browser JSON posts, then creates a $0 paid
 PICKUP order so Square can surface the ticket on POS / print order tickets.
 
 Test clients send is_test: true and/or X-Test: 1. Those requests do not create
-a Square order; the response is {ok, test, reference_id} and nothing is stored.
+a Square order; the response is {ok, test, reference_id}. Accepted requests,
+including tests, are stored for the owners page.
 """
 
 from __future__ import annotations
@@ -20,6 +21,9 @@ from typing import Any
 
 import requests
 from flask import Flask, jsonify, request
+
+import owners
+import store
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -262,6 +266,7 @@ def health():
             "token_configured": bool(SQUARE_ACCESS_TOKEN),
             "catalog_item_configured": bool(SQUARE_PICKUP_VARIATION_ID),
             "app_key_configured": bool(app_api_key()),
+            "owners_configured": owners.configured(),
         }
     )
 
@@ -311,6 +316,7 @@ def formspree_pickup():
 
     if request_is_test(payload, data):
         reference_id = f"test-{uuid.uuid4().hex[:12]}"
+        remember_pickup(data, reference_id=reference_id, order_id=None, is_test=True)
         log.info("Accepted test pickup ref=%s for %s (no Square order)", reference_id, name)
         return jsonify({"ok": True, "test": True, "reference_id": reference_id}), 200
 
@@ -323,6 +329,12 @@ def formspree_pickup():
         status = 502 if "Square API error 5" in str(exc) or "required" in str(exc).lower() else 500
         return jsonify({"ok": False, "error": str(exc)}), status
 
+    remember_pickup(
+        data,
+        reference_id=result.get("reference_id") or "",
+        order_id=result.get("order_id"),
+        is_test=False,
+    )
     log.info(
         "Created Square pickup order %s ref=%s for %s",
         result["order_id"],
@@ -330,6 +342,43 @@ def formspree_pickup():
         name,
     )
     return jsonify({"ok": True, **result}), 200
+
+
+def request_source(data: dict[str, Any]) -> str:
+    """Website posts include an allowed Origin. The app sends X-App-Key and no Origin."""
+    raw = str(data.get("source") or "").strip().lower()
+    if raw in {"web", "app"}:
+        return raw
+    origin = (request.headers.get("Origin") or "").strip()
+    if origin in ALLOWED_ORIGINS:
+        return "web"
+    if (request.headers.get("X-App-Key") or "").strip():
+        return "app"
+    return "web"
+
+
+def remember_pickup(data: dict[str, Any], *, reference_id: str, order_id: str | None, is_test: bool) -> None:
+    if not reference_id:
+        return
+    try:
+        store.save_pickup(
+            reference_id=reference_id,
+            order_id=order_id,
+            name=(data.get("name") or "").strip(),
+            phone=(data.get("phone") or "").strip(),
+            email=(data.get("email") or "").strip(),
+            address=(data.get("address") or "").strip(),
+            address_line2=(data.get("address_line2") or "").strip(),
+            pickup_when=(data.get("when") or "").strip(),
+            notes=(data.get("notes") or "").strip(),
+            source=request_source(data),
+            is_test=is_test,
+        )
+    except Exception:
+        log.exception("Could not store pickup %s", reference_id)
+
+
+owners.register(app)
 
 
 if __name__ == "__main__":
