@@ -46,7 +46,7 @@ struct MyRequestsView: View {
                         }
                         .padding(.vertical, 4)
                     }
-                    .clearsFloatingTabBar()
+                    .contentMargins(.bottom, 24, for: .scrollContent)
                 }
             }
             .navigationTitle("My Requests")

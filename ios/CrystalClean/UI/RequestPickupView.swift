@@ -53,7 +53,7 @@ struct RequestPickupView: View {
                     .disabled(model.isSubmitting)
                 }
             }
-            .clearsFloatingTabBar()
+            .contentMargins(.bottom, 24, for: .scrollContent)
             .navigationTitle("Request Pickup")
             .navigationDestination(isPresented: $model.showConfirmation) {
                 ConfirmationView(referenceID: model.lastReferenceID)

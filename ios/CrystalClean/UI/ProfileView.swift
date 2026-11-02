@@ -30,7 +30,7 @@ struct ProfileView: View {
                     }
                 }
             }
-            .clearsFloatingTabBar()
+            .contentMargins(.bottom, 24, for: .scrollContent)
             .navigationTitle("Profile")
             .onChange(of: model.profile) { _, _ in
                 model.profileSaved = false
