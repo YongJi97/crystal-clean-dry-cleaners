@@ -1,0 +1,92 @@
+name: CrystalClean
+options:
+  bundleIdPrefix: com.yongji97
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  developmentLanguage: en
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"
+
+configs:
+  Debug: debug
+  Release: release
+
+fileGroups:
+  - Config
+  - README.md
+
+targets:
+  CrystalClean:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CrystalClean
+    configFiles:
+      Debug: Config/Debug.xcconfig
+      Release: Config/Release.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yongji97.crystalclean
+        PRODUCT_NAME: CrystalClean
+        PRODUCT_MODULE_NAME: CrystalClean
+        INFOPLIST_FILE: CrystalClean/Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SWIFT_VERSION: "5.0"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
+        CODE_SIGN_STYLE: Automatic
+
+  CrystalCleanTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CrystalCleanTests
+      - path: CrystalClean/Resources/services.json
+        type: file
+        buildPhase: resources
+    dependencies:
+      - target: CrystalClean
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yongji97.crystalclean.tests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+        TARGETED_DEVICE_FAMILY: "1"
+
+schemes:
+  CrystalClean:
+    build:
+      targets:
+        CrystalClean: all
+        CrystalCleanTests: [test]
+    run:
+      config: Debug
+      commandLineArguments:
+        "-useLocalBridge": false
+        "-testMode": false
+    test:
+      config: Debug
+      targets:
+        - CrystalCleanTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

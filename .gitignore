@@ -3,3 +3,7 @@ pickup-square-bridge/.env
 __pycache__/
 *.pyc
 .DS_Store
+ios/Config/Secrets.xcconfig
+ios/DerivedData/
+xcuserdata/
+*.xcuserstate
