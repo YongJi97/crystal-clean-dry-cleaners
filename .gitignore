@@ -1,0 +1,5 @@
+.env
+pickup-square-bridge/.env
+__pycache__/
+*.pyc
+.DS_Store

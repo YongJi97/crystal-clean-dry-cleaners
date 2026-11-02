@@ -230,11 +230,14 @@
             <a href="sms:6463386883?body=Hi%20Crystal%20Clean%21%20I%27d%20like%20to%20request%20a%20pickup" class="btn btn-primary"><i class="fas fa-comment-sms"></i>Text us</a>
         </div>
 
-        <script src="main.js?v=5" defer></script>
+        <script src="main.js?v=6" defer></script>
         <script>
             (function () {
-                // Formspree form ID — from https://formspree.io
+                // Formspree form ID — from https://formspree.io (email notifications)
                 var FORMSPREE_FORM_ID = "mjgewqpz";
+
+                // Square pickup bridge on this same site (creates $0 Square order / print ticket)
+                var SQUARE_BRIDGE_URL = "/webhooks/formspree-pickup";
 
                 // PlaceKit API key for address autocomplete — https://placekit.io (10,000 free requests/month)
                 var PLACEKIT_API_KEY = "pk_sdlMPvXU6XWunE04251aFL+vh6/+t+y2NrXP1+xE63k=";
@@ -365,22 +368,64 @@
                     submitBtn.innerHTML = '<span class="spinner"></span> Sending…';
 
                     var formData = new FormData(form);
-                    fetch("https://formspree.io/f/" + FORMSPREE_FORM_ID, {
+                    var submission = {
+                        name: (formData.get("name") || "").toString().trim(),
+                        phone: (formData.get("phone") || "").toString().trim(),
+                        email: (formData.get("email") || "").toString().trim(),
+                        address: (formData.get("address") || "").toString().trim(),
+                        address_line2: (formData.get("address_line2") || "").toString().trim(),
+                        when: (formData.get("when") || "").toString().trim(),
+                        notes: (formData.get("notes") || "").toString().trim()
+                    };
+
+                    // 1) Formspree = email notification (free tier)
+                    // 2) Local bridge = Square order / printer ticket (no paid webhook)
+                    var formspreePromise = fetch("https://formspree.io/f/" + FORMSPREE_FORM_ID, {
                         method: "POST",
                         body: formData,
                         headers: { Accept: "application/json" }
-                    })
-                        .then(function (r) { return r.json(); })
-                        .then(function (data) {
+                    }).then(function (r) { return r.json().then(function (data) { return { ok: r.ok && data.ok, data: data }; }); });
+
+                    var squarePromise = fetch(SQUARE_BRIDGE_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json", Accept: "application/json" },
+                        body: JSON.stringify(submission)
+                    }).then(function (r) {
+                        return r.json().then(function (data) { return { ok: r.ok && data.ok, data: data }; }).catch(function () {
+                            return { ok: false, data: { error: "Invalid bridge response" } };
+                        });
+                    }).catch(function (err) {
+                        return { ok: false, data: { error: String(err) } };
+                    });
+
+                    Promise.all([formspreePromise, squarePromise])
+                        .then(function (results) {
+                            var formspree = results[0];
+                            var square = results[1];
                             form.style.display = "none";
-                            if (data.ok) {
-                                successEl.style.display = "block";
+
+                            if (!square.ok) {
+                                console.error("Square bridge error:", square.data);
                             } else {
-                                var msg = data.error || (data.errors && data.errors.map(function (er) { return er.message || er; }).join(", ")) || "Formspree returned an error.";
-                                console.error("Formspree error:", data);
-                                document.getElementById("error-detail").textContent = msg;
-                                errorEl.style.display = "block";
+                                console.info("Square order created:", square.data);
                             }
+
+                            if (formspree.ok) {
+                                successEl.style.display = "block";
+                                return;
+                            }
+
+                            // If Formspree failed but Square succeeded, still treat as success —
+                            // the store already has the ticket.
+                            if (square.ok) {
+                                successEl.style.display = "block";
+                                return;
+                            }
+
+                            var msg = (formspree.data && (formspree.data.error || (formspree.data.errors && formspree.data.errors.map(function (er) { return er.message || er; }).join(", ")))) || "Form submission failed.";
+                            console.error("Formspree error:", formspree.data);
+                            document.getElementById("error-detail").textContent = msg;
+                            errorEl.style.display = "block";
                         })
                         .catch(function (err) {
                             form.style.display = "none";
