@@ -196,9 +196,9 @@ def _document(body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Pickups · Crystal Clean</title>
-  <link rel="icon" href="/images/favicon.ico" sizes="any">
-  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" href="/images/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">

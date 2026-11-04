@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import UserNotifications
 
 protocol PickupNotifying {
@@ -14,12 +15,27 @@ struct SystemPickupNotifier: PickupNotifying {
             content.title = "Pickup request received"
             content.body = "Reference \(referenceID)"
             content.sound = .default
+            if let logo = Self.logoAttachment() {
+                content.attachments = [logo]
+            }
             let request = UNNotificationRequest(
                 identifier: "pickup-\(referenceID)",
                 content: content,
                 trigger: nil
             )
             center.add(request)
+        }
+    }
+
+    /// The banner uses this file so the alert shows the crystal icon, not a bundled badge.
+    private static func logoAttachment() -> UNNotificationAttachment? {
+        guard let image = UIImage(named: "Logo"), let data = image.pngData() else { return nil }
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("crystal-clean-logo.png")
+        do {
+            try data.write(to: url, options: .atomic)
+            return try UNNotificationAttachment(identifier: "logo", url: url)
+        } catch {
+            return nil
         }
     }
 }

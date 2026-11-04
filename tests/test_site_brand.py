@@ -6,10 +6,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ["index.html", "menu.html", "privacy.html", "produk.html", "request-pickup.html"]
 ICON_LINKS = [
-    'rel="icon" href="./images/favicon.ico"',
-    'rel="icon" href="./images/favicon-32.png"',
-    'rel="apple-touch-icon" href="./images/apple-touch-icon.png"',
-    'rel="manifest" href="./site.webmanifest"',
+    'rel="icon" href="/favicon.ico?v=2"',
+    'rel="icon" href="./images/favicon-32.png?v=2"',
+    'rel="apple-touch-icon" href="./images/apple-touch-icon.png?v=2"',
+    'rel="manifest" href="./site.webmanifest?v=2"',
     "images/icon-512.png",
     "Crystal Clean<span class=\"brand-sub\">Dry Cleaners</span>",
 ]
@@ -22,6 +22,13 @@ def test_every_page_links_the_new_icon_and_wordmark():
             assert snippet in text, f"{name} missing {snippet}"
         assert "cleaner_logo.png" not in text
         assert "favicon-32x32.png" not in text
+    assert not (ROOT / "images/cleaner_logo.png").exists()
+    assert not (ROOT / "images/favicon-32x32.png").exists()
+    assert (ROOT / "favicon.ico").is_file()
+    owners = (ROOT / "pickup-square-bridge/owners.py").read_text()
+    assert 'href="/favicon.ico?v=2"' in owners
+    assert 'href="/images/favicon-32.png?v=2"' in owners
+    assert 'href="/images/apple-touch-icon.png?v=2"' in owners
 
 
 def _png_size_and_color(path: Path):
@@ -53,6 +60,7 @@ def test_generated_icons_are_opaque_at_the_expected_sizes():
 def test_manifest_points_at_the_generated_icons():
     text = (ROOT / "site.webmanifest").read_text()
     assert "Crystal Clean Dry Cleaners" in text
-    assert "/images/favicon-32.png" in text
-    assert "/images/apple-touch-icon.png" in text
-    assert "/images/icon-512.png" in text
+    assert "/favicon.ico?v=2" in text
+    assert "/images/favicon-32.png?v=2" in text
+    assert "/images/apple-touch-icon.png?v=2" in text
+    assert "/images/icon-512.png?v=2" in text
