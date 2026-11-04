@@ -4,10 +4,9 @@
 By default this is a test request: is_test true and X-Test: 1. The bridge
 returns {ok, test, reference_id} and does not create a Square order.
 
-Nothing is sent to Formspree. Test clients that do post to Formspree should
-set _subject to a value starting with "[TEST]" (the iOS app sends
-"[TEST] Pickup request — please ignore") so the email and Discord alert
-are labeled.
+By default this script sends the website Origin, so the bridge does not
+forward a second copy to Formspree. Set BRIDGE_AS_APP=1 to omit that Origin
+and exercise the app path. That path does forward to Formspree.
 
 Set BRIDGE_LIVE=1 to create a real Square order with the credentials in .env.
 That path is for sandbox/production checks Yong runs on purpose.
@@ -52,8 +51,11 @@ def main() -> int:
             file=sys.stderr,
         )
 
+    as_app = os.environ.get("BRIDGE_AS_APP", "").strip().lower() in {"1", "true", "yes"}
     origin = os.environ.get("BRIDGE_ORIGIN", "").strip()
-    if origin:
+    if not as_app and not origin:
+        origin = "https://www.crystalcleandrycleaner.com"
+    if origin and not as_app:
         headers["Origin"] = origin
 
     data = json.dumps(payload).encode()

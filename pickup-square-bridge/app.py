@@ -4,8 +4,13 @@ Receives Formspree webhooks and browser JSON posts, then creates a $0 paid
 PICKUP order so Square can surface the ticket on POS / print order tickets.
 
 Test clients send is_test: true and/or X-Test: 1. Those requests do not create
-a Square order; the response is {ok, test, reference_id}. Accepted requests,
-including tests, are stored for the owners page.
+a Square order. The response includes square_ok, notify_ok, and reference_id.
+Accepted requests, including tests, are stored for the owners page.
+
+App callers (X-App-Key, and an Origin that is not the public site) get
+reference ids app-pickup-<hex>. The website keeps web-pickup-<hex>. Test
+requests stay test-<hex>. The bridge forwards those app submissions to
+Formspree. Website posts are not forwarded, because the page already emails.
 """
 
 from __future__ import annotations
@@ -180,7 +185,7 @@ def build_ticket_note(data: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def create_pickup_order(data: dict[str, Any]) -> dict[str, Any]:
+def create_pickup_order(data: dict[str, Any], reference_id: str) -> dict[str, Any]:
     name = (data.get("name") or "Pickup customer").strip() or "Pickup customer"
     phone = normalize_phone(data.get("phone") or "")
     email = (data.get("email") or "").strip() or None
@@ -210,7 +215,7 @@ def create_pickup_order(data: dict[str, Any]) -> dict[str, Any]:
         "idempotency_key": str(uuid.uuid4()),
         "order": {
             "location_id": SQUARE_LOCATION_ID,
-            "reference_id": f"web-pickup-{uuid.uuid4().hex[:12]}",
+            "reference_id": reference_id,
             "line_items": [line_item],
             "fulfillments": [
                 {
@@ -316,24 +321,44 @@ def formspree_pickup():
 
     if request_is_test(payload, data):
         reference_id = f"test-{uuid.uuid4().hex[:12]}"
-        remember_pickup(data, reference_id=reference_id, order_id=None, is_test=True)
+        notify_ok = _notify_if_app(data, is_test=True)
+        remember_pickup(
+            data,
+            reference_id=reference_id,
+            order_id=None,
+            is_test=True,
+            notify_ok=notify_ok,
+        )
         log.info("Accepted test pickup ref=%s for %s (no Square order)", reference_id, name)
-        return jsonify({"ok": True, "test": True, "reference_id": reference_id}), 200
+        return jsonify(
+            {
+                "ok": True,
+                "test": True,
+                "square_ok": True,
+                "notify_ok": notify_ok,
+                "reference_id": reference_id,
+            }
+        ), 200
 
+    source = request_source(data)
+    reference_id = new_reference_id(source)
     try:
-        result = create_pickup_order(data)
+        result = create_pickup_order(data, reference_id)
     except Exception as exc:
         log.exception("Failed to create Square order")
         # Still 200 so Formspree does not hammer retries forever for bad data;
         # return 502 for transient/config failures so they can retry.
         status = 502 if "Square API error 5" in str(exc) or "required" in str(exc).lower() else 500
-        return jsonify({"ok": False, "error": str(exc)}), status
+        return jsonify({"ok": False, "square_ok": False, "notify_ok": None, "error": str(exc)}), status
 
+    result["reference_id"] = result.get("reference_id") or reference_id
+    notify_ok = _notify_if_app(data, is_test=False)
     remember_pickup(
         data,
-        reference_id=result.get("reference_id") or "",
+        reference_id=result["reference_id"],
         order_id=result.get("order_id"),
         is_test=False,
+        notify_ok=notify_ok,
     )
     log.info(
         "Created Square pickup order %s ref=%s for %s",
@@ -341,23 +366,93 @@ def formspree_pickup():
         result.get("reference_id"),
         name,
     )
-    return jsonify({"ok": True, **result}), 200
+    return jsonify({"ok": True, "square_ok": True, "notify_ok": notify_ok, **result}), 200
+
+
+SITE_PICKUP_PAGE = "https://www.crystalcleandrycleaner.com/request-pickup.html"
+DEFAULT_FORMSPREE_URL = "https://formspree.io/f/mjgewqpz"
+TEST_SUBJECT = "[TEST] Pickup request — please ignore"
+# Same names and order as the inputs in request-pickup.html. That form has no hidden fields.
+FORM_FIELD_ORDER = ("name", "phone", "email", "address", "address_line2", "when", "notes")
+
+
+def formspree_form_url() -> str:
+    return os.environ.get("FORMSPREE_FORM_URL", DEFAULT_FORMSPREE_URL).strip() or DEFAULT_FORMSPREE_URL
+
+
+def new_reference_id(source: str) -> str:
+    prefix = "app-pickup" if source == "app" else "web-pickup"
+    return f"{prefix}-{uuid.uuid4().hex[:12]}"
+
+
+def caller_is_app() -> bool:
+    """App posts send X-App-Key and do not come from the public site origin."""
+    origin = (request.headers.get("Origin") or "").strip()
+    if origin in ALLOWED_ORIGINS:
+        return False
+    return bool((request.headers.get("X-App-Key") or "").strip())
+
+
+def formspree_fields(data: dict[str, Any], is_test: bool) -> list[tuple[str, str]]:
+    name = (data.get("name") or "").strip()
+    if is_test and not name.startswith("[TEST]"):
+        name = "[TEST] " + name
+    values = {
+        "name": name,
+        "phone": (data.get("phone") or "").strip(),
+        "email": (data.get("email") or "").strip(),
+        "address": (data.get("address") or "").strip(),
+        "address_line2": (data.get("address_line2") or "").strip(),
+        "when": (data.get("when") or "").strip(),
+        "notes": (data.get("notes") or "").strip(),
+    }
+    fields = [(key, values[key]) for key in FORM_FIELD_ORDER]
+    if is_test:
+        fields.append(("_subject", TEST_SUBJECT))
+    return fields
+
+
+def post_formspree(url: str, data: list[tuple[str, str]], headers: dict[str, str], timeout: int = 20):
+    return requests.post(url, data=data, headers=headers, timeout=timeout)
+
+
+def forward_to_formspree(data: dict[str, Any], is_test: bool) -> bool:
+    headers = {
+        "Accept": "application/json",
+        "Origin": SITE_PICKUP_PAGE,
+        "Referer": SITE_PICKUP_PAGE,
+    }
+    try:
+        resp = post_formspree(formspree_form_url(), formspree_fields(data, is_test), headers)
+        try:
+            payload = resp.json()
+        except ValueError:
+            payload = {}
+        return bool(resp.ok and isinstance(payload, dict) and payload.get("ok") is True)
+    except Exception:
+        log.exception("Formspree notify failed")
+        return False
+
+
+def _notify_if_app(data: dict[str, Any], is_test: bool) -> bool | None:
+    if not caller_is_app():
+        return None
+    return forward_to_formspree(data, is_test)
 
 
 def request_source(data: dict[str, Any]) -> str:
     """Website posts include an allowed Origin. The app sends X-App-Key and no Origin."""
-    raw = str(data.get("source") or "").strip().lower()
-    if raw in {"web", "app"}:
-        return raw
-    origin = (request.headers.get("Origin") or "").strip()
-    if origin in ALLOWED_ORIGINS:
-        return "web"
-    if (request.headers.get("X-App-Key") or "").strip():
-        return "app"
-    return "web"
+    return "app" if caller_is_app() else "web"
 
 
-def remember_pickup(data: dict[str, Any], *, reference_id: str, order_id: str | None, is_test: bool) -> None:
+def remember_pickup(
+    data: dict[str, Any],
+    *,
+    reference_id: str,
+    order_id: str | None,
+    is_test: bool,
+    notify_ok: bool | None,
+) -> None:
     if not reference_id:
         return
     try:
@@ -373,6 +468,7 @@ def remember_pickup(data: dict[str, Any], *, reference_id: str, order_id: str | 
             notes=(data.get("notes") or "").strip(),
             source=request_source(data),
             is_test=is_test,
+            notify_ok=notify_ok,
         )
     except Exception:
         log.exception("Could not store pickup %s", reference_id)

@@ -12,6 +12,12 @@ enum PickupSchedule {
     }
 }
 
+enum ShopAlertCopy {
+    /// Shown when the Square ticket exists but the shop alert did not send.
+    /// A second submit would create another ticket, so this does not ask them to try again.
+    static let notifyFailed = "We saved this pickup, but the shop alert did not go through. Call 646-338-6883 to confirm. Please don't send it again."
+}
+
 enum ConfirmationCopy {
     static func isUncertain(_ referenceID: String) -> Bool {
         referenceID.hasPrefix("local-") || referenceID.count > 24

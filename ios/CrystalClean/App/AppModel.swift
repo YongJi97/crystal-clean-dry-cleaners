@@ -121,19 +121,26 @@ final class AppModel {
         let draft = pickupDraft
         let result = await requests.submit(draft: draft, config: config)
         isSubmitting = false
-        guard result.succeeded, let referenceID = result.referenceID else {
-            submitError = result.message ?? "We couldn't send the request. Call 646-338-6883."
+        if result.squareOK, let referenceID = result.referenceID, !referenceID.isEmpty {
+            let stored = StoredRequest(
+                draft: draft,
+                referenceID: referenceID,
+                isTest: config.isTest
+            )
+            history.insert(stored, at: 0)
+            historyStore.save(history)
+            lastReferenceID = referenceID
+            if result.notifyOK {
+                notifier.notifySubmitted(referenceID: referenceID)
+                submitError = nil
+                showConfirmation = true
+            } else {
+                showConfirmation = false
+                submitError = ShopAlertCopy.notifyFailed
+            }
             return
         }
-        let stored = StoredRequest(
-            draft: draft,
-            referenceID: referenceID,
-            isTest: config.isTest
-        )
-        history.insert(stored, at: 0)
-        historyStore.save(history)
-        notifier.notifySubmitted(referenceID: referenceID)
-        lastReferenceID = referenceID
-        showConfirmation = true
+        showConfirmation = false
+        submitError = result.message ?? "We couldn't send the request. Call 646-338-6883."
     }
 }

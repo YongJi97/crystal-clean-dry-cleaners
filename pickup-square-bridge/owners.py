@@ -61,9 +61,8 @@ def owners_page():
     session = _read_session()
     if not session:
         return _html(_login_page(error=""))
-    show_tests = request.args.get("tests") == "1"
-    rows = store.list_pickups(include_tests=show_tests)
-    return _html(_board_page(rows, session["csrf"], show_tests=show_tests))
+    rows = store.list_pickups(include_tests=True)
+    return _html(_board_page(rows, session["csrf"]))
 
 
 def owners_login():
@@ -103,8 +102,7 @@ def owners_mark_done(reference_id: str):
         return _html(_message("That update was rejected. Reload the page and try again."), status=400)
     done = request.form.get("done") == "1"
     store.set_done(reference_id, done)
-    target = "/owners?tests=1" if request.form.get("tests") == "1" else "/owners"
-    return redirect(target, code=303)
+    return redirect("/owners", code=303)
 
 
 def group_pickups(rows: list[dict], now: datetime | None = None) -> dict[str, list[dict]]:
@@ -198,6 +196,9 @@ def _document(body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Pickups · Crystal Clean</title>
+  <link rel="icon" href="/images/favicon.ico" sizes="any">
+  <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
@@ -266,7 +267,7 @@ def _document(body: str) -> str:
 def _login_page(error: str) -> str:
     message = f'<p class="error">{escape(error)}</p>' if error else ""
     return f"""
-    <header><div class="brand"><img src="/images/cleaner_logo.png" alt=""><h1>Pickups</h1></div></header>
+    <header><div class="brand"><img src="/images/icon-512.png" alt=""><h1>Pickups</h1></div></header>
     <form class="card" method="post" action="/owners/login">
       <label for="password">Shop password</label>
       {message}
@@ -287,13 +288,8 @@ def _message(text: str) -> str:
     return f'<p class="card">{escape(text)}</p>'
 
 
-def _board_page(rows: list[dict], csrf: str, *, show_tests: bool) -> str:
+def _board_page(rows: list[dict], csrf: str) -> str:
     groups = group_pickups(rows)
-    toggle = (
-        '<a class="linkish" href="/owners">Hide test requests</a>'
-        if show_tests
-        else '<a class="linkish" href="/owners?tests=1">Show test requests</a>'
-    )
     sections = []
     labels = (
         ("today", "Today"),
@@ -304,7 +300,7 @@ def _board_page(rows: list[dict], csrf: str, *, show_tests: bool) -> str:
         items = groups[key]
         if not items:
             continue
-        cards = "".join(_card(row, csrf, show_tests=show_tests) for row in items)
+        cards = "".join(_card(row, csrf) for row in items)
         sections.append(f"<h2>{label}</h2>{cards}")
     if not sections:
         sections.append('<p class="card">No pickups yet. New website and app requests will show up here.</p>')
@@ -315,15 +311,14 @@ def _board_page(rows: list[dict], csrf: str, *, show_tests: bool) -> str:
     )
     return f"""
     <header>
-      <div class="brand"><img src="/images/cleaner_logo.png" alt=""><h1>Pickups</h1></div>
+      <div class="brand"><img src="/images/icon-512.png" alt=""><h1>Pickups</h1></div>
       {logout}
     </header>
-    <div class="tools">{toggle}</div>
     {''.join(sections)}
     """
 
 
-def _card(row: dict, csrf: str, *, show_tests: bool) -> str:
+def _card(row: dict, csrf: str) -> str:
     classes = "card"
     if row.get("is_test"):
         classes += " test"
@@ -334,6 +329,8 @@ def _card(row: dict, csrf: str, *, show_tests: bool) -> str:
         badges.append('<span class="badge test">Test</span>')
     if row.get("done"):
         badges.append('<span class="badge">Done</span>')
+    if row.get("notify_ok") is False:
+        badges.append('<span class="badge test">Alert failed</span>')
     phone = row.get("phone") or ""
     tel = _tel_href(phone)
     phone_link = (
@@ -357,7 +354,6 @@ def _card(row: dict, csrf: str, *, show_tests: bool) -> str:
     order_html = f" · Square {order}" if order else ""
     done_value = "0" if row.get("done") else "1"
     done_label = "Undo" if row.get("done") else "Mark done"
-    tests_field = '<input type="hidden" name="tests" value="1">' if show_tests else ""
     action = escape(f"/owners/{row.get('reference_id')}/done", quote=True)
     return f"""
     <article class="{classes}">
@@ -371,7 +367,6 @@ def _card(row: dict, csrf: str, *, show_tests: bool) -> str:
       <form method="post" action="{action}">
         <input type="hidden" name="csrf" value="{escape(csrf, quote=True)}">
         <input type="hidden" name="done" value="{done_value}">
-        {tests_field}
         <div class="row"><button class="primary" type="submit">{done_label}</button></div>
       </form>
     </article>

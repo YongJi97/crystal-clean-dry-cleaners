@@ -54,8 +54,8 @@ final class ReorderPrefillTests: XCTestCase {
             result: SubmitResult(
                 succeeded: true,
                 referenceID: "test-abc123def456",
-                bridgeOK: true,
-                formspreeOK: false,
+                squareOK: true,
+                notifyOK: true,
                 message: nil
             )
         )
@@ -90,9 +90,43 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertEqual(model.pickupDraft.when, "")
     }
 
+    func testNotifyFailureSavesHistoryAndAsksToCall() async throws {
+        let service = ScriptedRequestService(
+            result: SubmitResult(
+                succeeded: false,
+                referenceID: "app-pickup-abc123def456",
+                squareOK: true,
+                notifyOK: false,
+                message: nil
+            )
+        )
+        let history = MemoryHistoryStore()
+        let notifier = RecordingNotifier()
+        let model = makeModel(requests: service, historyStore: history, notifier: notifier)
+        model.pickupDraft = PickupDraft(
+            name: "Ada Lovelace",
+            phone: "(646) 555-1234",
+            email: "ada@example.com",
+            address: "400 E 87th Street",
+            addressLine2: "Apt 4B",
+            when: "Tomorrow 10am",
+            notes: "Buzz 4B"
+        )
+
+        await model.submitPickup()
+
+        XCTAssertFalse(model.showConfirmation)
+        XCTAssertEqual(model.submitError, ShopAlertCopy.notifyFailed)
+        XCTAssertTrue(model.submitError?.contains("646-338-6883") == true)
+        XCTAssertTrue(model.submitError?.contains("don't send it again") == true)
+        XCTAssertEqual(model.history.first?.id, "app-pickup-abc123def456")
+        XCTAssertEqual(history.requests.first?.id, "app-pickup-abc123def456")
+        XCTAssertTrue(notifier.references.isEmpty)
+    }
+
     func testInvalidPhoneDoesNotSubmit() async {
         let service = ScriptedRequestService(
-            result: SubmitResult(succeeded: true, referenceID: "should-not-send", bridgeOK: true, formspreeOK: true, message: nil)
+            result: SubmitResult(succeeded: true, referenceID: "should-not-send", squareOK: true, notifyOK: true, message: nil)
         )
         service.onSubmit = { XCTFail("invalid phone must not be submitted") }
         let model = makeModel(requests: service)

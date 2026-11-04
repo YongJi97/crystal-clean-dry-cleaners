@@ -53,7 +53,7 @@ def test_owners_stays_closed_until_configured(client, monkeypatch):
     assert b"Ada Lovelace" not in resp.data
 
 
-def test_login_and_board_hide_tests_until_toggled(client, monkeypatch):
+def test_login_and_board_shows_tests_with_a_badge(client, monkeypatch):
     monkeypatch.setattr(bridge, "square_request", forbid_square)
     web = client.post(
         "/webhooks/formspree-pickup",
@@ -85,18 +85,15 @@ def test_login_and_board_hide_tests_until_toggled(client, monkeypatch):
     assert "Path=/owners" in cookie
     assert "Secure" not in cookie
 
-    hidden = client.get("/owners")
-    assert hidden.status_code == 200
-    assert b"Web Test" not in hidden.data
-    assert b"App Test" not in hidden.data
-    assert b"Show test requests" in hidden.data
-    assert hidden.headers["Cache-Control"] == "no-store"
-
-    shown = client.get("/owners?tests=1")
+    shown = client.get("/owners")
+    assert shown.status_code == 200
+    assert shown.headers["Cache-Control"] == "no-store"
     text = shown.get_data(as_text=True)
     assert "Web Test" in text and "App Test" in text
     assert "Website" in text and "App" in text
-    assert text.count("Test") >= 2
+    assert "Show test requests" not in text
+    assert "Hide test requests" not in text
+    assert text.count(">Test<") >= 2
     assert "tel:+16465551234" in text
     assert "maps.google.com" in text
     assert "Apt 4B" in text
@@ -207,7 +204,7 @@ def test_names_are_escaped(client, monkeypatch):
         headers={"Origin": ORIGIN},
     )
     client.post("/owners/login", data={"password": "shop-secret"})
-    page = client.get("/owners?tests=1").get_data(as_text=True)
+    page = client.get("/owners").get_data(as_text=True)
     assert "<script>alert(1)</script>" not in page
     assert "&lt;script&gt;" in page
 
