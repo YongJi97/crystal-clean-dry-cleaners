@@ -1,0 +1,4 @@
+// Debug builds use the mock pickup service unless a launch argument says otherwise.
+// Copy Secrets.xcconfig.example to Secrets.xcconfig to supply APP_API_KEY.
+APP_API_KEY =
+#include? "Secrets.xcconfig"

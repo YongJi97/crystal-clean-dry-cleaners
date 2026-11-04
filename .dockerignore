@@ -1,0 +1,9 @@
+.git
+.gitignore
+.env
+pickup-square-bridge
+README.md
+LICENSE
+.DS_Store
+*.md
+ios/

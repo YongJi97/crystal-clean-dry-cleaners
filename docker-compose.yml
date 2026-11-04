@@ -1,9 +1,32 @@
-version: '3.8'
-
 services:
   web:
     build: .
     container_name: crystalclean_web
     ports:
       - "3004:80"
+    depends_on:
+      - pickup-bridge
     restart: unless-stopped
+
+  pickup-bridge:
+    build: ./pickup-square-bridge
+    container_name: crystalclean_pickup_bridge
+    env_file:
+      - ./pickup-square-bridge/.env
+    ports:
+      # Host access for local testing / Formspree if not using the nginx path
+      - "3015:8080"
+    environment:
+      SQLITE_PATH: /data/pickups.db
+    volumes:
+      - pickup-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  pickup-data:

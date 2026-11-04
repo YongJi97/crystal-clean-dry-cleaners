@@ -1,0 +1,190 @@
+{
+  "currency": "USD",
+  "categories": [
+    {
+      "id": "dry-cleaning",
+      "name": "Dry Cleaning",
+      "subtitle": "Cleaned, pressed & ready to wear",
+      "icon": "fa-wand-magic-sparkles",
+      "layout": "list",
+      "summary": "Expert care for suits, dresses, coats, and delicates — cleaned, pressed, and ready to wear.",
+      "from": {
+        "label": "From",
+        "price": 6.5
+      },
+      "items": [
+        {
+          "name": "Sweaters",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Blouses",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Pants",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Vest",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Skirts",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Ties",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Scarf",
+          "price": 6.5,
+          "unit": "item"
+        },
+        {
+          "name": "Suits",
+          "price": 13.0,
+          "unit": "item"
+        },
+        {
+          "name": "Dresses",
+          "price": 13.0,
+          "unit": "item"
+        },
+        {
+          "name": "Jackets",
+          "price": 15.0,
+          "unit": "item"
+        },
+        {
+          "name": "Coats",
+          "price": 24.0,
+          "unit": "item"
+        },
+        {
+          "name": "Down Jackets",
+          "price": 40.0,
+          "unit": "item"
+        }
+      ]
+    },
+    {
+      "id": "wash-fold",
+      "name": "Wash & Fold",
+      "subtitle": "Everyday laundry, by the pound",
+      "icon": "fa-shirt",
+      "layout": "feature",
+      "summary": "Drop your everyday laundry and get it back washed, dried, and neatly folded by the pound.",
+      "detail": "Washed, dried, and neatly folded. Perfect for sheets, towels, and your weekly wardrobe — drop it off or let us pick it up free.",
+      "notes": "10 lb minimum per order",
+      "from": {
+        "label": "Per lb",
+        "price": 1.0,
+        "unit": "lb"
+      },
+      "items": [
+        {
+          "name": "Wash & Fold",
+          "price": 1.0,
+          "unit": "lb",
+          "notes": "10 lb minimum per order"
+        }
+      ]
+    },
+    {
+      "id": "laundered-shirts",
+      "name": "Laundered Shirts & Linens",
+      "homeTitle": "Laundered Shirts",
+      "subtitle": "Crisp shirts & household linens",
+      "icon": "fa-vest",
+      "layout": "list",
+      "summary": "Crisp button-downs on hangers or boxed, plus household linens, sheets, and table cloths.",
+      "from": {
+        "label": "From",
+        "price": 2.0
+      },
+      "items": [
+        {
+          "name": "Napkins",
+          "price": 2.0,
+          "unit": "item"
+        },
+        {
+          "name": "Pillow Cases",
+          "price": 3.0,
+          "unit": "item"
+        },
+        {
+          "name": "Hanger",
+          "price": 3.25,
+          "unit": "item",
+          "notes": "Returned on a hanger instead of folded."
+        },
+        {
+          "name": "Box",
+          "price": 3.75,
+          "unit": "item",
+          "notes": "Folded and packed in a box."
+        },
+        {
+          "name": "Hand Press",
+          "price": 6.0,
+          "unit": "item",
+          "notes": "Pressed by hand for a sharper finish."
+        },
+        {
+          "name": "Sheets",
+          "price": 15.0,
+          "unit": "item"
+        },
+        {
+          "name": "Table Cloths",
+          "price": 20.0,
+          "unit": "item"
+        }
+      ]
+    },
+    {
+      "id": "tailoring",
+      "name": "Tailoring & Alterations",
+      "homeTitle": "Tailoring",
+      "subtitle": "On-site repairs & adjustments",
+      "icon": "fa-scissors",
+      "layout": "list",
+      "summary": "On-site alterations and repairs — hems, zippers, and fit adjustments done right.",
+      "notes": "Other alterations? Ask us for a quote.",
+      "from": {
+        "label": "From",
+        "price": 15.0
+      },
+      "items": [
+        {
+          "name": "Pants Hem",
+          "price": 15.0,
+          "unit": "item"
+        },
+        {
+          "name": "Pants Zipper",
+          "price": 20.0,
+          "unit": "item"
+        }
+      ]
+    }
+  ],
+  "shop": {
+    "name": "Crystal Clean Dry Cleaners",
+    "phone": "6463386883",
+    "phoneDisplay": "646-338-6883",
+    "address": "400 E 87th Street, New York, NY 10128",
+    "hours": "Mon–Sat · 7:30 AM – 7:00 PM",
+    "latitude": 40.7777,
+    "longitude": -73.9528
+  }
+}

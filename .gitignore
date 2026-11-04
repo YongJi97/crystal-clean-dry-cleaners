@@ -1,0 +1,14 @@
+.env
+pickup-square-bridge/.env
+__pycache__/
+*.pyc
+.DS_Store
+ios/Config/Secrets.xcconfig
+ios/DerivedData/
+ios/CrystalClean.xcodeproj/
+DerivedData/
+build.log
+test.log
+shots/
+xcuserdata/
+*.xcuserstate
