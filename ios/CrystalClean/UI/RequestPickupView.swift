@@ -221,10 +221,12 @@ struct ConfirmationView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: markSize))
-                .foregroundStyle(Color("Brand"))
-                .accessibilityHidden(true)
+            Image("Logo")
+                .resizable()
+                .interpolation(.high)
+                .frame(width: markSize, height: markSize)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .accessibilityLabel("Crystal Clean")
             Text(ConfirmationCopy.title(for: referenceID))
                 .font(.title2.bold())
                 .multilineTextAlignment(.center)
