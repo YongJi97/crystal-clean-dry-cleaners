@@ -61,7 +61,8 @@ final class ReorderPrefillTests: XCTestCase {
         model.pickupDraft = PickupDraft(
             name: "Ada Lovelace",
             phone: "(646) 555-1234",
-            address: "400 E 87th Street"
+            address: "400 E 87th Street",
+            when: ""
         )
 
         await model.submitPickup()
@@ -89,7 +90,8 @@ final class ReorderPrefillTests: XCTestCase {
         model.pickupDraft = PickupDraft(
             name: "Ada Lovelace",
             phone: "6465551234",
-            address: "400 E 87th Street"
+            address: "400 E 87th Street",
+            when: ""
         )
 
         await model.submitPickup()
