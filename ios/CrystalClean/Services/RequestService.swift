@@ -7,7 +7,7 @@ protocol RequestService {
 struct SubmitResult: Equatable {
     var succeeded: Bool
     var referenceID: String?
-    var bridgeOK: Bool
-    var formspreeOK: Bool
+    var squareOK: Bool
+    var notifyOK: Bool
     var message: String?
 }

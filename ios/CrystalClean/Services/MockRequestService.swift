@@ -11,8 +11,8 @@ struct MockRequestService: RequestService {
         return SubmitResult(
             succeeded: true,
             referenceID: prefix + suffix,
-            bridgeOK: true,
-            formspreeOK: true,
+            squareOK: true,
+            notifyOK: true,
             message: nil
         )
     }

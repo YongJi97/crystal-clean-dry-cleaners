@@ -48,6 +48,9 @@ def connect() -> sqlite3.Connection:
     conn.execute(
         "CREATE INDEX IF NOT EXISTS pickup_requests_created ON pickup_requests (created_at)"
     )
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(pickup_requests)")}
+    if "notify_ok" not in columns:
+        conn.execute("ALTER TABLE pickup_requests ADD COLUMN notify_ok INTEGER")
     conn.commit()
     return conn
 
@@ -65,6 +68,7 @@ def save_pickup(
     notes: str,
     source: str,
     is_test: bool,
+    notify_ok: bool | None = None,
     created_at: str | None = None,
 ) -> None:
     if source not in {"web", "app"}:
@@ -76,8 +80,8 @@ def save_pickup(
             """
             INSERT OR IGNORE INTO pickup_requests (
                 reference_id, order_id, name, phone, email, address, address_line2,
-                pickup_when, notes, source, is_test, done, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
+                pickup_when, notes, source, is_test, done, created_at, notify_ok
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?)
             """,
             (
                 reference_id,
@@ -92,6 +96,7 @@ def save_pickup(
                 source,
                 1 if is_test else 0,
                 created,
+                None if notify_ok is None else (1 if notify_ok else 0),
             ),
         )
         conn.commit()
@@ -139,5 +144,6 @@ def _row_to_dict(row: sqlite3.Row) -> dict[str, Any]:
         "source": row["source"],
         "is_test": bool(row["is_test"]),
         "done": bool(row["done"]),
+        "notify_ok": None if row["notify_ok"] is None else bool(row["notify_ok"]),
         "created_at": row["created_at"],
     }

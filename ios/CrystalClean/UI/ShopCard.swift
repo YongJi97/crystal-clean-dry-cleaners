@@ -6,8 +6,16 @@ struct ShopCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(shop.name ?? "Crystal Clean Dry Cleaners")
-                .font(.headline)
+            HStack(alignment: .center, spacing: 12) {
+                Image("Logo")
+                    .resizable()
+                    .interpolation(.high)
+                    .frame(width: 44, height: 44)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .accessibilityHidden(true)
+                Text(shop.name ?? "Crystal Clean Dry Cleaners")
+                    .font(.headline)
+            }
             if let hours = trimmed(shop.hours) {
                 Label(hours, systemImage: "clock")
                     .font(.subheadline)
