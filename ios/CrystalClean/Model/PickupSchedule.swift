@@ -1,6 +1,13 @@
 import Foundation
 
 enum PickupSchedule {
+    /// Sent as the bridge `when` value when the customer does not pick a time.
+    static let asap = "ASAP"
+
+    static func isASAP(_ value: String) -> Bool {
+        PickupDraft.trimmed(value).caseInsensitiveCompare(asap) == .orderedSame
+    }
+
     static func defaultDate(now: Date = Date(), calendar: Calendar = .current) -> Date {
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: now) ?? now.addingTimeInterval(24 * 60 * 60)
         return calendar.date(bySettingHour: 10, minute: 0, second: 0, of: tomorrow) ?? tomorrow

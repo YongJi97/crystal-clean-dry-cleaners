@@ -75,6 +75,7 @@ struct ServicesView: View {
                         }
                     }
                     .contentMargins(.bottom, 24, for: .scrollContent)
+                    .scrollDismissesKeyboard(.interactively)
                     .safeAreaInset(edge: .bottom, spacing: 0) {
                         Color.clear
                             .frame(height: 72)
@@ -83,6 +84,7 @@ struct ServicesView: View {
                 }
             }
             .navigationTitle("Services & Prices")
+            .dismissesKeyboardInteractively()
             .searchable(text: $query, prompt: "Search services")
             .task { await model.loadCatalog() }
         }

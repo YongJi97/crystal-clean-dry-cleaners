@@ -16,10 +16,7 @@ struct PickupDraft: Codable, Equatable {
     }
 
     var isSubmittable: Bool {
-        !Self.trimmed(name).isEmpty
-            && PhoneValidation.isValid(phone)
-            && !Self.trimmed(address).isEmpty
-            && !Self.trimmed(when).isEmpty
+        PickupValidation.isReady(name: name, phone: phone, address: address, when: when)
     }
 
     init() {}

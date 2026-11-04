@@ -1,8 +1,10 @@
 import MapKit
 import SwiftUI
+import UIKit
 
 struct ShopCard: View {
     var shop: ShopInfo
+    @State private var showMapChooser = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -33,13 +35,18 @@ struct ShopCard: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            if trimmed(shop.address) != nil || (shop.latitude != nil && shop.longitude != nil) {
+            if ShopMaps.query(for: shop) != nil {
                 Button {
-                    ShopMaps.open(shop)
+                    showMapChooser = true
                 } label: {
                     Label("Open in Maps", systemImage: "map")
                         .font(.body)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .confirmationDialog("Open in Maps", isPresented: $showMapChooser, titleVisibility: .visible) {
+                    Button("Apple Maps") { ShopMaps.openApple(shop) }
+                    Button("Google Maps") { ShopMaps.openGoogle(shop) }
+                    Button("Cancel", role: .cancel) {}
                 }
             }
         }
@@ -54,7 +61,24 @@ struct ShopCard: View {
 }
 
 enum ShopMaps {
-    static func open(_ shop: ShopInfo) {
+    static func query(for shop: ShopInfo) -> String? {
+        let address = shop.address?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if !address.isEmpty { return address }
+        if let latitude = shop.latitude, let longitude = shop.longitude {
+            return "\(latitude),\(longitude)"
+        }
+        return nil
+    }
+
+    static func googleMapsURL(address: String, googleAppInstalled: Bool) -> URL? {
+        guard let encoded = encodeQuery(address) else { return nil }
+        if googleAppInstalled {
+            return URL(string: "comgooglemaps://?q=\(encoded)")
+        }
+        return URL(string: "https://www.google.com/maps/search/?api=1&query=\(encoded)")
+    }
+
+    static func openApple(_ shop: ShopInfo) {
         let name = shop.name ?? "Crystal Clean Dry Cleaners"
         if let latitude = shop.latitude, let longitude = shop.longitude {
             let placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
@@ -73,6 +97,24 @@ enum ShopMaps {
                 item.openInMaps()
             }
         }
+    }
+
+    static func openGoogle(
+        _ shop: ShopInfo,
+        canOpenGoogleApp: (URL) -> Bool = { UIApplication.shared.canOpenURL($0) },
+        open: (URL) -> Void = { UIApplication.shared.open($0) }
+    ) {
+        guard let address = query(for: shop), let probe = URL(string: "comgooglemaps://") else { return }
+        guard let url = googleMapsURL(address: address, googleAppInstalled: canOpenGoogleApp(probe)) else { return }
+        open(url)
+    }
+
+    private static func encodeQuery(_ address: String) -> String? {
+        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "&+=?#")
+        return trimmed.addingPercentEncoding(withAllowedCharacters: allowed)
     }
 }
 

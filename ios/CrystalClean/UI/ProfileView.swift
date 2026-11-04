@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     @Bindable var model: AppModel
     @State private var confirmClear = false
+    @FocusState private var addressFocused: Bool
+    @StateObject private var addressSearch = AddressCompleter()
 
     var body: some View {
         NavigationStack {
@@ -19,12 +21,33 @@ struct ProfileView: View {
                         .textInputAutocapitalization(.never)
                     TextField("Address", text: $model.profile.address)
                         .textContentType(.fullStreetAddress)
+                        .focused($addressFocused)
+                        .onChange(of: model.profile.address) { _, newValue in
+                            addressSearch.update(query: newValue)
+                        }
+                    if addressFocused {
+                        ForEach(addressSearch.suggestions) { suggestion in
+                            Button {
+                                let formatted = suggestion.formattedAddress
+                                model.profile.address = formatted
+                                addressSearch.accept(formatted)
+                                KeyboardFocus.clear()
+                            } label: {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(suggestion.title)
+                                        .foregroundStyle(.primary)
+                                    if !suggestion.subtitle.isEmpty {
+                                        Text(suggestion.subtitle)
+                                            .font(.footnote)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                        }
+                    }
                     AddressLine2Field(text: $model.profile.addressLine2)
                 }
                 Section {
-                    if let privacyURL = URL(string: "https://www.crystalcleandrycleaner.com/privacy.html") {
-                        Link("Privacy policy", destination: privacyURL)
-                    }
                     Button("Clear my data", role: .destructive) {
                         confirmClear = true
                     }
@@ -34,9 +57,17 @@ struct ProfileView: View {
                 }
             }
             .contentMargins(.bottom, 24, for: .scrollContent)
+            .dismissesKeyboardInteractively()
             .navigationTitle("Profile")
             .onChange(of: model.profile) { _, _ in
                 model.saveProfile()
+            }
+            .onChange(of: addressFocused) { _, focused in
+                if focused {
+                    addressSearch.update(query: model.profile.address)
+                } else {
+                    addressSearch.dismissSuggestions()
+                }
             }
             .alert("Clear your data on this phone?", isPresented: $confirmClear) {
                 Button("Clear", role: .destructive) {
