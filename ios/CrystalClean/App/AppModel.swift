@@ -22,6 +22,7 @@ final class AppModel {
     var lastReferenceID = ""
     var draftRevision = 0
     var pickupDate = PickupSchedule.defaultDate()
+    var wantsASAP = false
 
     let config: RuntimeConfig
     private let requests: RequestService
@@ -81,9 +82,15 @@ final class AppModel {
 
     func reorder(_ request: StoredRequest) {
         var draft = request.draft
-        draft.when = ""
+        if PickupSchedule.isASAP(draft.when) {
+            wantsASAP = true
+            draft.when = PickupSchedule.asap
+        } else {
+            wantsASAP = false
+            draft.when = ""
+            pickupDate = PickupSchedule.defaultDate()
+        }
         pickupDraft = draft
-        pickupDate = PickupSchedule.defaultDate()
         showConfirmation = false
         submitError = nil
         draftRevision += 1
@@ -101,16 +108,21 @@ final class AppModel {
         historyStore.save([])
         pickupDraft = PickupDraft()
         pickupDate = PickupSchedule.defaultDate()
+        wantsASAP = false
         showConfirmation = false
         submitError = nil
     }
 
     func submitPickup() async {
         guard !isSubmitting else { return }
-        pickupDraft.when = PickupSchedule.format(pickupDate)
-        guard pickupDate >= Date().addingTimeInterval(-60) else {
-            submitError = "Choose a future pickup time."
-            return
+        if wantsASAP {
+            pickupDraft.when = PickupSchedule.asap
+        } else {
+            pickupDraft.when = PickupSchedule.format(pickupDate)
+            guard pickupDate >= Date().addingTimeInterval(-60) else {
+                submitError = "Choose a future pickup time."
+                return
+            }
         }
         guard pickupDraft.isSubmittable else {
             submitError = "Enter your name, a valid phone number, the pickup address, and a time."

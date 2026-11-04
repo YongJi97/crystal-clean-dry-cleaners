@@ -20,11 +20,85 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertEqual(model.pickupDraft.address, "400 E 87th Street")
         XCTAssertEqual(model.pickupDraft.addressLine2, "Apt 4B")
         XCTAssertEqual(model.pickupDraft.when, "")
+        XCTAssertFalse(model.wantsASAP)
         XCTAssertGreaterThan(model.pickupDate, Date())
         XCTAssertEqual(model.pickupDraft.notes, "Buzz 4B")
         XCTAssertEqual(model.selectedTab, .pickup)
         XCTAssertFalse(model.showConfirmation)
         XCTAssertFalse(model.pickupDraft.name.hasPrefix("[TEST]"))
+    }
+
+    func testReorderKeepsASAPAndClearsAScheduledTime() {
+        let model = makeModel()
+        model.wantsASAP = false
+        var asap = sampleRequest()
+        asap.when = " asap "
+        model.reorder(asap)
+        XCTAssertTrue(model.wantsASAP)
+        XCTAssertEqual(model.pickupDraft.when, PickupSchedule.asap)
+        XCTAssertTrue(PickupSchedule.isASAP(model.pickupDraft.when))
+
+        model.reorder(sampleRequest())
+        XCTAssertFalse(model.wantsASAP)
+        XCTAssertEqual(model.pickupDraft.when, "")
+        XCTAssertGreaterThan(model.pickupDate, Date())
+        XCTAssertFalse(PickupSchedule.isASAP("Tomorrow 10am"))
+    }
+
+    func testSubmitASAPSendsASAPEvenWhenThePickerDateIsPast() async throws {
+        let service = ScriptedRequestService(
+            result: SubmitResult(
+                succeeded: true,
+                referenceID: "app-pickup-asap00000001",
+                squareOK: true,
+                notifyOK: true,
+                message: nil
+            )
+        )
+        let model = makeModel(requests: service)
+        model.wantsASAP = true
+        model.pickupDate = Date().addingTimeInterval(-3600)
+        model.pickupDraft = PickupDraft(
+            name: "Ada Lovelace",
+            phone: "(646) 555-1234",
+            address: "400 E 87th Street",
+            when: ""
+        )
+
+        await model.submitPickup()
+
+        XCTAssertEqual(service.drafts.first?.when, "ASAP")
+        XCTAssertEqual(model.history.first?.when, "ASAP")
+        XCTAssertTrue(model.showConfirmation)
+        XCTAssertNil(model.submitError)
+    }
+
+    func testPastDateWithoutASAPDoesNotSubmit() async {
+        let service = ScriptedRequestService(
+            result: SubmitResult(
+                succeeded: true,
+                referenceID: "should-not-send",
+                squareOK: true,
+                notifyOK: true,
+                message: nil
+            )
+        )
+        service.onSubmit = { XCTFail("a past time must not be submitted") }
+        let model = makeModel(requests: service)
+        model.wantsASAP = false
+        model.pickupDate = Date().addingTimeInterval(-3600)
+        model.pickupDraft = PickupDraft(
+            name: "Ada Lovelace",
+            phone: "6465551234",
+            address: "400 E 87th Street",
+            when: ""
+        )
+
+        await model.submitPickup()
+
+        XCTAssertTrue(service.drafts.isEmpty)
+        XCTAssertEqual(model.submitError, "Choose a future pickup time.")
+        XCTAssertFalse(model.showConfirmation)
     }
 
     func testPrepareFillsABlankFormFromTheProfileAndReorderWins() {
@@ -221,12 +295,14 @@ final class ReorderPrefillTests: XCTestCase {
 private final class ScriptedRequestService: RequestService {
     var result: SubmitResult
     var onSubmit: () -> Void = {}
+    var drafts: [PickupDraft] = []
 
     init(result: SubmitResult) {
         self.result = result
     }
 
     func submit(draft: PickupDraft, config: RuntimeConfig) async -> SubmitResult {
+        drafts.append(draft)
         onSubmit()
         return result
     }
