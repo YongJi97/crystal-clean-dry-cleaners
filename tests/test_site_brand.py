@@ -22,6 +22,8 @@ def test_every_page_links_the_new_icon_and_wordmark():
             assert snippet in text, f"{name} missing {snippet}"
         assert "cleaner_logo.png" not in text
         assert "favicon-32x32.png" not in text
+    assert not (ROOT / "images/cleaner_logo.png").exists()
+    assert not (ROOT / "images/favicon-32x32.png").exists()
 
 
 def _png_size_and_color(path: Path):
