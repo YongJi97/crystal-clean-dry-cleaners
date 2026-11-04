@@ -2,7 +2,9 @@ import Foundation
 
 /// Debug-only launch arguments for screenshots. Release builds do not call this.
 enum DebugLaunch {
-    static let demoWhen = "Tomorrow 10am"
+    /// Tomorrow at 10:00, formatted the same way the date picker submits `when`.
+    static var demoPickupDate: Date { PickupSchedule.defaultDate() }
+    static var demoWhen: String { PickupSchedule.format(demoPickupDate) }
 
     static let demoProfile = Profile(
         name: "[TEST] Demo",
@@ -59,11 +61,20 @@ enum DebugLaunch {
 
     @MainActor
     static func apply(_ model: AppModel, arguments: [String]) {
-        let request = demoRequest
+        let pickupDate = PickupSchedule.defaultDate()
+        var draft = demoDraft
+        draft.when = PickupSchedule.format(pickupDate)
+        let request = StoredRequest(
+            draft: draft,
+            referenceID: "test-demo",
+            isTest: true,
+            createdAt: demoCreatedAt
+        )
         if seedsDemo(arguments) {
             model.profile = demoProfile
             model.history = [request]
             model.pickupDraft = request.draft
+            model.pickupDate = pickupDate
         }
         if let tab = startTab(from: arguments) {
             model.selectedTab = tab
@@ -74,6 +85,7 @@ enum DebugLaunch {
             model.selectedTab = .pickup
             if model.pickupDraft.isBlank {
                 model.pickupDraft = request.draft
+                model.pickupDate = pickupDate
             }
         }
     }

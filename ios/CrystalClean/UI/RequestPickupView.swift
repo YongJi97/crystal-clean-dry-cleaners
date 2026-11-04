@@ -42,23 +42,15 @@ struct RequestPickupView: View {
                             .foregroundStyle(.red)
                     }
                 }
-                Section {
-                    Button {
-                        didAttemptSubmit = true
-                        Task { await model.submitPickup() }
-                    } label: {
-                        if model.isSubmitting {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            Text("Send pickup request")
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .disabled(model.isSubmitting)
-                }
             }
-            .contentMargins(.bottom, 24, for: .scrollContent)
+            .contentMargins(.bottom, 16, for: .scrollContent)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                submitButton
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
+                    .background(.background)
+            }
             .navigationTitle("Request Pickup")
             .navigationDestination(isPresented: $model.showConfirmation) {
                 ConfirmationView(referenceID: model.lastReferenceID, shop: model.catalog.shop)
@@ -75,6 +67,27 @@ struct RequestPickupView: View {
 
     private var showPhoneError: Bool {
         didAttemptSubmit && !PhoneValidation.isValid(model.pickupDraft.phone)
+    }
+
+    private var submitButton: some View {
+        Button {
+            didAttemptSubmit = true
+            Task { await model.submitPickup() }
+        } label: {
+            Group {
+                if model.isSubmitting {
+                    ProgressView()
+                } else {
+                    Text("Send pickup request")
+                        .font(.headline)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 6)
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+        .disabled(model.isSubmitting)
     }
 }
 

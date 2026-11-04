@@ -121,8 +121,10 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertEqual(seeded.profile.email, "demo@example.com")
         XCTAssertEqual(seeded.profile.addressLine2, "Apt 2B")
         XCTAssertEqual(seeded.history.first?.addressLine2, "Apt 2B")
-        XCTAssertEqual(seeded.history.first?.when, "Tomorrow 10am")
-        XCTAssertEqual(seeded.pickupDraft.when, "Tomorrow 10am")
+        XCTAssertEqual(seeded.history.first?.when, PickupSchedule.format(seeded.pickupDate))
+        XCTAssertEqual(seeded.pickupDraft.when, seeded.history.first?.when)
+        XCTAssertGreaterThan(seeded.pickupDate, Date())
+        XCTAssertNotEqual(seeded.history.first?.when, "Tomorrow 10am")
         XCTAssertEqual(seeded.pickupDraft.addressLine2, "Apt 2B")
         XCTAssertTrue(PhoneValidation.isValid(seeded.profile.phone))
         if let created = seeded.history.first?.createdAt {
@@ -137,7 +139,8 @@ final class ReorderPrefillTests: XCTestCase {
         XCTAssertTrue(confirmation.showConfirmation)
         XCTAssertEqual(confirmation.selectedTab, .pickup)
         XCTAssertEqual(confirmation.lastReferenceID, "test-demo")
-        XCTAssertEqual(confirmation.pickupDraft.when, DebugLaunch.demoWhen)
+        XCTAssertEqual(confirmation.pickupDraft.when, PickupSchedule.format(confirmation.pickupDate))
+        XCTAssertGreaterThan(confirmation.pickupDate, Date())
 
         let plain = makeModel(launchArguments: [])
         XCTAssertTrue(plain.history.isEmpty)

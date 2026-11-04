@@ -33,7 +33,7 @@ Debug uses the mock service and does not touch the network.
 | `-useLocalBridge` | Debug only. Posts to `http://localhost:3015` with `is_test: true` and `X-Test: 1`. |
 | `-testMode` | Debug only. Live client against `https://www.crystalcleandrycleaner.com`, still marked as a test. Ignored in Release. |
 | `-startTab services` \| `pickup` \| `requests` \| `profile` | Debug only. Opens that tab. Ignored in Release. |
-| `-seedDemo` | Debug only. Shows one fake past request named `[TEST] Demo` (dated yesterday, address line 2 `Apt 2B`, preferred time `Tomorrow 10am`) and a matching profile. Nothing is written to disk. |
+| `-seedDemo` | Debug only. Shows one fake request named `[TEST] Demo` created yesterday, with address line 2 `Apt 2B` and a preferred time of tomorrow at 10:00 stored as a formatted date. Nothing is written to disk. |
 | `-showConfirmation` | Debug only. Opens Request Pickup on the confirmation screen with reference `test-demo`. |
 
 Both `-useLocalBridge` and `-testMode` send `is_test: true`, prefix the name with `[TEST] `, and set the Formspree `_subject` to `[TEST] Pickup request — please ignore` so the email and Discord alert are labeled. They still post to Formspree. A test bridge call does not create a Square order once the server build that understands `is_test` is deployed.

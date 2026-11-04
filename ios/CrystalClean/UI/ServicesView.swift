@@ -75,6 +75,11 @@ struct ServicesView: View {
                         }
                     }
                     .contentMargins(.bottom, 24, for: .scrollContent)
+                    .safeAreaInset(edge: .bottom, spacing: 0) {
+                        Color.clear
+                            .frame(height: 72)
+                            .accessibilityHidden(true)
+                    }
                 }
             }
             .navigationTitle("Services & Prices")
