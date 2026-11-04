@@ -16,6 +16,8 @@ A static site — no build step required.
 - [Font Awesome 6.4.0](https://fontawesome.com/) free icons (via CDN)
 - [Formspree](https://formspree.io/) for the pickup-request form
 - [PlaceKit](https://placekit.io/) for address autocomplete
+- Shared price list in [`data/services.json`](data/services.json), rendered by [`services.js`](services.js) on the home and pricing pages (the HTML is the no-JS fallback)
+- Pickup → Square bridge in [`pickup-square-bridge/`](pickup-square-bridge/README.md)
 - Google Analytics (`G-HDLGS3C2DZ`)
 
 ### Design system
@@ -75,6 +77,9 @@ A few values in the source still use placeholder defaults — search the repo fo
 - **Social links** — the footer Facebook / Instagram / Twitter / TikTok icons in all three main pages still link to `href="#"`. Look for the `<!-- TODO: replace href="#" with real social profile URLs -->` markers.
 - **Formspree form ID** — set in `request-pickup.html` (`FORMSPREE_FORM_ID`).
 - **PlaceKit API key** — set in `request-pickup.html` (`PLACEKIT_API_KEY`). Free tier is 10,000 requests/month.
+- **Pickup bridge** — copy `pickup-square-bridge/.env.example` to `pickup-square-bridge/.env`. Real tickets need `SQUARE_ACCESS_TOKEN`, `SQUARE_LOCATION_ID`, and `SQUARE_ENV=production` when you want the store printer. Set `APP_API_KEY` so non-browser clients (the iOS app) must send `X-App-Key`. The public form keeps working from the two site origins without that header. See the bridge README for the test flag (`is_test` / `X-Test: 1`), the Formspree `[TEST]` subject, and the owners list (`OWNERS_PASSWORD`, `OWNERS_SESSION_SECRET`, https://www.crystalcleandrycleaner.com/owners).
+
+Prices on the home page (“From”) and on `/pricing` are listed in `data/services.json`. Edit that file; the pages fetch it and fill the existing cards. With JavaScript off, the hardcoded HTML still shows the same prices. Nginx serves the file as `application/json` with a 5-minute cache.
 
 ## SEO
 
