@@ -97,9 +97,17 @@ final class PickupPayloadTests: XCTestCase {
 
         let testMode = RuntimeConfig.resolve(arguments: ["-testMode"], info: [:], isDebug: false)
         XCTAssertFalse(testMode.useMock)
-        XCTAssertTrue(testMode.isTest)
+        XCTAssertFalse(testMode.isTest)
         XCTAssertEqual(testMode.bridgeBaseURL, RuntimeConfig.productionBridge)
-        XCTAssertEqual(testMode.formspreeURL, RuntimeConfig.formspree)
+
+        let debugTest = RuntimeConfig.resolve(arguments: ["-testMode"], info: [:], isDebug: true)
+        XCTAssertFalse(debugTest.useMock)
+        XCTAssertTrue(debugTest.isTest)
+        XCTAssertEqual(debugTest.formspreeURL, RuntimeConfig.formspree)
+
+        let releaseLocal = RuntimeConfig.resolve(arguments: ["-useLocalBridge"], info: [:], isDebug: false)
+        XCTAssertFalse(releaseLocal.isTest)
+        XCTAssertEqual(releaseLocal.bridgeBaseURL, RuntimeConfig.productionBridge)
 
         XCTAssertEqual(RuntimeConfig.appAPIKey(from: ["APP_API_KEY": "$(APP_API_KEY)"]), "")
         XCTAssertEqual(RuntimeConfig.appAPIKey(from: ["APP_API_KEY": "  "]), "")

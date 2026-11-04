@@ -3,6 +3,62 @@ import Foundation
 struct ServiceCatalog: Codable, Equatable {
     var currency: String
     var categories: [ServiceCategory]
+    var shop: ShopInfo?
+}
+
+struct ShopInfo: Codable, Equatable {
+    var name: String?
+    var phone: String?
+    var phoneDisplay: String?
+    var address: String?
+    var hours: String?
+    var latitude: Double?
+    var longitude: Double?
+
+    var callURL: URL? {
+        let digits = (phone ?? "").filter(\.isNumber)
+        guard !digits.isEmpty else { return nil }
+        return URL(string: "tel:\(digits)")
+    }
+
+    var displayPhone: String {
+        (phoneDisplay ?? phone ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+enum ItemExplainers {
+    private static let builtin = [
+        "Hanger": "Returned on a hanger instead of folded.",
+        "Box": "Folded and packed in a box.",
+        "Hand Press": "Pressed by hand for a sharper finish.",
+    ]
+
+    static func detail(for item: ServiceItem) -> String? {
+        if let notes = item.notes?.trimmingCharacters(in: .whitespacesAndNewlines), !notes.isEmpty {
+            return notes
+        }
+        return builtin[item.name]
+    }
+}
+
+enum ServiceSearch {
+    static func filter(_ categories: [ServiceCategory], query: String) -> [ServiceCategory] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return categories }
+        return categories.compactMap { category in
+            if category.name.localizedCaseInsensitiveContains(trimmed) {
+                return category
+            }
+            let items = category.items.filter { item in
+                item.name.localizedCaseInsensitiveContains(trimmed)
+                    || (ItemExplainers.detail(for: item)?.localizedCaseInsensitiveContains(trimmed) ?? false)
+            }
+            guard !items.isEmpty else { return nil }
+            var copy = category
+            copy.items = items
+            return copy
+        }
+    }
 }
 
 struct ServiceCategory: Codable, Equatable, Identifiable {

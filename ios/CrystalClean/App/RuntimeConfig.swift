@@ -33,10 +33,17 @@ struct RuntimeConfig: Equatable {
         isDebug: Bool = isDebugBuild
     ) -> RuntimeConfig {
         let key = appAPIKey(from: info)
-        let testMode = arguments.contains("-testMode")
-        let local = arguments.contains("-useLocalBridge")
-
-        if isDebug && local {
+        // Release ignores every debug launch argument, including -testMode and -useLocalBridge.
+        guard isDebug else {
+            return RuntimeConfig(
+                useMock: false,
+                bridgeBaseURL: productionBridge,
+                formspreeURL: formspree,
+                isTest: false,
+                appAPIKey: key
+            )
+        }
+        if arguments.contains("-useLocalBridge") {
             return RuntimeConfig(
                 useMock: false,
                 bridgeBaseURL: localBridge,
@@ -45,7 +52,7 @@ struct RuntimeConfig: Equatable {
                 appAPIKey: key
             )
         }
-        if testMode {
+        if arguments.contains("-testMode") {
             return RuntimeConfig(
                 useMock: false,
                 bridgeBaseURL: productionBridge,
@@ -54,20 +61,11 @@ struct RuntimeConfig: Equatable {
                 appAPIKey: key
             )
         }
-        if isDebug {
-            return RuntimeConfig(
-                useMock: true,
-                bridgeBaseURL: localBridge,
-                formspreeURL: formspree,
-                isTest: true,
-                appAPIKey: key
-            )
-        }
         return RuntimeConfig(
-            useMock: false,
-            bridgeBaseURL: productionBridge,
+            useMock: true,
+            bridgeBaseURL: localBridge,
             formspreeURL: formspree,
-            isTest: false,
+            isTest: true,
             appAPIKey: key
         )
     }

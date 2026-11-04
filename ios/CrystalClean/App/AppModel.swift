@@ -21,7 +21,7 @@ final class AppModel {
     var showConfirmation = false
     var lastReferenceID = ""
     var draftRevision = 0
-    var profileSaved = false
+    var pickupDate = PickupSchedule.defaultDate()
 
     let config: RuntimeConfig
     private let requests: RequestService
@@ -80,21 +80,38 @@ final class AppModel {
     }
 
     func reorder(_ request: StoredRequest) {
-        pickupDraft = request.draft
+        var draft = request.draft
+        draft.when = ""
+        pickupDraft = draft
+        pickupDate = PickupSchedule.defaultDate()
         showConfirmation = false
         submitError = nil
-        profileSaved = false
         draftRevision += 1
         selectedTab = .pickup
     }
 
     func saveProfile() {
         profileStore.save(profile)
-        profileSaved = true
+    }
+
+    func clearMyData() {
+        profile = Profile()
+        profileStore.save(profile)
+        history = []
+        historyStore.save([])
+        pickupDraft = PickupDraft()
+        pickupDate = PickupSchedule.defaultDate()
+        showConfirmation = false
+        submitError = nil
     }
 
     func submitPickup() async {
         guard !isSubmitting else { return }
+        pickupDraft.when = PickupSchedule.format(pickupDate)
+        guard pickupDate >= Date().addingTimeInterval(-60) else {
+            submitError = "Choose a future pickup time."
+            return
+        }
         guard pickupDraft.isSubmittable else {
             submitError = "Enter your name, a valid phone number, the pickup address, and a time."
             return

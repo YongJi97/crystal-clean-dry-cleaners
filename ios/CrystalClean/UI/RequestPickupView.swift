@@ -27,7 +27,12 @@ struct RequestPickupView: View {
                     TextField("Pickup address", text: $model.pickupDraft.address)
                         .textContentType(.fullStreetAddress)
                     AddressLine2Field(text: $model.pickupDraft.addressLine2)
-                    TextField("Preferred date & time", text: $model.pickupDraft.when)
+                    DatePicker(
+                        "Preferred date & time",
+                        selection: $model.pickupDate,
+                        in: Date()...,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
                     TextField("Notes (optional)", text: $model.pickupDraft.notes, axis: .vertical)
                         .lineLimit(3...6)
                 }
@@ -56,7 +61,7 @@ struct RequestPickupView: View {
             .contentMargins(.bottom, 24, for: .scrollContent)
             .navigationTitle("Request Pickup")
             .navigationDestination(isPresented: $model.showConfirmation) {
-                ConfirmationView(referenceID: model.lastReferenceID)
+                ConfirmationView(referenceID: model.lastReferenceID, shop: model.catalog.shop)
             }
             .onAppear {
                 model.preparePickupForm()
@@ -90,23 +95,30 @@ struct AddressLine2Field: View {
 
 struct ConfirmationView: View {
     var referenceID: String
+    var shop: ShopInfo?
+    @ScaledMetric(relativeTo: .largeTitle) private var markSize: CGFloat = 56
 
     var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(Color(red: 44 / 255, green: 111 / 255, blue: 174 / 255))
-            Text("Request received")
+                .font(.system(size: markSize))
+                .foregroundStyle(Color("Brand"))
+                .accessibilityHidden(true)
+            Text(ConfirmationCopy.title(for: referenceID))
                 .font(.title2.bold())
-            Text("We’ll confirm your pickup. Save this reference.")
+                .multilineTextAlignment(.center)
+            Text("We’ll confirm your pickup.")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
-            Text(referenceID)
-                .font(.body.monospaced())
-                .textSelection(.enabled)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 10))
+            if let label = ConfirmationCopy.referenceLabel(for: referenceID) {
+                Text(label)
+                    .font(.body.monospaced())
+                    .textSelection(.enabled)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 10))
+            }
+            CallShopLink(shop: shop)
         }
         .padding()
         .navigationTitle("Confirmation")

@@ -23,7 +23,7 @@ struct RootView: View {
                 .tabItem { Label("Profile", systemImage: "person") }
                 .tag(AppTab.profile)
         }
-        .tint(Color(red: 44 / 255, green: 111 / 255, blue: 174 / 255))
+        .tint(Color("AccentColor"))
         .onAppear {
             UNUserNotificationCenter.current().delegate = NotificationPresenter.shared
         }

@@ -11,13 +11,16 @@ final class ReorderPrefillTests: XCTestCase {
 
         model.reorder(stored)
 
-        XCTAssertEqual(model.pickupDraft, stored.draft)
+        var expected = stored.draft
+        expected.when = ""
+        XCTAssertEqual(model.pickupDraft, expected)
         XCTAssertEqual(model.pickupDraft.name, "Ada Lovelace")
         XCTAssertEqual(model.pickupDraft.phone, "6465551234")
         XCTAssertEqual(model.pickupDraft.email, "ada@example.com")
         XCTAssertEqual(model.pickupDraft.address, "400 E 87th Street")
         XCTAssertEqual(model.pickupDraft.addressLine2, "Apt 4B")
-        XCTAssertEqual(model.pickupDraft.when, "Tomorrow 10am")
+        XCTAssertEqual(model.pickupDraft.when, "")
+        XCTAssertGreaterThan(model.pickupDate, Date())
         XCTAssertEqual(model.pickupDraft.notes, "Buzz 4B")
         XCTAssertEqual(model.selectedTab, .pickup)
         XCTAssertFalse(model.showConfirmation)
@@ -84,6 +87,7 @@ final class ReorderPrefillTests: XCTestCase {
         model.reorder(model.history[0])
         XCTAssertEqual(model.pickupDraft.name, "Ada Lovelace")
         XCTAssertEqual(model.pickupDraft.phone, "(646) 555-1234")
+        XCTAssertEqual(model.pickupDraft.when, "")
     }
 
     func testInvalidPhoneDoesNotSubmit() async {

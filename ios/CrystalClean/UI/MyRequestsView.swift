@@ -31,13 +31,20 @@ struct MyRequestsView: View {
                             Text(request.address)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
-                            Text(request.id)
-                                .font(.caption.monospaced())
-                                .foregroundStyle(.secondary)
-                                .textSelection(.enabled)
+                            if let label = ConfirmationCopy.referenceLabel(for: request.id) {
+                                Text(label)
+                                    .font(.caption.monospaced())
+                                    .foregroundStyle(.secondary)
+                                    .textSelection(.enabled)
+                            } else {
+                                Text(ConfirmationCopy.title(for: request.id))
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
                             Text(request.createdAt.formatted(date: .abbreviated, time: .shortened))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
+                            CallShopLink(shop: model.catalog.shop)
                             Button("Reorder") {
                                 model.reorder(request)
                             }

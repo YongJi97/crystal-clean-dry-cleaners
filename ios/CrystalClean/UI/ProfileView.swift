@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @Bindable var model: AppModel
+    @State private var confirmClear = false
 
     var body: some View {
         NavigationStack {
@@ -21,19 +22,29 @@ struct ProfileView: View {
                     AddressLine2Field(text: $model.profile.addressLine2)
                 }
                 Section {
-                    Button("Save profile") {
-                        model.saveProfile()
+                    if let privacyURL = URL(string: "https://www.crystalcleandrycleaner.com/privacy.html") {
+                        Link("Privacy policy", destination: privacyURL)
                     }
-                    if model.profileSaved {
-                        Text("Saved on this phone.")
-                            .foregroundStyle(.secondary)
+                    Button("Clear my data", role: .destructive) {
+                        confirmClear = true
                     }
+                } footer: {
+                    Text("Your name, phone, email, and address are saved on this phone as you type.")
+                        .font(.footnote)
                 }
             }
             .contentMargins(.bottom, 24, for: .scrollContent)
             .navigationTitle("Profile")
             .onChange(of: model.profile) { _, _ in
-                model.profileSaved = false
+                model.saveProfile()
+            }
+            .alert("Clear your data on this phone?", isPresented: $confirmClear) {
+                Button("Clear", role: .destructive) {
+                    model.clearMyData()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This removes your saved profile and pickup history from this phone. It does not delete a request the shop already received.")
             }
         }
     }

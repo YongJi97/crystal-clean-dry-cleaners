@@ -45,5 +45,46 @@ final class ServiceCatalogTests: XCTestCase {
 
         XCTAssertEqual(PriceFormat.line(wash.items[0]), "$1.00 / lb")
         XCTAssertEqual(PriceFormat.dollars(6.5), "$6.50")
+
+        let shop = try XCTUnwrap(catalog.shop)
+        XCTAssertEqual(shop.phone, "6463386883")
+        XCTAssertEqual(shop.phoneDisplay, "646-338-6883")
+        XCTAssertEqual(shop.address, "400 E 87th Street, New York, NY 10128")
+        XCTAssertEqual(shop.hours, "Mon–Sat · 7:30 AM – 7:00 PM")
+        XCTAssertEqual(shop.latitude, 40.7777)
+        XCTAssertEqual(shop.longitude, -73.9528)
+        XCTAssertEqual(
+            shirts.items.first { $0.name == "Hanger" }?.notes,
+            "Returned on a hanger instead of folded."
+        )
+    }
+
+    func testCatalogWithoutShopStillDecodes() throws {
+        let json = #"{"currency":"USD","categories":[]}"#
+        let catalog = try JSONDecoder().decode(ServiceCatalog.self, from: Data(json.utf8))
+        XCTAssertNil(catalog.shop)
+    }
+
+    func testExplainersSearchAndConfirmationCopy() throws {
+        let bare = ServiceItem(name: "Hand Press", price: 6, unit: "item", notes: nil)
+        XCTAssertEqual(ItemExplainers.detail(for: bare), "Pressed by hand for a sharper finish.")
+
+        let json = """
+        {"currency":"USD","categories":[{"id":"shirts","name":"Shirts","items":[{"name":"Hand Press","price":6,"unit":"item"},{"name":"Sheets","price":15,"unit":"item"}]}]}
+        """
+        let catalog = try JSONDecoder().decode(ServiceCatalog.self, from: Data(json.utf8))
+        let matches = ServiceSearch.filter(catalog.categories, query: "hand")
+        XCTAssertEqual(matches.first?.items.map(\.name), ["Hand Press"])
+
+        XCTAssertEqual(ConfirmationCopy.title(for: "test-abc"), "Request received")
+        XCTAssertEqual(
+            ConfirmationCopy.title(for: "local-abc123"),
+            "Saved — call if you don't hear back"
+        )
+        XCTAssertNil(ConfirmationCopy.referenceLabel(for: "local-abc123"))
+        let long = String(repeating: "a", count: 30)
+        XCTAssertEqual(ConfirmationCopy.referenceLabel(for: long), String(repeating: "a", count: 12))
+        XCTAssertGreaterThan(PickupSchedule.defaultDate(), Date())
+        XCTAssertFalse(PickupSchedule.format(PickupSchedule.defaultDate()).isEmpty)
     }
 }
