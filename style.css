@@ -604,6 +604,91 @@ ul {
     margin-bottom: 2rem;
 }
 
+.app-download {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.app-download-card {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+    padding: 1.15rem 0;
+}
+
+.app-download img {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.app-download-copy {
+    min-width: 0;
+}
+
+.app-download h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.2rem;
+}
+
+.app-download p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.app-download-actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.app-store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.4rem 0.95rem 0.45rem 0.75rem;
+}
+
+.app-store-badge:hover {
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.app-store-badge i {
+    font-size: 1.55rem;
+}
+
+.app-store-badge-kicker {
+    display: block;
+    font-size: 0.62rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+.app-store-badge-name {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.app-download-web {
+    font-size: 0.92rem;
+    font-weight: 650;
+}
+
 .hero-trust {
     display: flex;
     flex-wrap: wrap;
@@ -1967,6 +2052,15 @@ ul {
 }
 
 @media (max-width: 680px) {
+    .app-download-card {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .app-download-actions {
+        margin-left: 0;
+        align-items: flex-start;
+        width: 100%;
+    }
     .cards-3,
     .cards-4,
     .cards-2 { grid-template-columns: 1fr; }
