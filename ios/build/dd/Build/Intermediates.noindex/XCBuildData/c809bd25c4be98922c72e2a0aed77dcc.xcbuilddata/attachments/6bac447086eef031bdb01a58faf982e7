@@ -1,0 +1,151 @@
+{
+  "" : {
+    "const-values" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.swiftconstvalues",
+    "dependencies" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.d",
+    "diagnostics" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.dia",
+    "emit-module-dependencies" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary-emit-module.dia",
+    "pch" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.swiftdeps"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/AppModel.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AppModel.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AppModel.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AppModel.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/CrystalCleanApp.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalCleanApp.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalCleanApp.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalCleanApp.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/DebugLaunch.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/DebugLaunch.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/DebugLaunch.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/DebugLaunch.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/RuntimeConfig.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RuntimeConfig.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RuntimeConfig.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RuntimeConfig.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupDraft.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupDraft.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupDraft.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupDraft.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupSchedule.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupSchedule.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupSchedule.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupSchedule.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/Profile.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/Profile.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/Profile.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/Profile.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/ServiceCatalog.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServiceCatalog.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServiceCatalog.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServiceCatalog.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/StoredRequest.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/StoredRequest.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/StoredRequest.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/StoredRequest.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/AddressCompletion.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AddressCompletion.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AddressCompletion.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/AddressCompletion.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/CatalogService.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CatalogService.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CatalogService.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CatalogService.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/LiveRequestService.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/LiveRequestService.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/LiveRequestService.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/LiveRequestService.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/MockRequestService.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MockRequestService.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MockRequestService.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MockRequestService.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PhoneValidation.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PhoneValidation.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PhoneValidation.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PhoneValidation.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupNotifier.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupNotifier.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupNotifier.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupNotifier.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupPayload.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupPayload.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupPayload.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupPayload.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupValidation.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupValidation.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupValidation.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/PickupValidation.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/ProfileStore.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileStore.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileStore.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileStore.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestHistoryStore.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestHistoryStore.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestHistoryStore.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestHistoryStore.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestService.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestService.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestService.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestService.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/KeyboardDismissal.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/KeyboardDismissal.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/KeyboardDismissal.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/KeyboardDismissal.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/MyRequestsView.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MyRequestsView.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MyRequestsView.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/MyRequestsView.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ProfileView.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileView.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileView.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ProfileView.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RequestPickupView.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestPickupView.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestPickupView.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RequestPickupView.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RootView.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RootView.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RootView.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/RootView.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ServicesView.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServicesView.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServicesView.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ServicesView.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ShopCard.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ShopCard.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ShopCard.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/ShopCard.o"
+  },
+  "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

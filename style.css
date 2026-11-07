@@ -601,7 +601,67 @@ ul {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    margin-bottom: 1.15rem;
+}
+
+.hero-app {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.1rem;
     margin-bottom: 2rem;
+}
+
+.hero-app-note {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 16rem;
+    line-height: 1.35;
+}
+
+.app-store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.4rem 0.95rem 0.45rem 0.75rem;
+}
+
+.app-store-badge:hover {
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.app-store-badge--light {
+    background: #fff;
+    color: #000;
+}
+
+.app-store-badge--light:hover {
+    color: #000;
+}
+
+.app-store-badge i {
+    font-size: 1.55rem;
+}
+
+.app-store-badge-kicker {
+    display: block;
+    font-size: 0.62rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+.app-store-badge-name {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
 }
 
 .hero-trust {
@@ -1639,6 +1699,16 @@ ul {
     color: var(--sky);
     width: 18px;
     margin-right: 0.5rem;
+}
+
+.form-card-aside .aside-app {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: grid;
+    justify-items: start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
 }
 
 .form-body {

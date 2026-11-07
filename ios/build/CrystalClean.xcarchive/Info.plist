@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/CrystalClean.app</string>
+		<key>Architectures</key>
+		<array>
+			<string>arm64</string>
+		</array>
+		<key>CFBundleIdentifier</key>
+		<string>com.yongji97.crystalclean</string>
+		<key>CFBundleShortVersionString</key>
+		<string>1.0</string>
+		<key>CFBundleVersion</key>
+		<string>202611050834</string>
+		<key>SigningIdentity</key>
+		<string>Apple Development: yongjichen97+apple@gmail.com (U295LCTJYH)</string>
+		<key>Team</key>
+		<string>C3P54T2QV6</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2026-11-05T13:34:57Z</date>
+	<key>Distributions</key>
+	<array>
+		<dict>
+			<key>adamId</key>
+			<string>6830972978</string>
+			<key>certificateSHA1</key>
+			<string>0CE6393A05CA84561AFB75CB8EEE0F4870B40E19</string>
+			<key>destination</key>
+			<string>upload</string>
+			<key>identifier</key>
+			<string>494dae27-438e-499e-b780-785d795985ac</string>
+			<key>preparationEvent</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-05T13:34:57Z</string>
+				<key>errors</key>
+				<array/>
+				<key>infoMessages</key>
+				<array/>
+				<key>shortTitle</key>
+				<string>Prepared</string>
+				<key>state</key>
+				<string>success</string>
+				<key>title</key>
+				<string>Prepared archive for uploading</string>
+				<key>warnings</key>
+				<array/>
+			</dict>
+			<key>providerId</key>
+			<string>9c9de50b-3442-4b5d-9fbf-fc03d0b68ec3</string>
+			<key>task</key>
+			<string>distribute</string>
+			<key>teamID</key>
+			<string>C3P54T2QV6</string>
+			<key>uploadDestination</key>
+			<string>App Store</string>
+			<key>uploadEvent</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-05T13:36:06Z</string>
+				<key>errors</key>
+				<array/>
+				<key>infoMessages</key>
+				<array/>
+				<key>shortTitle</key>
+				<string>Uploaded</string>
+				<key>state</key>
+				<string>success</string>
+				<key>title</key>
+				<string>Uploaded to Apple</string>
+				<key>warnings</key>
+				<array/>
+			</dict>
+			<key>uploadedBuildNumber</key>
+			<string>202611050834</string>
+		</dict>
+	</array>
+	<key>Name</key>
+	<string>CrystalClean</string>
+	<key>SchemeName</key>
+	<string>CrystalClean</string>
+</dict>
+</plist>

@@ -1,0 +1,314 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project CrystalClean.xcodeproj -scheme CrystalClean -configuration Debug -destination id=00008160-001250CC3A700036 -derivedDataPath /Users/yongji/Developer/CrystalClean/DerivedData -allowProvisioningUpdates DEVELOPMENT_TEAM=C3P54T2QV6 CODE_SIGN_STYLE=Automatic build
+
+Build settings from command line:
+    CODE_SIGN_STYLE = Automatic
+    DEVELOPMENT_TEAM = C3P54T2QV6
+
+2026-11-04 13:07:13.868 xcodebuild[37140:3442824]  DVTDevice: Unable to parse valid-ish build string 24B91020 with error invalidDigitCount(91020).
+2026-11-04 13:07:13.913 xcodebuild[37140:3442781]  DVTDevice: Unable to parse valid-ish build string 24B91020 with error invalidDigitCount(91020).
+2026-11-04 13:07:13.914 xcodebuild[37140:3442781]  DVTDevice: Unable to parse valid-ish build string 24B91020 with error invalidDigitCount(91020).
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CrystalClean' in project 'CrystalClean' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: cf76fecfd2ffb694c4bf79cc5a6d17e9
+Build description path: /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/XCBuildData/cf76fecfd2ffb694c4bf79cc5a6d17e9.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk /Users/yongji/Developer/CrystalClean/DerivedData/SDKStatCaches.noindex/iphoneos27.1-24A94232-7568eff67e6f40c5a98ca4ef40d9005c.sdkstatcache
+    cd /Users/yongji/Developer/CrystalClean/ios/CrystalClean.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk -o /Users/yongji/Developer/CrystalClean/DerivedData/SDKStatCaches.noindex/iphoneos27.1-24A94232-7568eff67e6f40c5a98ca4ef40d9005c.sdkstatcache
+
+GenerateAssetSymbols /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets --compile /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_dependencies --output-partial-info-plist /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphoneos --bundle-identifier com.yongji97.crystalclean --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CompileAssetCatalogVariant thinned /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets --compile /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone19,4 --filter-for-device-os-version 27.2 --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphoneos
+/* com.apple.actool.compilation-results */
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist_thinned
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver CrystalClean normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CrystalClean -Onone @/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/yongji/Developer/CrystalClean/DerivedData/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -F /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/SDKStatCaches.noindex/iphoneos27.1-24A94232-7568eff67e6f40c5a98ca4ef40d9005c.sdkstatcache -output-file-map /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean_const_extract_protocols.json -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-generated-files.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-own-target-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-all-target-headers.hmap -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-project-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/include -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources-normal/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-Swift.h -working-directory /Users/yongji/Developer/CrystalClean/ios -experimental-emit-module-separately -disable-cmo
+
+CpResource /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/services.json /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/services.json (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/services.json /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app
+
+CpResource /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/PrivacyInfo.xcprivacy /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/PrivacyInfo.xcprivacy (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/PrivacyInfo.xcprivacy /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app
+
+LinkAssetCatalog /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Assets.xcassets (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-linkAssetCatalog --thinned /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/thinned --thinned-dependencies /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist_unthinned --output /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app --plist-output /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Assets.car (in target 'CrystalClean' from project 'CrystalClean')
+note: Emplaced /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/AppIcon76x76@2x~ipad.png (in target 'CrystalClean' from project 'CrystalClean')
+note: Emplaced /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/AppIcon60x60@2x.png (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ CrystalClean (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    
+
+SwiftCompile normal arm64 Compiling\ AppModel.swift,\ CatalogService.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/AppModel.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/CatalogService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/AppModel.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile AppModel.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/CatalogService.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile CatalogService.swift
+
+SwiftCompile normal arm64 Compiling\ MyRequestsView.swift,\ PhoneValidation.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/MyRequestsView.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PhoneValidation.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/MyRequestsView.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile MyRequestsView.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PhoneValidation.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile PhoneValidation.swift
+
+SwiftCompile normal arm64 Compiling\ Profile.swift,\ ProfileStore.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/Profile.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/ProfileStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/Profile.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile Profile.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/ProfileStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile ProfileStore.swift
+
+SwiftCompile normal arm64 Compiling\ LiveRequestService.swift,\ MockRequestService.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/LiveRequestService.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/MockRequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/LiveRequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile LiveRequestService.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/MockRequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile MockRequestService.swift
+
+SwiftCompile normal arm64 Compiling\ ProfileView.swift,\ RequestHistoryStore.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ProfileView.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestHistoryStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ProfileView.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile ProfileView.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestHistoryStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile RequestHistoryStore.swift
+
+SwiftCompile normal arm64 Compiling\ PickupDraft.swift,\ PickupNotifier.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupDraft.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupNotifier.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupDraft.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile PickupDraft.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupNotifier.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile PickupNotifier.swift
+
+SwiftCompile normal arm64 Compiling\ RequestPickupView.swift,\ RequestService.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RequestPickupView.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RequestPickupView.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile RequestPickupView.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/RequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile RequestService.swift
+
+SwiftCompile normal arm64 Compiling\ ShopCard.swift,\ StoredRequest.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ShopCard.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/StoredRequest.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ShopCard.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile ShopCard.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/StoredRequest.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile StoredRequest.swift
+
+SwiftCompile normal arm64 Compiling\ PickupPayload.swift,\ PickupSchedule.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupPayload.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupSchedule.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/PickupPayload.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile PickupPayload.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/PickupSchedule.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile PickupSchedule.swift
+
+SwiftCompile normal arm64 Compiling\ ServiceCatalog.swift,\ ServicesView.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/ServiceCatalog.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ServicesView.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Model/ServiceCatalog.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile ServiceCatalog.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/ServicesView.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile ServicesView.swift
+
+SwiftCompile normal arm64 Compiling\ RootView.swift,\ RuntimeConfig.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RootView.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/RuntimeConfig.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/UI/RootView.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile RootView.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/RuntimeConfig.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile RuntimeConfig.swift
+
+SwiftCompile normal arm64 Compiling\ CrystalCleanApp.swift,\ DebugLaunch.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/CrystalCleanApp.swift /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/DebugLaunch.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/CrystalCleanApp.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile CrystalCleanApp.swift
+
+SwiftCompile normal arm64 /Users/yongji/Developer/CrystalClean/ios/CrystalClean/App/DebugLaunch.swift (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-SwiftPerFileCompile DebugLaunch.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling Profile.swift, ProfileStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PickupPayload.swift, PickupSchedule.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling LiveRequestService.swift, MockRequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PickupDraft.swift, PickupNotifier.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ShopCard.swift, StoredRequest.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling MyRequestsView.swift, PhoneValidation.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RootView.swift, RuntimeConfig.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppModel.swift, CatalogService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for CrystalClean (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriver\ Compilation\ Requirements CrystalClean normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CrystalClean -Onone @/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/yongji/Developer/CrystalClean/DerivedData/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -F /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/SDKStatCaches.noindex/iphoneos27.1-24A94232-7568eff67e6f40c5a98ca4ef40d9005c.sdkstatcache -output-file-map /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean_const_extract_protocols.json -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-generated-files.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-own-target-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-all-target-headers.hmap -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-project-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/include -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources-normal/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-Swift.h -working-directory /Users/yongji/Developer/CrystalClean/ios -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling ProfileView.swift, RequestHistoryStore.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+Copy /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.swiftmodule/arm64-apple-ios.abi.json /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.abi.json (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.abi.json /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftsourceinfo (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftsourceinfo /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling RequestPickupView.swift, RequestService.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ServiceCatalog.swift, ServicesView.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriverJobDiscovery normal arm64 Compiling CrystalCleanApp.swift, DebugLaunch.swift (in target 'CrystalClean' from project 'CrystalClean')
+
+SwiftDriver\ Compilation CrystalClean normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CrystalClean -Onone @/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/yongji/Developer/CrystalClean/DerivedData/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -F /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/SDKStatCaches.noindex/iphoneos27.1-24A94232-7568eff67e6f40c5a98ca4ef40d9005c.sdkstatcache -output-file-map /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/yongji/Developer/CrystalClean/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/yongji/Developer/CrystalClean/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean_const_extract_protocols.json -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-generated-files.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-own-target-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-all-target-headers.hmap -Xcc -iquote -Xcc /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean-project-headers.hmap -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/include -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources-normal/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources/arm64 -Xcc -I/Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-Swift.h -working-directory /Users/yongji/Developer/CrystalClean/ios -experimental-emit-module-separately -disable-cmo
+
+ExtractAppIntentsMetadata (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CrystalClean --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.1.sdk --xcode-version 27A9275 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.yongji97.crystalclean --output /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app --target-triple arm64-apple-ios17.0 --binary-file /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/CrystalClean --dependency-file /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean_dependency_info.dat --stringsdata-file /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.SwiftFileList --metadata-file-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean.DependencyMetadataFileList --static-metadata-file-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean.DependencyStaticMetadataFileList --swift-const-vals-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-04 13:07:17.450 appintentsmetadataprocessor[37182:3443103] Starting appintentsmetadataprocessor export
+2026-11-04 13:07:17.456 appintentsmetadataprocessor[37182:3443103] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+ProcessInfoPlistFile /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Info.plist /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Info.plist (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-infoPlistUtility /Users/yongji/Developer/CrystalClean/ios/CrystalClean/Resources/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/assetcatalog_generated_info.plist -requiredArchitecture arm64 -o /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Info.plist
+
+AppIntentsSSUTraining (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Info.plist --temp-dir-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/ssu --bundle-id com.yongji97.crystalclean --product-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app --extracted-metadata-path /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Metadata.appintents --metadata-file-list /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean.DependencyMetadataFileList --source-file /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Info.plist --archive-ssu-assets
+2026-11-04 13:07:17.479 appintentsnltrainingprocessor[37183:3443105] Parsing options for appintentsnltrainingprocessor
+2026-11-04 13:07:17.479 appintentsnltrainingprocessor[37183:3443105] Starting AppIntents SSU YAML Generation
+2026-11-04 13:07:17.481 appintentsnltrainingprocessor[37183:3443105] No AppShortcuts found - Skipping.
+
+CopySwiftLibs /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-swiftStdLibTool --copy --verbose --sign AF9C8DAD23441AB5740D1BBFF9754FC8DA34DE5A --scan-executable /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/CrystalClean.debug.dylib --scan-folder /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Frameworks --scan-folder /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/PlugIns --scan-folder /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/SystemExtensions --scan-folder /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+CodeSign /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/CrystalClean.debug.dylib (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    
+    Signing Identity:     "Apple Development: yongjichen97+apple@gmail.com (U295LCTJYH)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.yongji97.crystalclean"
+                          (0cb8bc46-3351-4f7e-9b09-12ba2f3dd97e)
+    
+    /usr/bin/codesign --force --sign AF9C8DAD23441AB5740D1BBFF9754FC8DA34DE5A --timestamp\=none --generate-entitlement-der /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/CrystalClean.debug.dylib
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/CrystalClean.debug.dylib: replacing existing signature
+
+CodeSign /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/__preview.dylib (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    
+    Signing Identity:     "Apple Development: yongjichen97+apple@gmail.com (U295LCTJYH)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.yongji97.crystalclean"
+                          (0cb8bc46-3351-4f7e-9b09-12ba2f3dd97e)
+    
+    /usr/bin/codesign --force --sign AF9C8DAD23441AB5740D1BBFF9754FC8DA34DE5A --timestamp\=none --generate-entitlement-der /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/__preview.dylib
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app/__preview.dylib: replacing existing signature
+
+CodeSign /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    
+    Signing Identity:     "Apple Development: yongjichen97+apple@gmail.com (U295LCTJYH)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.yongji97.crystalclean"
+                          (0cb8bc46-3351-4f7e-9b09-12ba2f3dd97e)
+    
+    /usr/bin/codesign --force --sign AF9C8DAD23441AB5740D1BBFF9754FC8DA34DE5A --entitlements /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/CrystalClean.build/Debug-iphoneos/CrystalClean.build/CrystalClean.app.xcent --timestamp\=none --generate-entitlement-der /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app
+/Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app: replacing existing signature
+
+Validate /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app (in target 'CrystalClean' from project 'CrystalClean')
+    cd /Users/yongji/Developer/CrystalClean/ios
+    builtin-validationUtility /Users/yongji/Developer/CrystalClean/DerivedData/Build/Products/Debug-iphoneos/CrystalClean.app -shallow-bundle -infoplist-subpath Info.plist
+
+PruneExplicitPrecompiledModules /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Users/yongji/Developer/CrystalClean/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Users/yongji/Developer/CrystalClean/DerivedData/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+** BUILD SUCCEEDED **
+

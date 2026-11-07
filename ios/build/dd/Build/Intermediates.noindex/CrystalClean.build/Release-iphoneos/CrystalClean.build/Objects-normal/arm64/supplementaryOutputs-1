@@ -1,0 +1,12 @@
+{
+  "/Users/yongji/Developer/CrystalClean/ios/CrystalClean/Services/AddressCompletion.swift" : {
+    "abi-baseline-json" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.abi.json",
+    "const-values" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.swiftconstvalues",
+    "dependencies" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.d",
+    "diagnostics" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-primary.dia",
+    "objc-header" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean-Swift.h",
+    "swiftdoc" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftdoc",
+    "swiftmodule" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftmodule",
+    "swiftsourceinfo" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/CrystalClean.build/Release-iphoneos/CrystalClean.build/Objects-normal/arm64/CrystalClean.swiftsourceinfo"
+  }
+}
