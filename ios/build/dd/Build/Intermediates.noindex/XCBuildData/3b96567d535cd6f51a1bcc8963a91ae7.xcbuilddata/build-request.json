@@ -1,0 +1,73 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildOnly"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "a5535df6a403f65a5f22daf922a16d86161cd019ca971cbfcf47e693ca727e2d"
+    }
+  ],
+  "containerPath" : "/Users/yongji/Developer/CrystalClean/ios/CrystalClean.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "hostTargetedPlatform" : null,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos27.1",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "arm64e.x1",
+        "arm64e",
+        "arm64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Products",
+      "derivedDataPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd",
+      "indexDataStoreFolderPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/yongji/Developer/CrystalClean/ios/build/dd/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+          "CODE_SIGN_STYLE" : "Automatic",
+          "DEVELOPMENT_TEAM" : "C3P54T2QV6"
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone19,4",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "27.2",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone19,4",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "TARGET_DEVICE_IDENTIFIER" : "00008160-001250CC3A700036",
+          "TARGET_DEVICE_MODEL" : "iPhone19,4",
+          "TARGET_DEVICE_OS_VERSION" : "27.2",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphoneos"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

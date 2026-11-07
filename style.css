@@ -601,51 +601,22 @@ ul {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    margin-bottom: 1.15rem;
+}
+
+.hero-app {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.1rem;
     margin-bottom: 2rem;
 }
 
-.app-download {
-    background: #fff;
-    border-bottom: 1px solid var(--line);
-}
-
-.app-download-card {
-    display: flex;
-    align-items: center;
-    gap: 1.15rem;
-    padding: 1.15rem 0;
-}
-
-.app-download img {
-    width: 64px;
-    height: 64px;
-    border-radius: 14px;
-    flex-shrink: 0;
-    box-shadow: var(--shadow-sm);
-}
-
-.app-download-copy {
-    min-width: 0;
-}
-
-.app-download h2 {
-    font-size: 1.25rem;
-    margin: 0 0 0.2rem;
-}
-
-.app-download p {
-    margin: 0;
+.hero-app-note {
     color: var(--muted);
-    font-size: 0.98rem;
-}
-
-.app-download-actions {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.4rem;
-    flex-shrink: 0;
+    font-size: 0.95rem;
+    max-width: 16rem;
+    line-height: 1.35;
 }
 
 .app-store-badge {
@@ -662,6 +633,15 @@ ul {
 .app-store-badge:hover {
     color: #fff;
     transform: translateY(-1px);
+}
+
+.app-store-badge--light {
+    background: #fff;
+    color: #000;
+}
+
+.app-store-badge--light:hover {
+    color: #000;
 }
 
 .app-store-badge i {
@@ -682,11 +662,6 @@ ul {
     font-weight: 650;
     line-height: 1.05;
     letter-spacing: -0.02em;
-}
-
-.app-download-web {
-    font-size: 0.92rem;
-    font-weight: 650;
 }
 
 .hero-trust {
@@ -1726,6 +1701,16 @@ ul {
     margin-right: 0.5rem;
 }
 
+.form-card-aside .aside-app {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: grid;
+    justify-items: start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
 .form-body {
     padding: clamp(1.5rem, 4vw, 2.5rem);
 }
@@ -2052,15 +2037,6 @@ ul {
 }
 
 @media (max-width: 680px) {
-    .app-download-card {
-        flex-wrap: wrap;
-        align-items: flex-start;
-    }
-    .app-download-actions {
-        margin-left: 0;
-        align-items: flex-start;
-        width: 100%;
-    }
     .cards-3,
     .cards-4,
     .cards-2 { grid-template-columns: 1fr; }
