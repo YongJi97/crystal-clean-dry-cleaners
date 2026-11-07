@@ -29,34 +29,48 @@ struct ShopCard: View {
                     .foregroundStyle(.secondary)
             }
             if let url = shop.callURL, !shop.displayPhone.isEmpty {
-                Link(destination: url) {
+                Button {
+                    ShopContactActions.call(url, openURL: { UIApplication.shared.open($0) })
+                } label: {
                     Label("Call \(shop.displayPhone)", systemImage: "phone")
                         .font(.body)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .buttonStyle(.borderless)
             }
             if ShopMaps.query(for: shop) != nil {
                 Button {
-                    showMapChooser = true
+                    ShopContactActions.chooseMap(presentMapChoices: { showMapChooser = true })
                 } label: {
                     Label("Open in Maps", systemImage: "map")
                         .font(.body)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .confirmationDialog("Open in Maps", isPresented: $showMapChooser, titleVisibility: .visible) {
-                    Button("Apple Maps") { ShopMaps.openApple(shop) }
-                    Button("Google Maps") { ShopMaps.openGoogle(shop) }
-                    Button("Cancel", role: .cancel) {}
-                }
+                .buttonStyle(.borderless)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
+        .confirmationDialog("Open in Maps", isPresented: $showMapChooser, titleVisibility: .visible) {
+            Button("Apple Maps") { ShopMaps.openApple(shop) }
+            Button("Google Maps") { ShopMaps.openGoogle(shop) }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 
     private func trimmed(_ value: String?) -> String? {
         let text = value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         return text.isEmpty ? nil : text
+    }
+}
+
+enum ShopContactActions {
+    static func call(_ url: URL, openURL: (URL) -> Void) {
+        openURL(url)
+    }
+
+    static func chooseMap(presentMapChoices: () -> Void) {
+        presentMapChoices()
     }
 }
 
@@ -134,8 +148,11 @@ struct CallShopLink: View {
     var body: some View {
         if let url = URL(string: "tel:\(digits)") {
             VStack(alignment: .leading, spacing: 2) {
-                Link("Need to change or cancel? Call us", destination: url)
-                    .font(.body)
+                Button("Need to change or cancel? Call us") {
+                    ShopContactActions.call(url, openURL: { UIApplication.shared.open($0) })
+                }
+                .font(.body)
+                .buttonStyle(.borderless)
                 Text(shown)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)

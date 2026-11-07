@@ -2,6 +2,24 @@ import XCTest
 @testable import CrystalClean
 
 final class ShopMapsTests: XCTestCase {
+    func testPhoneTapsNeverOpenMapsAndMapTapsNeverCall() {
+        let phone = URL(string: "tel:6463386883")!
+        var opened: [URL] = []
+        var mapChoices = 0
+
+        for _ in 0..<3 {
+            ShopContactActions.call(phone, openURL: { opened.append($0) })
+        }
+        XCTAssertEqual(opened, [phone, phone, phone])
+        XCTAssertEqual(mapChoices, 0)
+
+        for _ in 0..<3 {
+            ShopContactActions.chooseMap(presentMapChoices: { mapChoices += 1 })
+        }
+        XCTAssertEqual(opened, [phone, phone, phone])
+        XCTAssertEqual(mapChoices, 3)
+    }
+
     func testGoogleMapsUsesTheAppURLWhenInstalled() {
         let address = "400 E 87th Street, New York, NY 10128"
         let url = ShopMaps.googleMapsURL(address: address, googleAppInstalled: true)
